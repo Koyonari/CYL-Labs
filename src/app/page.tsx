@@ -1,9 +1,13 @@
-
+import Hero from './components/hero';
 
 export default function Home() {
   return (
-    <div className="bg-black font-extrabold text-amber-400">
-      balls
+    <div className = "primary-bg">
+      <Hero />
+
+      <div className = "secondary-bg">
+        Hello
+      </div>
     </div>
   );
 }
