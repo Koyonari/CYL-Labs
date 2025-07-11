@@ -2,6 +2,7 @@ import Hero from "./components/hero";
 import Services from "./components/services";
 import Sidebar from "./components/sidebar";
 import Why from "./components/why";
+import Exposure from "./components/exposure";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
           <section className="secondary-bg flex flex-col gap-8 py-8">
             <Services />
             <Why />
+            <Exposure />
           </section>
         </div>
       </section>

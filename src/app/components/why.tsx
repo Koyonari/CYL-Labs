@@ -1,11 +1,12 @@
+import { KeySquare } from 'lucide-react';
+
 export default function Why() {
   return (
     <section className="pr-20 py-12 primary-text h-screen flex">
       {/* Left */}
-      <div className="flex-shrink-0 w-32 flex flex-col pt-6">
-        <div className="text-6xl font-light">✱</div>
+      <div className="flex-shrink-0 w-32 flex flex-col pt-4">
+          <KeySquare size={81}/>
       </div>
-
       {/* Right side */}
       <div className="flex-1 flex flex-col">
         {/* Title */}
