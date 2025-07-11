@@ -3,42 +3,71 @@
 
 /* Fonts */
 @font-face {
+  font-family: 'Inter Light';
+  src: url('../app/fonts/Inter-Light-BETA.otf');
+  ascent-override: 100%;
+}
+
+.inter-light {
+  font-family: 'Inter Light';
+}
+
+@font-face {
   font-family: 'Inter Regular';
   src: url('../app/fonts/Inter-Regular.otf');
   ascent-override: 100%;
 }
+
 .inter-regular {
   font-family: 'Inter Regular';
 }
+
 @font-face {
   font-family: 'Inter Medium';
   src: url('../app/fonts/Inter-Medium.otf');
   ascent-override: 100%;
 }
+
 .inter-medium {
   font-family: 'Inter Medium';
 }
+
 @font-face {
   font-family: 'Inter Semi Bold';
   src: url('../app/fonts/Inter-SemiBold.otf');
   ascent-override: 100%;
 }
+
 .inter-semibold {
   font-family: 'Inter Semi Bold';
 }
+
 @font-face {
   font-family: 'Inter Bold';
   src: url('../app/fonts/Inter-Bold.otf');
   ascent-override:100%;
 }
+
 .inter-bold {
   font-family: 'Inter Bold';
 }
+
+@font-face {
+  font-family: 'Inter Extra Bold';
+  src: url('../app/fonts/Inter-ExtraBold.otf');
+  ascent-override: 100%;
+}
+
+.inter-extrabold {
+  font-family: 'Inter Extra Bold';
+}
+
 @font-face {
   font-family: 'JetBrains Mono Medium';
   src: url('../app/fonts/JetBrainsMono-Medium.ttf');
   ascent-override: 100%;
 }
+
 .jetbrains-medium {
   font-family: 'JetBrains Mono Medium';
 }
