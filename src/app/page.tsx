@@ -3,28 +3,44 @@ import Services from "./components/services";
 import Sidebar from "./components/sidebar";
 import Why from "./components/why";
 import Exposure from "./components/exposure";
+import Footer from "./components/footer";
 
 export default function Home() {
   return (
-    <section className="primary-bg">
-      <Hero />
-      <section className="relative z-20 flex min-h-screen">
-        {/* Sidebar */}
-        <div className="w-[15%] secondary-bg flex-shrink-0">
-          <div className="sticky top-0 h-screen flex items-center justify-center">
-            <Sidebar />
+    <main className="relative">
+      {/* Hero Section */}
+      <div className="relative z-10">
+        <Hero />
+      </div>
+
+      <section className="relative z-20">
+        <div className="flex min-h-screen">
+          {/* Sidebar */}
+          <div className="w-[15%] primary-bg flex-shrink-0">
+            <div className="sticky top-0 h-screen flex items-center justify-center">
+              <Sidebar />
+            </div>
+          </div>
+
+          {/* Main content */}
+          <div className="flex-1 primary-bg">
+            <div id="services" className="min-h-screen">
+              <Services />
+            </div>
+            <div id="why-us" className="min-h-screen">
+              <Why />
+            </div>
+            <div id="exposure" className="min-h-screen">
+              <Exposure />
+            </div>
           </div>
         </div>
-
-        {/* Main content */}
-        <div className="flex-1">
-          <section className="secondary-bg flex flex-col gap-8 py-8">
-            <Services />
-            <Why />
-            <Exposure />
-          </section>
-        </div>
       </section>
-    </section>
+
+      {/* Footer */}
+      <div className="relative z-30 secondary-bg">
+        <Footer />
+      </div>
+    </main>
   );
 }

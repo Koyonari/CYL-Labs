@@ -2,15 +2,15 @@ export default function Services() {
   return (
     <section className="pr-20 py-12 primary-text h-screen flex">
       {/* Left */}
-      <div className="flex-shrink-0 w-32 flex flex-col pt-6">
-        <div className="text-6xl inter-light">✱</div>
+      <div className="flex-shrink-0 w-32 flex flex-col pt-2">
+        <div className="text-5xl inter-light">✱</div>
       </div>
 
       {/* Right side */}
       <div className="flex-1 flex flex-col">
         {/* Title */}
         <div className="mb-16 flex-shrink-0">
-          <h2 className="text-7xl md:text-8xl font-extrabold">Services</h2>
+          <h2 className="text-6xl inter-bold">Services</h2>
         </div>
 
         {/* Bento Grid */}
@@ -24,10 +24,10 @@ export default function Services() {
             }}
           >
             <div className="absolute inset-0 bg-black opacity-40 transition-opacity duration-300 hover:opacity-30"></div>
-            <div className="inter-semibold absolute bottom-6 left-6 text-5xl font-bold z-10 transition-transform duration-300 hover:translate-y-[-4px]">
+            <div className="inter-semibold absolute bottom-6 left-6 text-4xl font-bold z-10 transition-transform duration-300 hover:translate-y-[-4px]">
               Web Design
               <br />
-              <span className="text-3xl inter-light">
+              <span className="text-2xl inter-light">
                 Creating perfect digital experiences
               </span>
             </div>
@@ -42,26 +42,26 @@ export default function Services() {
             }}
           >
             <div className="absolute inset-0 bg-black opacity-40 transition-opacity duration-300 hover:opacity-30"></div>
-            <div className="inter-semibold absolute bottom-6 left-6 text-5xl font-bold z-10 transition-transform duration-300 hover:translate-y-[-4px]">
+            <div className="inter-semibold absolute bottom-6 left-6 text-4xl font-bold z-10 transition-transform duration-300 hover:translate-y-[-4px]">
               UI/UX
               <br />
-              <span className="text-3xl inter-light">User first design</span>
+              <span className="text-2xl inter-light">User first design</span>
             </div>
           </div>
 
           {/* Digital Marketing - 3 cols and 1 row */}
           <div
-            className="col-span-3 rounded-2xl row-span-1 col-start-1 row-start-3 bg-cover bg-center relative overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_-20px_40px_-12px_rgba(232,73,42,0.5),20px_0_40px_-12px_rgba(232,73,42,0.5),-20px_0_40px_-12px_rgba(232,73,42,0.5),0_20px_40px_40px_-12px_rgba(232,73,42,0.5)]"
+            className="col-span-3 rounded-2xl row-span-1 col-start-1 row-start-3 bg-cover bg-center relative overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_-20px_40px_-12px_rgba(232,73,42,0.5),20px_0_40px_-12px_rgba(232,73,42,0.5),-20px_0_40px_-12px_rgba(232,73,42,0.5),0_20px_40px_-12px_rgba(232,73,42,0.5)]"
             style={{
               backgroundImage:
                 "url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop)",
             }}
           >
             <div className="absolute inset-0 bg-black opacity-40 transition-opacity duration-300 hover:opacity-30"></div>
-            <div className="inter-semibold absolute bottom-6 left-6 text-5xl font-bold z-10 transition-transform duration-300 hover:translate-y-[-4px]">
+            <div className="inter-semibold absolute bottom-6 left-6 text-4xl font-bold z-10 transition-transform duration-300 hover:translate-y-[-4px]">
               Digital Marketing
               <br />
-              <span className="text-3xl inter-light">
+              <span className="text-2xl inter-light">
                 Ensuring your business succeeds
               </span>
             </div>
