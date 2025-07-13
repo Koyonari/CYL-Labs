@@ -52,7 +52,7 @@ export default function Sidebar() {
   };
 
   return (
-    <section className="primary-text inter-semibold">
+    <section className="primary-text inter-bold">
       <div className="flex flex-col gap-8 relative">
         {/* Indicator */}
         <div
@@ -60,7 +60,7 @@ export default function Sidebar() {
           style={{
             top: `calc(${menuItems.findIndex(
               (item) => item.name === currentSection
-            )} * (1.5rem + 2rem) + 0.7rem)`,
+            )} * (1.5rem + 2.1rem) + 1rem)`,
           }}
         />
 
@@ -72,9 +72,9 @@ export default function Sidebar() {
             onClick={() => scrollToSection(item.id)}
           >
             <p
-              className={`transition-all duration-300 ${
+              className={`transition-all duration-300 text-lg ${
                 currentSection === item.name
-                  ? "accent-text text-lg"
+                  ? "accent-text text-xl"
                   : "text-base hover:text-gray-300"
               }`}
             >
