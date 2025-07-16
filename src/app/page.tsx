@@ -28,13 +28,13 @@ export default function Home() {
 
           {/* Main content */}
           <div className="flex-1 primary-bg">
-            <div id="services" className="min-h-screen">
+            <div id="services" className="min-h-screen max-w-[1200px]">
               <Services />
             </div>
             <div id="why-us" className="min-h-screen">
               <Why />
             </div>
-            <div id="exposure" className="min-h-screen">
+            <div id="exposure" className="min-h-screen max-w-screen">
               <Exposure />
             </div>
             <div id="highlights" className="min-h-screen">

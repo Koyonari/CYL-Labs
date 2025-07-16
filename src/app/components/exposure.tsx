@@ -20,7 +20,7 @@ export default function Exposure() {
           <Image
             src="/exposure.jpg"
             alt="Google search results showing website ranking"
-            width={2667}
+            width={2300}
             height={0}
             className="h-auto object-contain rounded-2xl shadow-[0_-20px_40px_-12px_rgba(232,73,42,0.5),20px_0_40px_-12px_rgba(232,73,42,0.5),-20px_0_40px_-12px_rgba(232,73,42,0.5),0_20px_40px_-12px_rgba(232,73,42,0.5)]"
           />
