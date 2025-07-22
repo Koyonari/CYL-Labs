@@ -8,10 +8,10 @@ export default function Highlights() {
   const [progress, setProgress] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const pausedProgressRef = useRef<number>(0); // Store progress when paused
+  const pausedProgressRef = useRef<number>(0);
 
-  const SLIDE_DURATION = 5000; // 5 seconds per slide
-  const PROGRESS_UPDATE_INTERVAL = 50; // Update progress every 50ms
+  const SLIDE_DURATION = 5000;
+  const PROGRESS_UPDATE_INTERVAL = 50;
 
   const carouselItems = [
     "/exposure.jpg",
@@ -31,17 +31,14 @@ export default function Highlights() {
   };
 
   const startAutoPlay = (startProgress: number = pausedProgressRef.current) => {
-    // Clear existing intervals
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
 
     setProgress(startProgress);
 
-    // Calculate remaining time based on current progress
     const remainingTime =
       SLIDE_DURATION - (startProgress / 100) * SLIDE_DURATION;
 
-    // Progress update interval
     progressIntervalRef.current = setInterval(() => {
       setProgress((prev) => {
         const newProgress =
@@ -49,12 +46,11 @@ export default function Highlights() {
         if (newProgress >= 100) {
           return 100;
         }
-        pausedProgressRef.current = newProgress; // Update paused progress reference
+        pausedProgressRef.current = newProgress;
         return newProgress;
       });
     }, PROGRESS_UPDATE_INTERVAL);
 
-    // Slide change timeout (not interval) for the remaining time
     intervalRef.current = setTimeout(() => {
       setCurrentSlide((prev) => {
         const nextSlide = (prev + 1) % carouselItems.length;
@@ -63,31 +59,27 @@ export default function Highlights() {
       setProgress(0);
       pausedProgressRef.current = 0;
 
-      // Start regular interval for subsequent slides
       startRegularInterval();
     }, remainingTime);
   };
 
   const startRegularInterval = () => {
-    // Clear any existing intervals
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
 
-    // Progress update interval
     progressIntervalRef.current = setInterval(() => {
       setProgress((prev) => {
         const newProgress =
           prev + (PROGRESS_UPDATE_INTERVAL / SLIDE_DURATION) * 100;
         if (newProgress >= 100) {
           pausedProgressRef.current = 0;
-          return 0; // Reset for next slide
+          return 0;
         }
         pausedProgressRef.current = newProgress;
         return newProgress;
       });
     }, PROGRESS_UPDATE_INTERVAL);
 
-    // Regular slide change interval
     intervalRef.current = setInterval(() => {
       setCurrentSlide((prev) => {
         const nextSlide = (prev + 1) % carouselItems.length;
@@ -104,13 +96,11 @@ export default function Highlights() {
       clearTimeout(intervalRef.current);
     }
     if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
-    // Store current progress when pausing
     pausedProgressRef.current = progress;
   };
 
   const togglePlayPause = () => {
     if (isPlaying) {
-      // Pausing - store current progress
       pausedProgressRef.current = progress;
     }
     setIsPlaying(!isPlaying);
@@ -128,7 +118,6 @@ export default function Highlights() {
     };
   }, [isPlaying]);
 
-  // Handle slide changes (reset progress when slide changes)
   useEffect(() => {
     if (isPlaying) {
       startAutoPlay(0);
@@ -138,7 +127,6 @@ export default function Highlights() {
     }
   }, [currentSlide]);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       stopAutoPlay();
@@ -199,7 +187,6 @@ export default function Highlights() {
               aria-label={isPlaying ? "Pause" : "Play"}
             >
               {isPlaying ? (
-                // Pause icon
                 <svg
                   width="18"
                   height="18"
@@ -211,7 +198,6 @@ export default function Highlights() {
                   <rect x="14" y="4" width="4" height="16" fill="black" />
                 </svg>
               ) : (
-                // Play icon
                 <svg
                   width="18"
                   height="18"
@@ -224,31 +210,54 @@ export default function Highlights() {
               )}
             </button>
 
-            {/* Dots Indicator */}
-            <div className="flex items-center space-x-3 py-4 px-5 rounded-full bg-gray-300">
-              {carouselItems.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`relative transition-all duration-300 overflow-hidden ${
-                    currentSlide === index
-                      ? "w-10 h-2.5 bg-white rounded-full"
-                      : "w-2.5 h-2.5 bg-white rounded-full hover:bg-gray-400 hover:cursor-pointer"
-                  }`}
-                >
-                  {/* Progress fill for active slide */}
-                  {currentSlide === index && (
+            {/* Dots Indicator - Completely rewritten for Chrome compatibility */}
+            <div className="flex items-center gap-3 py-4 px-5 rounded-full bg-gray-300">
+              {carouselItems.map((_, index) => {
+                const isActive = currentSlide === index;
+                return (
+                  <div
+                    key={index}
+                    className="relative flex items-center justify-center cursor-pointer"
+                    onClick={() => goToSlide(index)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Go to slide ${index + 1}`}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        goToSlide(index);
+                      }
+                    }}
+                    style={{
+                      width: isActive ? "40px" : "10px",
+                      height: "10px",
+                      transition: "width 300ms ease",
+                    }}
+                  >
+                    {/* Background dot */}
                     <div
-                      className={`absolute top-0 left-0 h-full bg-[#E8492A] rounded-full ${
-                        isPlaying
-                          ? "transition-all duration-75 ease-linear"
-                          : ""
-                      }`}
-                      style={{ width: `${progress}%` }}
+                      className="absolute inset-0 bg-white rounded-full hover:bg-gray-100 transition-colors duration-200"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                      }}
                     />
-                  )}
-                </button>
-              ))}
+
+                    {/* Progress fill - only for active slide */}
+                    {isActive && (
+                      <div
+                        className="absolute left-0 top-0 bg-red-500 rounded-full"
+                        style={{
+                          height: "10px",
+                          width: `${Math.min(Math.max(progress, 0), 100)}%`,
+                          transition: isPlaying ? "width 50ms linear" : "none",
+                          zIndex: 1,
+                        }}
+                      />
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
