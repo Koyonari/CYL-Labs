@@ -3,63 +3,53 @@
 
 /* Fonts */
 @font-face {
-  font-family: "Inter Light";
-  src: url("../app/fonts/Inter-Light-BETA.otf");
+  font-family: "Helvetica Thin";
+  src: url("../app/fonts/HelveticaNeueThin.otf");
   ascent-override: 100%;
 }
 
-.inter-light {
-  font-family: "Inter Light";
+.helvetica-thin {
+  font-family: "Helvetica Thin";
 }
 
 @font-face {
-  font-family: "Inter Regular";
-  src: url("../app/fonts/Inter-Regular.otf");
+  font-family: "Helvetica Light";
+  src: url("../app/fonts/HelveticaNeueLight.otf");
   ascent-override: 100%;
 }
 
-.inter-regular {
-  font-family: "Inter Regular";
+.helvetica-light {
+  font-family: "Helvetica Light";
 }
 
 @font-face {
-  font-family: "Inter Medium";
-  src: url("../app/fonts/Inter-Medium.otf");
+  font-family: "Helvetica Ultra Light";
+  src: url("../app/fonts/HelveticaNeueUltraLight.otf");
   ascent-override: 100%;
 }
 
-.inter-medium {
-  font-family: "Inter Medium";
+.helvetica-ultralight {
+  font-family: "Helvetica Ultra Light";
 }
 
 @font-face {
-  font-family: "Inter Semi Bold";
-  src: url("../app/fonts/Inter-SemiBold.otf");
+  font-family: "Helvetica Medium";
+  src: url("../app/fonts/HelveticaNeueMedium.otf");
   ascent-override: 100%;
 }
 
-.inter-semibold {
-  font-family: "Inter Semi Bold";
+.helvetica-medium {
+  font-family: "Helvetica Medium";
 }
 
 @font-face {
-  font-family: "Inter Bold";
-  src: url("../app/fonts/Inter-Bold.otf");
+  font-family: "Helvetica Bold";
+  src: url("../app/fonts/HelveticaNeueBold.otf");
   ascent-override: 100%;
 }
 
-.inter-bold {
-  font-family: "Inter Bold";
-}
-
-@font-face {
-  font-family: "Inter Extra Bold";
-  src: url("../app/fonts/Inter-ExtraBold.otf");
-  ascent-override: 100%;
-}
-
-.inter-extrabold {
-  font-family: "Inter Extra Bold";
+.helvetica-bold {
+  font-family: "Helvetica Bold";
 }
 
 @font-face {
@@ -72,6 +62,26 @@
   font-family: "JetBrains Mono Medium";
 }
 
+@font-face {
+  font-family: "Inter Semibold";
+  src: url("../app/fonts/Inter-SemiBold.otf");
+  ascent-override: 100%;
+}
+
+.inter-semibold {
+  font-family: "Inter Semibold";
+}
+
+@font-face {
+  font-family: "Inter Bold";
+  src: url("../app/fonts/Inter-Bold.otf");
+  ascent-override: 100%;
+}
+
+.inter-bold {
+  font-family: "Inter Bold";
+}
+
 /* Universal styles */
 html {
   scroll-behavior: smooth;
@@ -79,7 +89,7 @@ html {
 }
 
 body {
-  font-family: "Inter Regular", sans-serif;
+  font-family: "Helvetica Medium", sans-serif;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
@@ -114,7 +124,7 @@ body {
 
 /* Colours */
 .primary-text {
-  color: #ffffff;
+  color: #000000;
 }
 .secondary-text {
   color: #eee5da;

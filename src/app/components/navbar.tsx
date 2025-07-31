@@ -1,14 +1,16 @@
 export default function Navbar() {
   return (
-    <section className="z-10 px-[66px] py-6 items-center flex flex-row justify-between">
-      <div className="nav-left inter-bold text-[48px]">
+    <section className="px-[62px] py-6 items-center flex flex-row justify-between text-black">
+      <div className="nav-left inter-bold text-[44px]">
         cyllabs<span className="accent-text">.</span>
       </div>
-      <div className="nav-right text-[26px] items-center flex flex-row gap-[65px] inter-bold">
+      <div className="nav-right text-lg items-center flex flex-row gap-[54px] inter-bold">
         <div>Home</div>
+        <div>Quiz</div>
+        <div>Reality</div>
         <div>Pricing</div>
-        <div>Contact</div>
       </div>
+      <div className = "rounded-4xl text-xl border-black inter-bold border px-5 py-2">Contact Us</div>
     </section>
   );
 }

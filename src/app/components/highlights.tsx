@@ -134,84 +134,80 @@ export default function Highlights() {
   }, []);
 
   return (
-    <section className="pr-0 py-12 primary-text h-screen flex">
-      {/* Left */}
-      <div className="flex-shrink-0 w-32 flex flex-col pt-1">
-        <p>1-5</p>
-      </div>
-
-      {/* Right side */}
-      <div className="flex-1 flex flex-col">
+    <section className="pt-12 pl-24 primary-text min-h-screen">
+      <div className="flex flex-col max-w-7xl">
         {/* Title */}
-        <div className="mb-16 flex-shrink-0">
-          <h2 className="text-6xl inter-bold">Highlights</h2>
+        <div className="mb-8 md:mb-16">
+          <h2 className="text-4xl md:text-6xl inter-bold">Highlights</h2>
         </div>
 
         {/* Carousel Container */}
-        <div className="flex flex-col flex-1 overflow-hidden">
+        <div className="flex flex-col overflow-hidden justify-center items-center">
           {/* Carousel */}
-          <div className="relative mb-6">
-            <div className="max-w-[1000px] w-full overflow-hidden rounded-lg h-[550px]">
-              <div
-                className="flex transition-transform duration-300 ease-in-out h-full"
-                style={{
-                  transform: `translateX(-${currentSlide * (1000 + 25)}px)`,
-                  gap: "25px",
-                }}
-              >
-                {carouselItems.map((imageUrl, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 rounded-lg overflow-hidden"
-                    style={{ width: "1000px", height: "550px" }}
-                  >
-                    <Image
-                      src={imageUrl}
-                      alt="Google search results showing website ranking"
-                      width={2667}
-                      height={1500}
-                      className="h-auto object-contain rounded-lg shadow-[0_-20px_40px_-12px_rgba(232,73,42,0.5),20px_0_40px_-12px_rgba(232,73,42,0.5),-20px_0_40px_-12px_rgba(232,73,42,0.5),0_20px_40px_-12px_rgba(232,73,42,0.5)]"
-                    />
-                  </div>
-                ))}
+          <div className="relative mb-6 w-full">
+            <div className="w-full max-w-[1000px] mx-auto overflow-hidden rounded-lg">
+              <div className="aspect-video w-full">
+                <div
+                  className="flex transition-transform duration-300 ease-in-out h-full"
+                  style={{
+                    transform: `translateX(-${currentSlide * 100}%)`,
+                  }}
+                >
+                  {carouselItems.map((imageUrl, index) => (
+                    <div
+                      key={index}
+                      className="flex-shrink-0 w-full h-full rounded-lg overflow-hidden"
+                    >
+                      <Image
+                        src={imageUrl}
+                        alt="Google search results showing website ranking"
+                        width={2667}
+                        height={1500}
+                        className="w-full h-full object-cover rounded-lg shadow-[0_-20px_40px_-12px_rgba(232,73,42,0.5),20px_0_40px_-12px_rgba(232,73,42,0.5),-20px_0_40px_-12px_rgba(232,73,42,0.5),0_20px_40px_-12px_rgba(232,73,42,0.5)]"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
           {/* Controls Container */}
-          <div className="flex justify-center items-center space-x-6">
+          <div className="flex justify-center items-center space-x-4 md:space-x-6">
             {/* Play/Pause Button */}
             <button
               onClick={togglePlayPause}
-              className="flex items-center justify-center w-11 h-11 bg-gray-200 hover:bg-gray-300 rounded-full transition-colors duration-200"
+              className="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 bg-gray-200 hover:bg-gray-300 rounded-full transition-colors duration-200"
               aria-label={isPlaying ? "Pause" : "Play"}
             >
               {isPlaying ? (
                 <svg
-                  width="18"
-                  height="18"
+                  width="16"
+                  height="16"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="md:w-[18px] md:h-[18px]"
                 >
                   <rect x="6" y="4" width="4" height="16" fill="black" />
                   <rect x="14" y="4" width="4" height="16" fill="black" />
                 </svg>
               ) : (
                 <svg
-                  width="18"
-                  height="18"
+                  width="16"
+                  height="16"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="md:w-[18px] md:h-[18px]"
                 >
                   <polygon points="5,3 19,12 5,21" fill="black" />
                 </svg>
               )}
             </button>
 
-            {/* Dots Indicator - Completely rewritten for Chrome compatibility */}
-            <div className="flex items-center gap-3 py-4 px-5 rounded-full bg-gray-300">
+            {/* Dots Indicator */}
+            <div className="flex items-center gap-2 md:gap-3 py-3 md:py-4 px-4 md:px-5 rounded-full bg-gray-300">
               {carouselItems.map((_, index) => {
                 const isActive = currentSlide === index;
                 return (
@@ -229,8 +225,8 @@ export default function Highlights() {
                       }
                     }}
                     style={{
-                      width: isActive ? "40px" : "10px",
-                      height: "10px",
+                      width: isActive ? "32px" : "8px",
+                      height: "8px",
                       transition: "width 300ms ease",
                     }}
                   >
@@ -248,7 +244,7 @@ export default function Highlights() {
                       <div
                         className="absolute left-0 top-0 bg-red-500 rounded-full"
                         style={{
-                          height: "10px",
+                          height: "8px",
                           width: `${Math.min(Math.max(progress, 0), 100)}%`,
                           transition: isPlaying ? "width 50ms linear" : "none",
                           zIndex: 1,

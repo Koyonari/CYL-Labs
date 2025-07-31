@@ -13,7 +13,7 @@ export default function Exposure() {
         {/* Title */}
         <div className="mb-16 flex-shrink-0 flex flex-col gap-6">
           <h2 className="text-6xl inter-bold">Exposure</h2>
-          <h4 className="text-3xl inter-regular">Ranked higher.</h4>
+          <h4 className="text-3xl helvetica-medium">Ranked higher.</h4>
         </div>
         {/* Google Search */}
         <div className="flex-1 flex -mr-14 overflow-visible">

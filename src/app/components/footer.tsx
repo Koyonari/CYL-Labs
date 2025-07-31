@@ -3,9 +3,9 @@ import { Instagram } from "lucide-react";
 export default function Footer() {
   return (
     <>
-      <section className="primary-text">
+      <section className="secondary-text h-screen flex flex-col justify-between py-[100px] px-[80px] pb-[60px]">
         {/* Footer section */}
-        <div className="py-[60px] px-[70px] pb-0 flex flex-row gap-38">
+        <div className="pb-0 flex flex-row justify-between">
           <div className="footer-left flex flex-col">
             <h4 className="inter-bold text-[36px] pb-3">Stay in the Loop</h4>
             <div className="text-[13px] inter-semibold flex flex-row items-center gap-[40px]">
@@ -72,8 +72,8 @@ export default function Footer() {
         </div>
 
         {/* Big animated name */}
-        <div className="relative overflow-hidden py-54 text-[340px] text-center inter-semibold flex justify-center">
-          <h1 className="primary-text top-[50%] absolute transform  translate-y-[-55%]">
+        <div className="relative overflow-hidden py-54 text-[320px] text-center inter-semibold flex justify-center">
+          <h1 className="text-white top-[50%] absolute transform  translate-y-[-55%]">
             cyllabs.
           </h1>
           <h1 className="accent-text animate-[animate_7s_ease-in-out_infinite] absolute transform translate-y-[-55%]">
