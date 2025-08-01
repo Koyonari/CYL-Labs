@@ -256,9 +256,9 @@ export default function Highlights() {
       <section className="py-16 px-20 secondary-text min-h-screen bg-[#FD5001]">
         <div className="flex flex-col max-w-7xl">
           {/* Title */}
-          <div className="mb-8 md:mb-16">
-            <h2 className="text-4xl md:text-6xl helvetica-bold mb-6 tracking-tight">Who we work with.</h2>
-            <p className="text-2xl helvetica-light tracking-tight">Here are just a few of the businesses<br/>we're proud to work with.</p>
+          <div className="mb-8 md:mb-12">
+            <h2 className="text-4xl md:text-6xl helvetica-bold mb-3 tracking-tight">Who we work with.</h2>
+            <p className="text-2xl helvetica-light tracking-tight">Here are just a few of the businesses we're proud to work with.</p>
           </div>
 
           {/* Carousel Container */}

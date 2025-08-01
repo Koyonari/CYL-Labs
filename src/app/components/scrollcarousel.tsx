@@ -1,5 +1,7 @@
+"use client";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { motion, useInView, Variants } from "framer-motion";
 
 const images = [
   "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
@@ -19,7 +21,136 @@ export default function ScrollCarousel() {
   const containerRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const orangeTitleRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
   const [overlayProgress, setOverlayProgress] = useState(0);
+  
+  const isInView = useInView(titleRef, { once: true, threshold: 0.5 });
+  const isOrangeInView = useInView(orangeTitleRef, { once: true, threshold: 0.3 });
+  const isCtaInView = useInView(ctaRef, { once: true, threshold: 0.5 });
+
+  // Animation variants
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const fadeInUp: Variants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30 
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const fadeInLeft: Variants = {
+    hidden: { 
+      opacity: 0, 
+      x: -30 
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.2,
+        delay: 0.2,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const fadeInRight: Variants = {
+    hidden: { 
+      opacity: 0, 
+      x: 30 
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const imageStagger: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const imageVariant: Variants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.9,
+      y: 20 
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const underlineAnimation: Variants = {
+    hidden: {
+      scaleX: 0,
+      originX: 0,
+    },
+    visible: {
+      scaleX: 1,
+      transition: {
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const arrowAnimation: Variants = {
+    hidden: { 
+      opacity: 0, 
+      x: 20,
+      rotate: 0
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      rotate: [0, -5, 0],
+      transition: {
+        duration: 1,
+        ease: [0.25, 0.25, 0, 1],
+        rotate: {
+          duration: 1.2,
+          times: [0, 0.5, 1],
+          ease: "easeInOut"
+        }
+      },
+    },
+  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -57,7 +188,6 @@ export default function ScrollCarousel() {
 
         const overlayProgressClamped = Math.max(0, rectProgress);
         setOverlayProgress(overlayProgressClamped);
-        setOverlayProgress(overlayProgressClamped);
         const translateX = -overlayProgressClamped * scrollDistance;
         scrollElement.style.transform = `translate3d(${translateX}px, 0px, 0px)`;
         const orangeImagesContainer = overlayElement?.querySelector(
@@ -85,25 +215,43 @@ export default function ScrollCarousel() {
         {/* content container */}
         <div className="flex flex-col justify-center h-full">
           {/* Title */}
-          <div className="mb-14 text-left pl-8">
-            <p className="text-6xl helvetica-bold mb-8">What you expect</p>
-            <p className="text-2xl text-[#999999] helvetica-light tracking-tight">
+          <motion.div 
+            ref={titleRef}
+            className="mb-14 text-left pl-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            <motion.p 
+              className="text-6xl helvetica-bold mb-8"
+              variants={fadeInLeft}
+            >
+              What you expect
+            </motion.p>
+            <motion.p 
+              className="text-2xl text-[#999999] helvetica-light tracking-tight"
+              variants={fadeInUp}
+            >
               Generic design, weak messaging,
               <br />
               and a site that quietly costs you sales.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Images container */}
-          <div
+          <motion.div
             ref={scrollRef}
             className="flex items-center transition-transform duration-300 ease-out"
             style={{ width: "max-content" }}
+            variants={imageStagger}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
           >
             {images.map((src, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="flex-shrink-0 mx-2 sm:mx-4 first:ml-4 last:mr-4 sm:first:ml-8 sm:last:mr-8"
+                variants={imageVariant}
               >
                 <div className="relative w-[75vw] sm:w-96 md:w-[28rem] h-48 sm:h-64 md:h-72 rounded-lg overflow-hidden shadow-xl">
                   <img
@@ -121,9 +269,9 @@ export default function ScrollCarousel() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Orange overlay */}
@@ -166,26 +314,44 @@ export default function ScrollCarousel() {
           {/* Orange content container */}
           <div className="flex flex-col justify-center h-full w-full px-4 sm:px-8 md:px-16">
             {/* Title */}
-            <div className="mb-14 text-left pl-8">
-              <p className="text-6xl helvetica-bold mb-8 text-white">What you get</p>
-              <p className="text-2xl helvetica-light tracking-tight text-white">
+            <motion.div 
+              ref={orangeTitleRef}
+              className="mb-14 text-left pl-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isOrangeInView ? "visible" : "hidden"}
+            >
+              <motion.p 
+                className="text-6xl helvetica-bold mb-8 text-white"
+                variants={fadeInLeft}
+              >
+                What you get
+              </motion.p>
+              <motion.p 
+                className="text-2xl helvetica-light tracking-tight text-white"
+                variants={fadeInUp}
+              >
                 Your site won&apos;t just look good
                 <br />— it&apos;ll finally work as hard as you do.
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
 
             {/* Orange Images */}
-            <div
+            <motion.div
               className="flex items-center transition-transform duration-300 ease-out overflow-visible"
               style={{
                 width: "max-content",
                 transform: "translate3d(0px, 0px, 0px)",
               }}
+              variants={imageStagger}
+              initial="hidden"
+              animate={isOrangeInView ? "visible" : "hidden"}
             >
               {orangeImages.map((src, index) => (
-                <div
+                <motion.div
                   key={`orange-${index}`}
                   className="flex-shrink-0 mx-2 sm:mx-4 first:ml-4 last:mr-4 sm:first:ml-8 sm:last:mr-8"
+                  variants={imageVariant}
                 >
                   <div className="relative w-[75vw] sm:w-96 md:w-[28rem] h-48 sm:h-64 md:h-72 rounded-lg overflow-hidden shadow-xl">
                     <img
@@ -203,19 +369,35 @@ export default function ScrollCarousel() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
-          <div className="absolute bottom-16 flex flex-row helvetica-bold  pl-24 text-white">
-            <p className="text-5xl mb-4">
+          
+          <motion.div 
+            ref={ctaRef}
+            className="absolute bottom-16 flex flex-row helvetica-bold pl-24 text-white"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isCtaInView ? "visible" : "hidden"}
+          >
+            <motion.p 
+              className="text-5xl mb-4"
+              variants={fadeInLeft}
+            >
               Read more about{" "}
-              <span className="underline decoration-3 decoration-white">
-                this
+              <span className="relative inline-block">
+                <span className="relative z-10">this</span>
+                <motion.span
+                  className="absolute bottom-0 left-0 w-full h-1 bg-white rounded-full"
+                  variants={underlineAnimation}
+                />
               </span>
-            </p>
-            <ArrowUpRight size={48} strokeWidth={2.5} className="pt-1" />
-          </div>
+            </motion.p>
+            <motion.div variants={arrowAnimation}>
+              <ArrowUpRight size={48} strokeWidth={2.5} className="pt-1" />
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
