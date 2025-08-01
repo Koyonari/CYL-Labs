@@ -86,8 +86,8 @@ export default function ScrollCarousel() {
         <div className="flex flex-col justify-center h-full">
           {/* Title */}
           <div className="mb-14 text-left pl-8">
-            <p className="text-6xl font-bold mb-4">What you expect</p>
-            <p className="text-2xl font-semibold">
+            <p className="text-6xl helvetica-bold mb-8">What you expect</p>
+            <p className="text-2xl text-[#999999] helvetica-light tracking-tight">
               Generic design, weak messaging,
               <br />
               and a site that quietly costs you sales.
@@ -167,8 +167,8 @@ export default function ScrollCarousel() {
           <div className="flex flex-col justify-center h-full w-full px-4 sm:px-8 md:px-16">
             {/* Title */}
             <div className="mb-14 text-left pl-8">
-              <p className="text-6xl font-bold mb-4 text-white">What you get</p>
-              <p className="text-2xl font-semibold text-white">
+              <p className="text-6xl helvetica-bold mb-8 text-white">What you get</p>
+              <p className="text-2xl helvetica-light tracking-tight text-white">
                 Your site won&apos;t just look good
                 <br />— it&apos;ll finally work as hard as you do.
               </p>
@@ -207,8 +207,8 @@ export default function ScrollCarousel() {
               ))}
             </div>
           </div>
-          <div className="absolute bottom-16 flex flex-row  pl-24 text-white">
-            <p className="text-5xl font-bold mb-4">
+          <div className="absolute bottom-16 flex flex-row helvetica-bold  pl-24 text-white">
+            <p className="text-5xl mb-4">
               Take the{" "}
               <span className="underline decoration-3 decoration-white">
                 quiz
