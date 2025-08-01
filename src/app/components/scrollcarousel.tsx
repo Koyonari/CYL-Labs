@@ -129,7 +129,7 @@ export default function ScrollCarousel() {
         {/* Orange overlay */}
         <div
           ref={overlayRef}
-          className="absolute bg-orange-500"
+          className="absolute bg-[#FD5001]"
           style={{
             clipPath:
               overlayProgress >= 1
