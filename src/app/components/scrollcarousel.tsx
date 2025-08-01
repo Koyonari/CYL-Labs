@@ -209,9 +209,9 @@ export default function ScrollCarousel() {
           </div>
           <div className="absolute bottom-16 flex flex-row helvetica-bold  pl-24 text-white">
             <p className="text-5xl mb-4">
-              Take the{" "}
+              Read more about{" "}
               <span className="underline decoration-3 decoration-white">
-                quiz
+                this
               </span>
             </p>
             <ArrowUpRight size={48} strokeWidth={2.5} className="pt-1" />

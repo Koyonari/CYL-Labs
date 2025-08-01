@@ -107,7 +107,7 @@ export default function Contact({ onMessageSent }: ContactProps) {
       <div className="flex flex-col md:flex-row w-full gap-48 items-center">
         <div className="info-left min-w-[700px] items-center">
           <div className="contact-form-container">
-            <h1 className="contact-heading text-4xl inter-semibold mb-12 font-extrabold font-general-sans">
+            <h1 className="contact-heading text-[40px]/11 helvetica-bold mb-12">
               Want to stand out?
               <br />
               Let&apos;s make your dream a reality.
@@ -128,7 +128,7 @@ export default function Contact({ onMessageSent }: ContactProps) {
                   type="email"
                   id="email"
                   name="user_email"
-                  placeholder="Your Email"
+                  placeholder="Your Email/Number"
                   className="input-field w-full py-2 border-b-2 border-opacity-50 outline-none"
                   required
                 />
@@ -162,7 +162,7 @@ export default function Contact({ onMessageSent }: ContactProps) {
                     className="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                   />
                 </div>
-                <span className="px-1">Send Message</span>
+                <span className="px-1 helvetica-medium">Send Message</span>
               </button>
             </form>
           </div>
@@ -170,36 +170,36 @@ export default function Contact({ onMessageSent }: ContactProps) {
 
         <div className="info-right leading-8 flex flex-col md:block px-8 md:px-0">
           <div className="contact-info">
-            <h3 className="text-2xl md:text-3xl inter-semibold mb-3 mt-12">
+            <h3 className="text-2xl md:text-3xl helvetica-bold mb-3 mt-12">
               Contact Details
             </h3>
-            <p className="text-sm md:text-lg helvetica-medium">
+            <p className="text-sm md:text-lg helvetica-light tracking-wide">
               cyllabsdigital@gmail.com
             </p>
-            <p className="text-sm md:text-lg helvetica-medium">+65 9711 2702</p>
+            <p className="text-sm md:text-lg helvetica-light">+65 9711 2702</p>
           </div>
           <div className="digital-space mt-4 md:mt-12">
-            <h3 className="text-2xl md:text-3xl inter-semibold mb-3">
+            <h3 className="text-2xl md:text-3xl helvetica-bold mb-3">
               Online Socials
             </h3>
 
             <div className="space flex flex-row items-center text-center gap-1">
-              <Instagram size={16} />
+              <Instagram size={26} strokeWidth={2}/>
               <a
                 href="https://github.com/Koyonari"
-                className="text-sm md:text-lg helvetica-medium link-hover text-center py-0.5 px-1"
+                className="text-sm md:text-lg helvetica-light link-hover text-center py-0.5 px-1"
               >
                 cyl.labs
               </a>
             </div>
           </div>
           <div className="location mt-4 md:mt-12">
-            <h3 className="text-2xl md:text-3xl inter-semibold mb-3">
+            <h3 className="text-2xl md:text-3xl helvetica-bold mb-3">
               Location
             </h3>
-            <p className="text-sm md:text-lg helvetica-medium">Singapore</p>
+            <p className="text-sm md:text-lg helvetica-light">Singapore</p>
             {singaporeTime && (
-              <p className="text-sm md:text-lg helvetica-medium">
+              <p className="text-sm md:text-lg helvetica-light">
                 Local time:
                 <span className="ml-2 font-mono">{singaporeTime}</span>
               </p>

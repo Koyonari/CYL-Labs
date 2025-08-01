@@ -6,9 +6,8 @@ export default function Navbar() {
       </div>
       <div className="nav-right text-lg items-center flex flex-row gap-[54px] inter-bold">
         <div>Home</div>
-        <div>Quiz</div>
-        <div>Reality</div>
         <div>Pricing</div>
+        <div>About</div>
       </div>
       <div className = "rounded-4xl text-xl border-black inter-bold border px-5 py-2">Contact Us</div>
     </section>

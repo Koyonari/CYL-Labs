@@ -8,7 +8,11 @@ export default function Evaluator() {
           <p className="text-2xl/6 text-[#999999] text-right helvetica-light">Most websites look fine but lose trust and sales. This quick ROI check shows what you're missing — and how to fix it.</p>
           <div className="text-[#FC350B] text-5xl top-0 flex flex-row items-center helvetica-bold tracking-tight justify-end">
             <ArrowUpLeft size={48} strokeWidth={3} className="pt-1"/>
-            Take the quiz
+            <div>Take the{" "} 
+            <span className="underline decoration-3 decoration-[#FD5001]">
+              quiz
+            </span>
+            </div>
           </div>
         </div>
       </div>
