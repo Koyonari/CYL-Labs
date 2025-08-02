@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Instagram } from "lucide-react";
 import emailjs from "@emailjs/browser";
-import gsap from "gsap";
+import { motion, useInView, Variants } from "framer-motion";
 
 interface ContactProps {
   onMessageSent: () => void;
@@ -10,6 +10,118 @@ interface ContactProps {
 
 export default function Contact({ onMessageSent }: ContactProps) {
   const [singaporeTime, setSingaporeTime] = useState<string>("");
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+  // Animation variants
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const fadeInUp: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const fadeInLeft: Variants = {
+    hidden: {
+      opacity: 0,
+      x: -30,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.2,
+        delay: 0.4,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const fadeInRight: Variants = {
+    hidden: {
+      opacity: 0,
+      x: 30,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const formStagger: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.6,
+      },
+    },
+  };
+
+  const formFieldVariant: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const rightSideStagger: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.8,
+      },
+    },
+  };
+
+  const rightSideItem: Variants = {
+    hidden: {
+      opacity: 0,
+      x: 20,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
 
   useEffect(() => {
     const fetchSingaporeTime = async () => {
@@ -36,7 +148,6 @@ export default function Contact({ onMessageSent }: ContactProps) {
   }, []);
 
   const form = useRef<HTMLFormElement | null>(null);
-  const contactSection = useRef<HTMLDivElement | null>(null);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,61 +170,35 @@ export default function Contact({ onMessageSent }: ContactProps) {
       });
   };
 
-  useEffect(() => {
-    const contactElement = contactSection.current;
-
-    const animateDescription = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          gsap.fromTo(
-            ".contact-heading",
-            {
-              opacity: 0,
-              y: 100,
-            },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-            }
-          );
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(animateDescription, {
-      threshold: 0.3,
-    });
-
-    if (contactElement) {
-      observer.observe(contactElement);
-    }
-
-    return () => {
-      if (contactElement) {
-        observer.unobserve(contactElement);
-      }
-    };
-  }, []);
-
   return (
-    <section
+    <motion.section
       id="contact"
-      ref={contactSection}
+      ref={sectionRef}
       className="contact-section pb-12 px-28 primary-text flex min-h-screen items-center"
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
     >
       <div className="flex flex-col md:flex-row w-full gap-48 items-center">
-        <div className="info-left min-w-[700px] items-center">
+        <motion.div
+          className="info-left min-w-[700px] items-center"
+          variants={fadeInLeft}
+        >
           <div className="contact-form-container">
-            <h1 className="contact-heading text-[40px]/11 helvetica-bold mb-12">
+            <motion.h1
+              className="contact-heading text-[40px]/11 helvetica-bold mb-12"
+              variants={fadeInUp}
+            >
               Want to stand out?
               <br />
               Let&apos;s make your dream a reality.
-            </h1>
-            <form ref={form} onSubmit={sendEmail}>
-              <div className="form-control mb-4">
+            </motion.h1>
+
+            <motion.form ref={form} onSubmit={sendEmail} variants={formStagger}>
+              <motion.div
+                className="form-control mb-4"
+                variants={formFieldVariant}
+              >
                 <input
                   type="text"
                   id="name"
@@ -122,8 +207,12 @@ export default function Contact({ onMessageSent }: ContactProps) {
                   className="input-field w-full py-2 border-b-2 border-opacity-50 outline-none"
                   required
                 />
-              </div>
-              <div className="form-control mb-4">
+              </motion.div>
+
+              <motion.div
+                className="form-control mb-4"
+                variants={formFieldVariant}
+              >
                 <input
                   type="email"
                   id="email"
@@ -132,8 +221,12 @@ export default function Contact({ onMessageSent }: ContactProps) {
                   className="input-field w-full py-2 border-b-2 border-opacity-50 outline-none"
                   required
                 />
-              </div>
-              <div className="form-control mb-4">
+              </motion.div>
+
+              <motion.div
+                className="form-control mb-4"
+                variants={formFieldVariant}
+              >
                 <textarea
                   id="message"
                   cols={30}
@@ -143,8 +236,9 @@ export default function Contact({ onMessageSent }: ContactProps) {
                   className="input-field w-full py-2 border-b-2 border-opacity-50 outline-none"
                   required
                 ></textarea>
-              </div>
-              <button
+              </motion.div>
+
+              <motion.button
                 type="submit"
                 name="submit"
                 value="Send"
@@ -163,49 +257,67 @@ export default function Contact({ onMessageSent }: ContactProps) {
                   />
                 </div>
                 <span className="px-1 helvetica-medium">Send Message</span>
-              </button>
-            </form>
+              </motion.button>
+            </motion.form>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="info-right leading-8 flex flex-col md:block px-8 md:px-0">
-          <div className="contact-info">
-            <h3 className="text-2xl md:text-3xl helvetica-bold mb-3 mt-12">
-              Contact Details
-            </h3>
-            <p className="text-sm md:text-lg helvetica-light tracking-wide">
-              cyllabsdigital@gmail.com
-            </p>
-            <p className="text-sm md:text-lg helvetica-light">+65 9711 2702</p>
-          </div>
-          <div className="digital-space mt-4 md:mt-12">
-            <h3 className="text-2xl md:text-3xl helvetica-bold mb-3">
-              Online Socials
-            </h3>
-
-            <div className="space flex flex-row items-center text-center gap-1">
-              <Instagram size={26} strokeWidth={2}/>
-              <a
-                href="https://github.com/Koyonari"
-                className="text-sm md:text-lg helvetica-light link-hover text-center py-0.5 px-1"
-              >
-                cyl.labs
-              </a>
-            </div>
-          </div>
-          <div className="location mt-4 md:mt-12">
-            <h3 className="text-2xl md:text-3xl helvetica-bold mb-3">
-              Location
-            </h3>
-            <p className="text-sm md:text-lg helvetica-light">Singapore</p>
-            {singaporeTime && (
-              <p className="text-sm md:text-lg helvetica-light">
-                Local time:
-                <span className="ml-2 font-mono">{singaporeTime}</span>
+        <motion.div
+          className="info-right leading-8 flex flex-col md:block px-8 md:px-0"
+          variants={fadeInRight}
+        >
+          <motion.div className="contact-info" variants={rightSideStagger}>
+            <motion.div variants={rightSideItem}>
+              <h3 className="text-2xl md:text-3xl helvetica-bold mb-3 mt-12">
+                Contact Details
+              </h3>
+              <p className="text-sm md:text-lg helvetica-light tracking-wide">
+                cyllabsdigital@gmail.com
               </p>
-            )}
-          </div>
-        </div>
+              <p className="text-sm md:text-lg helvetica-light">
+                +65 9711 2702
+              </p>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="digital-space mt-4 md:mt-12"
+            variants={rightSideStagger}
+          >
+            <motion.div variants={rightSideItem}>
+              <h3 className="text-2xl md:text-3xl helvetica-bold mb-3">
+                Online Socials
+              </h3>
+              <div className="space flex flex-row items-center text-center gap-1">
+                <Instagram size={26} strokeWidth={2} />
+                <a
+                  href="https://github.com/Koyonari"
+                  className="text-sm md:text-lg helvetica-light link-hover text-center py-0.5 px-1"
+                >
+                  cyl.labs
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="location mt-4 md:mt-12"
+            variants={rightSideStagger}
+          >
+            <motion.div variants={rightSideItem}>
+              <h3 className="text-2xl md:text-3xl helvetica-bold mb-3">
+                Location
+              </h3>
+              <p className="text-sm md:text-lg helvetica-light">Singapore</p>
+              {singaporeTime && (
+                <p className="text-sm md:text-lg helvetica-light">
+                  Local time:
+                  <span className="ml-2 font-mono">{singaporeTime}</span>
+                </p>
+              )}
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Pricing btn 
@@ -213,6 +325,6 @@ export default function Contact({ onMessageSent }: ContactProps) {
         Check out our pricing -&gt;
       </button>
       */}
-    </section>
+    </motion.section>
   );
 }

@@ -25,10 +25,10 @@ export default function ScrollCarousel() {
   const orangeTitleRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const [overlayProgress, setOverlayProgress] = useState(0);
-  
-  const isInView = useInView(titleRef, { once: true, threshold: 0.5 });
-  const isOrangeInView = useInView(orangeTitleRef, { once: true, threshold: 0.3 });
-  const isCtaInView = useInView(ctaRef, { once: true, threshold: 0.5 });
+
+  const isInView = useInView(titleRef, { once: true, amount: 0.5 });
+  const isOrangeInView = useInView(orangeTitleRef, { once: true, amount: 0.3 });
+  const isCtaInView = useInView(ctaRef, { once: true, amount: 0.5 });
 
   // Animation variants
   const containerVariants: Variants = {
@@ -43,9 +43,9 @@ export default function ScrollCarousel() {
   };
 
   const fadeInUp: Variants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30 
+    hidden: {
+      opacity: 0,
+      y: 30,
     },
     visible: {
       opacity: 1,
@@ -58,9 +58,9 @@ export default function ScrollCarousel() {
   };
 
   const fadeInLeft: Variants = {
-    hidden: { 
-      opacity: 0, 
-      x: -30 
+    hidden: {
+      opacity: 0,
+      x: -30,
     },
     visible: {
       opacity: 1,
@@ -68,21 +68,6 @@ export default function ScrollCarousel() {
       transition: {
         duration: 1.2,
         delay: 0.2,
-        ease: [0.25, 0.25, 0, 1],
-      },
-    },
-  };
-
-  const fadeInRight: Variants = {
-    hidden: { 
-      opacity: 0, 
-      x: 30 
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 1.2,
         ease: [0.25, 0.25, 0, 1],
       },
     },
@@ -99,10 +84,10 @@ export default function ScrollCarousel() {
   };
 
   const imageVariant: Variants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.9,
-      y: 20 
+      y: 20,
     },
     visible: {
       opacity: 1,
@@ -131,10 +116,10 @@ export default function ScrollCarousel() {
   };
 
   const arrowAnimation: Variants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       x: 20,
-      rotate: 0
+      rotate: 0,
     },
     visible: {
       opacity: 1,
@@ -146,8 +131,8 @@ export default function ScrollCarousel() {
         rotate: {
           duration: 1.2,
           times: [0, 0.5, 1],
-          ease: "easeInOut"
-        }
+          ease: "easeInOut",
+        },
       },
     },
   };
@@ -215,20 +200,20 @@ export default function ScrollCarousel() {
         {/* content container */}
         <div className="flex flex-col justify-center h-full">
           {/* Title */}
-          <motion.div 
+          <motion.div
             ref={titleRef}
             className="mb-14 text-left pl-8"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            <motion.p 
+            <motion.p
               className="text-6xl helvetica-bold mb-8"
               variants={fadeInLeft}
             >
               What you expect
             </motion.p>
-            <motion.p 
+            <motion.p
               className="text-2xl text-[#999999] helvetica-light tracking-tight"
               variants={fadeInUp}
             >
@@ -314,20 +299,20 @@ export default function ScrollCarousel() {
           {/* Orange content container */}
           <div className="flex flex-col justify-center h-full w-full px-4 sm:px-8 md:px-16">
             {/* Title */}
-            <motion.div 
+            <motion.div
               ref={orangeTitleRef}
               className="mb-14 text-left pl-8"
               variants={containerVariants}
               initial="hidden"
               animate={isOrangeInView ? "visible" : "hidden"}
             >
-              <motion.p 
+              <motion.p
                 className="text-6xl helvetica-bold mb-8 text-white"
                 variants={fadeInLeft}
               >
                 What you get
               </motion.p>
-              <motion.p 
+              <motion.p
                 className="text-2xl helvetica-light tracking-tight text-white"
                 variants={fadeInUp}
               >
@@ -373,18 +358,15 @@ export default function ScrollCarousel() {
               ))}
             </motion.div>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             ref={ctaRef}
             className="absolute bottom-16 flex flex-row helvetica-bold pl-24 text-white"
             variants={containerVariants}
             initial="hidden"
             animate={isCtaInView ? "visible" : "hidden"}
           >
-            <motion.p 
-              className="text-5xl mb-4"
-              variants={fadeInLeft}
-            >
+            <motion.p className="text-5xl mb-4" variants={fadeInLeft}>
               Read more about{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">this</span>

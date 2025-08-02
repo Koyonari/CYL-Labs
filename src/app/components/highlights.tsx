@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { motion, useInView, Variants } from "framer-motion";
 
 export default function Highlights() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -11,6 +12,8 @@ export default function Highlights() {
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const pausedProgressRef = useRef<number>(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
   const SLIDE_DURATION = 5000;
   const PROGRESS_UPDATE_INTERVAL = 50;
@@ -22,6 +25,65 @@ export default function Highlights() {
     "/exposure.jpg",
     "/exposure.jpg",
   ];
+
+  // Animation variants
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const fadeInUp: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const fadeInLeft: Variants = {
+    hidden: {
+      opacity: 0,
+      x: -30,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.2,
+        delay: 0.2,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
+
+  const scaleIn: Variants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.95,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1.2,
+        delay: 0.4,
+        ease: [0.25, 0.25, 0, 1],
+      },
+    },
+  };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -130,11 +192,11 @@ export default function Highlights() {
       setShowStickyControls(shouldShow);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll(); // Check initial state
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -166,7 +228,9 @@ export default function Highlights() {
   }, []);
 
   const ControlsContainer = ({ className = "" }) => (
-    <div className={`flex justify-center items-center space-x-4 md:space-x-6 ${className}`}>
+    <div
+      className={`flex justify-center items-center space-x-4 md:space-x-6 ${className}`}
+    >
       {/* Play/Pause Button */}
       <button
         onClick={togglePlayPause}
@@ -253,18 +317,40 @@ export default function Highlights() {
 
   return (
     <>
-      <section className="py-16 px-20 secondary-text min-h-screen bg-[#FD5001]">
+      <motion.section
+        ref={sectionRef}
+        className="py-16 px-20 secondary-text min-h-screen bg-[#FD5001]"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
         <div className="flex flex-col max-w-7xl">
           {/* Title */}
-          <div className="mb-8 md:mb-12">
-            <h2 className="text-4xl md:text-6xl helvetica-bold mb-3 tracking-tight">Who we work with.</h2>
-            <p className="text-2xl helvetica-light tracking-tight">Here are just a few of the businesses we're proud to work with.</p>
-          </div>
+          <motion.div className="mb-8 md:mb-16" variants={fadeInLeft}>
+            <motion.h2
+              className="text-4xl md:text-6xl helvetica-bold mb-6 tracking-tight"
+              variants={fadeInUp}
+            >
+              Who we work with.
+            </motion.h2>
+            <motion.p
+              className="text-2xl helvetica-light tracking-tight"
+              variants={fadeInUp}
+            >
+              Here are just a few of the businesses
+              <br />
+              we&apos;re proud to work with.
+            </motion.p>
+          </motion.div>
 
           {/* Carousel Container */}
           <div className="flex flex-col overflow-hidden justify-center items-center">
             {/* Carousel */}
-            <div ref={carouselRef} className="relative mb-6 w-full">
+            <motion.div
+              ref={carouselRef}
+              className="relative mb-6 w-full"
+              variants={scaleIn}
+            >
               <div className="w-full mx-auto max-w-[1100px] overflow-hidden rounded-4xl">
                 <div className="aspect-video w-full">
                   <div
@@ -290,17 +376,17 @@ export default function Highlights() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Controls Container */}
       <div
         className={`fixed bottom-20 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-out ${
           showStickyControls
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-8 pointer-events-none'
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8 pointer-events-none"
         }`}
       >
         <ControlsContainer className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg border border-gray-200" />
