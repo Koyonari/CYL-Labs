@@ -1,12 +1,11 @@
 "use client";
-
+import { useRef } from "react";
 import { ArrowUpLeft } from "lucide-react";
 import { motion, useInView, Variants } from "framer-motion";
-import { useRef } from "react";
 
 export default function Evaluator() {
-  const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
   // Animation variants
   const containerVariants: Variants = {
@@ -108,6 +107,7 @@ export default function Evaluator() {
       },
     },
   };
+
   const arrowAnimation: Variants = {
     hidden: {
       opacity: 0,
@@ -132,15 +132,15 @@ export default function Evaluator() {
 
   return (
     <motion.section
-      ref={ref}
-      className="evaluator flex flex-row px-20 h-screen gap-20 justify-center items-center"
+      ref={sectionRef}
+      className="evaluator flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 min-h-screen gap-8 md:gap-12 lg:gap-16 xl:gap-20 2xl:gap-24 justify-center items-center py-8 lg:py-0"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-      <div className="evaluator-content flex flex-row gap-24 items-start">
+      <div className="evaluator-content flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16 xl:gap-20 2xl:gap-24 items-start max-w-7xl mx-auto w-full">
         <motion.div
-          className="evaluator-left text-6xl w-3xl helvetica-bold tracking-tight"
+          className="evaluator-left text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-8xl w-full lg:w-3xl helvetica-bold tracking-tight"
           variants={fadeInLeft}
         >
           How much money is your website not making you?
@@ -155,18 +155,18 @@ export default function Evaluator() {
                 className="absolute inset-0 bg-[#FC350B] opacity-20 rounded-md"
                 variants={highlightSweep}
               />
-              <span className="relative z-10 px-2">Singaporean</span>
+              <span className="relative z-10 px-1 sm:px-2">Singaporean</span>
             </motion.span>{" "}
             businesses that rely on trust.
           </motion.span>
         </motion.div>
 
         <motion.div
-          className="evaluator-right w-3/10 flex flex-col gap-14 pt-4"
+          className="evaluator-right w-full lg:w-3/10 flex flex-col gap-8 md:gap-10 lg:gap-12 xl:gap-14 pt-0 lg:pt-4"
           variants={fadeInRight}
         >
           <motion.p
-            className="text-2xl/6 text-[#999999] text-right helvetica-light"
+            className="text-lg sm:text-xl md:text-2xl 2xl:text-3xl leading-6 md:leading-7 lg:leading-8 text-[#999999] text-left lg:text-right helvetica-light"
             variants={fadeInUp}
           >
             Most websites look fine but lose trust and sales. This quick ROI
@@ -174,11 +174,15 @@ export default function Evaluator() {
           </motion.p>
 
           <motion.div
-            className="text-[#FC350B] text-5xl top-0 flex flex-row items-center helvetica-bold tracking-tight justify-end"
+            className="text-[#FC350B] text-3xl sm:text-4xl md:text-5xl  2xl:text-6xl flex flex-row items-center helvetica-bold tracking-tight justify-start lg:justify-end"
             variants={fadeInUp}
           >
             <motion.div variants={arrowAnimation}>
-              <ArrowUpLeft size={48} strokeWidth={3} className="pt-1" />
+              <ArrowUpLeft 
+                size={32} 
+                strokeWidth={3} 
+                className="pt-1 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-10 lg:h-10 xl:w-12 xl:h-12" 
+              />
             </motion.div>
             <motion.div variants={fadeInRight}>
               Take the{" "}

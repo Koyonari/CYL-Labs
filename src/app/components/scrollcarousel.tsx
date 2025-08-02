@@ -196,29 +196,30 @@ export default function ScrollCarousel() {
       className="scroll-carousel relative"
       style={{ height: "400vh" }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden px-4 sm:px-8 md:px-16">
+      <div className="sticky top-0 h-screen overflow-hidden px-4 sm:px-8 md:px-16 lg:px-20 xl:px-24">
         {/* content container */}
         <div className="flex flex-col justify-center h-full">
           {/* Title */}
           <motion.div
             ref={titleRef}
-            className="mb-14 text-left pl-8"
+            className="mb-8 sm:mb-10 md:mb-12 lg:mb-14 text-left pl-2 sm:pl-4 md:pl-6 lg:pl-8"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
             <motion.p
-              className="text-6xl helvetica-bold mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl helvetica-bold mb-4 md:mb-6 lg:mb-8"
               variants={fadeInLeft}
             >
               What you expect
             </motion.p>
             <motion.p
-              className="text-2xl text-[#999999] helvetica-light tracking-tight"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#999999] helvetica-light tracking-tight"
               variants={fadeInUp}
             >
               Generic design, weak messaging,
-              <br />
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>
               and a site that quietly costs you sales.
             </motion.p>
           </motion.div>
@@ -235,18 +236,18 @@ export default function ScrollCarousel() {
             {images.map((src, index) => (
               <motion.div
                 key={index}
-                className="flex-shrink-0 mx-2 sm:mx-4 first:ml-4 last:mr-4 sm:first:ml-8 sm:last:mr-8"
+                className="flex-shrink-0 mx-1 sm:mx-2 md:mx-4 first:ml-2 last:mr-2 sm:first:ml-4 sm:last:mr-4 md:first:ml-8 md:last:mr-8"
                 variants={imageVariant}
               >
-                <div className="relative w-[75vw] sm:w-96 md:w-[28rem] h-48 sm:h-64 md:h-72 rounded-lg overflow-hidden shadow-xl">
+                <div className="relative w-[70vw] sm:w-[60vw] md:w-80 lg:w-96 xl:w-[28rem] h-32 sm:h-40 md:h-48 lg:h-64 xl:h-72 rounded-lg overflow-hidden shadow-xl">
                   <img
                     src={src}
                     alt={`Landscape ${index + 1}`}
                     className="w-full h-full object-cover grayscale"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-lg sm:text-xl font-semibold">
+                  <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 left-2 sm:left-3 md:left-4 text-white">
+                    <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
                       Image {index + 1}
                     </h3>
                     <p className="text-xs sm:text-sm opacity-90">
@@ -297,27 +298,29 @@ export default function ScrollCarousel() {
           }}
         >
           {/* Orange content container */}
-          <div className="flex flex-col justify-center h-full w-full px-4 sm:px-8 md:px-16">
+          <div className="flex flex-col justify-center h-full w-full px-4 sm:px-8 md:px-16 lg:px-20 xl:px-24">
             {/* Title */}
             <motion.div
               ref={orangeTitleRef}
-              className="mb-14 text-left pl-8"
+              className="mb-8 sm:mb-10 md:mb-12 lg:mb-14 text-left pl-2 sm:pl-4 md:pl-6 lg:pl-8"
               variants={containerVariants}
               initial="hidden"
               animate={isOrangeInView ? "visible" : "hidden"}
             >
               <motion.p
-                className="text-6xl helvetica-bold mb-8 text-white"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl helvetica-bold mb-4 md:mb-6 lg:mb-8 text-white"
                 variants={fadeInLeft}
               >
                 What you get
               </motion.p>
               <motion.p
-                className="text-2xl helvetica-light tracking-tight text-white"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl helvetica-light tracking-tight text-white"
                 variants={fadeInUp}
               >
                 Your site won&apos;t just look good
-                <br />— it&apos;ll finally work as hard as you do.
+                <br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>
+                — it&apos;ll finally work as hard as you do.
               </motion.p>
             </motion.div>
 
@@ -335,18 +338,18 @@ export default function ScrollCarousel() {
               {orangeImages.map((src, index) => (
                 <motion.div
                   key={`orange-${index}`}
-                  className="flex-shrink-0 mx-2 sm:mx-4 first:ml-4 last:mr-4 sm:first:ml-8 sm:last:mr-8"
+                  className="flex-shrink-0 mx-1 sm:mx-2 md:mx-4 first:ml-2 last:mr-2 sm:first:ml-4 sm:last:mr-4 md:first:ml-8 md:last:mr-8"
                   variants={imageVariant}
                 >
-                  <div className="relative w-[75vw] sm:w-96 md:w-[28rem] h-48 sm:h-64 md:h-72 rounded-lg overflow-hidden shadow-xl">
+                  <div className="relative w-[70vw] sm:w-[60vw] md:w-80 lg:w-96 xl:w-[28rem] h-32 sm:h-40 md:h-48 lg:h-64 xl:h-72 rounded-lg overflow-hidden shadow-xl">
                     <img
                       src={src}
                       alt={`Orange theme ${index + 1}`}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 to-transparent" />
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <h3 className="text-lg sm:text-xl font-semibold">
+                    <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 left-2 sm:left-3 md:left-4 text-white">
+                      <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
                         Orange {index + 1}
                       </h3>
                       <p className="text-xs sm:text-sm opacity-90">
@@ -361,23 +364,30 @@ export default function ScrollCarousel() {
 
           <motion.div
             ref={ctaRef}
-            className="absolute bottom-16 flex flex-row helvetica-bold pl-24 text-white"
+            className="absolute bottom-8 sm:bottom-12 md:bottom-16 flex flex-row helvetica-bold pl-4 sm:pl-8 md:pl-16 lg:pl-20 xl:pl-24 text-white"
             variants={containerVariants}
             initial="hidden"
             animate={isCtaInView ? "visible" : "hidden"}
           >
-            <motion.p className="text-5xl mb-4" variants={fadeInLeft}>
+            <motion.p 
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-2 md:mb-4" 
+              variants={fadeInLeft}
+            >
               Read more about{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">this</span>
                 <motion.span
-                  className="absolute bottom-0 left-0 w-full h-1 bg-white rounded-full"
+                  className="absolute bottom-0 left-0 w-full h-0.5 sm:h-1 bg-white rounded-full"
                   variants={underlineAnimation}
                 />
               </span>
             </motion.p>
             <motion.div variants={arrowAnimation}>
-              <ArrowUpRight size={48} strokeWidth={2.5} className="pt-1" />
+              <ArrowUpRight 
+                size={32} 
+                strokeWidth={2.5} 
+                className="pt-1 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14" 
+              />
             </motion.div>
           </motion.div>
         </div>

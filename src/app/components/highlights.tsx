@@ -229,34 +229,34 @@ export default function Highlights() {
 
   const ControlsContainer = ({ className = "" }) => (
     <div
-      className={`flex justify-center items-center space-x-4 md:space-x-6 ${className}`}
+      className={`flex justify-center items-center space-x-3 sm:space-x-4 md:space-x-6 ${className}`}
     >
       {/* Play/Pause Button */}
       <button
         onClick={togglePlayPause}
-        className="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 bg-gray-200 hover:bg-gray-300 rounded-full transition-colors duration-200"
+        className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 bg-gray-200 hover:bg-gray-300 rounded-full transition-colors duration-200"
         aria-label={isPlaying ? "Pause" : "Play"}
       >
         {isPlaying ? (
           <svg
-            width="16"
-            height="16"
+            width="12"
+            height="12"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="md:w-[18px] md:h-[18px]"
+            className="sm:w-4 sm:h-4 md:w-[18px] md:h-[18px]"
           >
             <rect x="6" y="4" width="4" height="16" fill="black" />
             <rect x="14" y="4" width="4" height="16" fill="black" />
           </svg>
         ) : (
           <svg
-            width="16"
-            height="16"
+            width="12"
+            height="12"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="md:w-[18px] md:h-[18px]"
+            className="sm:w-4 sm:h-4 md:w-[18px] md:h-[18px]"
           >
             <polygon points="5,3 19,12 5,21" fill="black" />
           </svg>
@@ -264,7 +264,7 @@ export default function Highlights() {
       </button>
 
       {/* Dots Indicator */}
-      <div className="flex items-center gap-2 md:gap-3 py-3 md:py-4 px-4 md:px-5 rounded-full bg-gray-300">
+      <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-5 rounded-full bg-gray-300">
         {carouselItems.map((_, index) => {
           const isActive = currentSlide === index;
           return (
@@ -282,8 +282,8 @@ export default function Highlights() {
                 }
               }}
               style={{
-                width: isActive ? "32px" : "8px",
-                height: "8px",
+                width: isActive ? "24px" : "6px",
+                height: "6px",
                 transition: "width 300ms ease",
               }}
             >
@@ -301,7 +301,7 @@ export default function Highlights() {
                 <div
                   className="absolute left-0 top-0 bg-red-500 rounded-full"
                   style={{
-                    height: "8px",
+                    height: "6px",
                     width: `${Math.min(Math.max(progress, 0), 100)}%`,
                     transition: isPlaying ? "width 50ms linear" : "none",
                     zIndex: 1,
@@ -319,26 +319,27 @@ export default function Highlights() {
     <>
       <motion.section
         ref={sectionRef}
-        className="py-16 px-20 secondary-text min-h-screen bg-[#FD5001]"
+        className="py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 secondary-text min-h-screen bg-[#FD5001]"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
-        <div className="flex flex-col max-w-7xl">
+        <div className="flex flex-col max-w-7xl mx-auto">
           {/* Title */}
-          <motion.div className="mb-8 md:mb-16" variants={fadeInLeft}>
+          <motion.div className="mb-8 md:mb-12 lg:mb-16" variants={fadeInLeft}>
             <motion.h2
-              className="text-4xl md:text-6xl helvetica-bold mb-6 tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl helvetica-bold mb-4 md:mb-6 tracking-tight"
               variants={fadeInUp}
             >
               Who we work with.
             </motion.h2>
             <motion.p
-              className="text-2xl helvetica-light tracking-tight"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl helvetica-light tracking-tight"
               variants={fadeInUp}
             >
               Here are just a few of the businesses
-              <br />
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>
               we&apos;re proud to work with.
             </motion.p>
           </motion.div>
@@ -348,10 +349,10 @@ export default function Highlights() {
             {/* Carousel */}
             <motion.div
               ref={carouselRef}
-              className="relative mb-6 w-full"
+              className="relative mb-4 sm:mb-6 w-full"
               variants={scaleIn}
             >
-              <div className="w-full mx-auto max-w-[1100px] overflow-hidden rounded-4xl">
+              <div className="w-full mx-auto max-w-[280px] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[1000px] xl:max-w-[1100px] overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-4xl">
                 <div className="aspect-video w-full">
                   <div
                     className="flex transition-transform duration-300 ease-in-out h-full"
@@ -383,13 +384,13 @@ export default function Highlights() {
 
       {/* Controls Container */}
       <div
-        className={`fixed bottom-20 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-out ${
+        className={`fixed bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-out ${
           showStickyControls
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-8 pointer-events-none"
         }`}
       >
-        <ControlsContainer className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg border border-gray-200" />
+        <ControlsContainer className="bg-white/90 backdrop-blur-sm rounded-full p-2 sm:p-3 md:p-4 shadow-lg border border-gray-200" />
       </div>
     </>
   );
