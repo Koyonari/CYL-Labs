@@ -186,7 +186,7 @@ export default function Contact({ onMessageSent }: ContactProps) {
         >
           <div className="contact-form-container">
             <motion.h1
-              className="contact-heading text-[40px]/11 helvetica-bold mb-12"
+              className="contact-heading text-[44px]/11 helvetica-bold mb-12"
               variants={fadeInUp}
             >
               Want to stand out?
