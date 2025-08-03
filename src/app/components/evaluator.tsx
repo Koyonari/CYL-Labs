@@ -178,10 +178,10 @@ export default function Evaluator() {
             variants={fadeInUp}
           >
             <motion.div variants={arrowAnimation}>
-              <ArrowUpLeft 
-                size={32} 
-                strokeWidth={3} 
-                className="pt-1 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-10 lg:h-10 xl:w-12 xl:h-12" 
+              <ArrowUpLeft
+                size={32}
+                strokeWidth={3}
+                className="pt-1 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-10 lg:h-10 xl:w-12 xl:h-12"
               />
             </motion.div>
             <motion.div variants={fadeInRight}>
