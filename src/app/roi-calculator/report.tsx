@@ -32,7 +32,7 @@ export default function Report({
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
    {/* Orange Gradient Glow (underneath) */}
 <div
-  className="absolute bottom-[-20vh] right-[-40vw] w-[200vw] h-[160vh] md:bottom-[-100px] md:right-[-180px] md:w-[1700px] md:h-[1500px] rounded-full blur-[100px] md:blur-[120px] z-0"
+  className="absolute bottom-[-20vh] right-[-40vw] w-[200vw] h-[160vh] md:bottom-[-100px] md:right-[-180px] md:w-[1700px] md:h-[1500px] 2xl:w-[3360px] rounded-full blur-[100px] md:blur-[120px] z-0"
   style={{
     background: `radial-gradient(circle,
       #ff3c00 90%,
@@ -45,7 +45,7 @@ export default function Report({
 
 {/* White solid fade gradient */}
 <div
-  className="absolute bottom-0 right-[-100vw] w-[300vw] h-[60vh] md:right-[-400px] md:w-[2340px] md:h-[800px] rounded-full z-10 pointer-events-none"
+  className="absolute bottom-0 right-[-100vw] w-[300vw] h-[60vh] md:right-[-400px] md:w-[2340px] md:h-[800px] 2xl:w-[3360px] rounded-full z-10 pointer-events-none"
   style={{
     background: `linear-gradient(
       to bottom,
@@ -60,7 +60,7 @@ export default function Report({
 
 {/* White radial glow fading upward */}
 <div
-  className="absolute bottom-[-100vh] right-[-100vw] w-[300vw] h-[200vh] md:bottom-[-900px] md:right-[-560px] md:w-[2340px] md:h-[2080px] rounded-full z-20 pointer-events-none"
+  className="absolute bottom-[-100vh] right-[-100vw] w-[300vw] h-[200vh] md:bottom-[-900px] md:right-[-560px] md:w-[2340px] md:h-[2080px] 2xl:w-[3360px] rounded-full z-20 pointer-events-none"
   style={{
     background: `radial-gradient(
       ellipse at bottom,

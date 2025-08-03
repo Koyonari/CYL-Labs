@@ -113,7 +113,7 @@ export default function FunnelSimulatorStep() {
       {/* Gradient Semicircle Glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div
-          className="absolute -bottom-[130vh] -right-[20vw] w-[180vw] h-[150vh] md:-bottom-[1300px] md:-right-[180px] md:w-[1700px] md:h-[1500px] 2xl:h-[1900px] 2xl:w-[2700px] rounded-full opacity-100 blur-[120px]"
+          className="absolute -bottom-[130vh] -right-[35vw] w-[180vw] h-[180vh] md:-bottom-[1300px] md:-right-[180px] md:w-[1700px] md:h-[1500px] 2xl:h-[1900px] 2xl:w-[3200px] 2xl:right-[-300] rounded-full opacity-100 blur-[120px]"
           style={{
             background: `radial-gradient(circle,
               #ff3c00 90%,
