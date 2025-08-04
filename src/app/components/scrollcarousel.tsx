@@ -202,7 +202,7 @@ export default function ScrollCarousel() {
           {/* Title */}
           <motion.div
             ref={titleRef}
-            className="mb-8 sm:mb-10 md:mb-12 lg:mb-14 text-left pl-2 sm:pl-4 md:pl-6 lg:pl-8"
+            className="mb-8 sm:mb-10 lg:mb-12 text-left pl-2 sm:pl-4 md:pl-6 lg:pl-8"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -302,7 +302,7 @@ export default function ScrollCarousel() {
             {/* Title */}
             <motion.div
               ref={orangeTitleRef}
-              className="mb-8 sm:mb-10 md:mb-12 lg:mb-14 text-left pl-2 sm:pl-4 md:pl-6 lg:pl-8"
+              className="mb-8 sm:mb-10 lg:mb-12 text-left pl-2 sm:pl-4 md:pl-6 lg:pl-8"
               variants={containerVariants}
               initial="hidden"
               animate={isOrangeInView ? "visible" : "hidden"}
@@ -370,7 +370,7 @@ export default function ScrollCarousel() {
             animate={isCtaInView ? "visible" : "hidden"}
           >
             <motion.p 
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-2 md:mb-4" 
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-2 md:mt-4 lg:mt-6" 
               variants={fadeInLeft}
             >
               Read more about{" "}
@@ -386,7 +386,7 @@ export default function ScrollCarousel() {
               <ArrowUpRight 
                 size={32} 
                 strokeWidth={2.5} 
-                className="pt-1 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14" 
+                className="pt-1 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14 mt-2 md:mt-5 lg:mt-7" 
               />
             </motion.div>
           </motion.div>

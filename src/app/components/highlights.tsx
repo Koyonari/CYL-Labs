@@ -188,7 +188,7 @@ export default function Highlights() {
       const visibilityRatio = visibleHeight / carouselHeight;
 
       // Show controls
-      const shouldShow = visibilityRatio >= 0.9;
+      const shouldShow = visibilityRatio >= 0.8;
       setShowStickyControls(shouldShow);
     };
 
