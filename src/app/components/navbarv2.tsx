@@ -9,9 +9,9 @@ export default function Navbar() {
   };
 
   return (
-    <section className="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 py-4 md:py-6 items-center flex flex-row justify-between secondary-text relative">
+    <section className="px-4 sm:px-8 md:px-14 2xl:px-20 py-4 md:py-6 items-center flex flex-row justify-between secondary-text relative">
       {/* Logo */}
-      <div className="nav-left inter-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+      <div className="nav-left inter-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl cursor-pointer">
         cyllabs<span className="accent-text">.</span>
       </div>
 
@@ -23,7 +23,7 @@ export default function Navbar() {
       </div>
 
       {/* Desktop Contact Button */}
-      <div className="hidden lg:flex text-base md:text-lg xl:text-xl helvetica-bold px-4 md:px-5 py-2 gap-1 items-center cursor-pointer hover:text-[#E8492A] transition-colors duration-200 group">
+      <div className="hidden lg:flex text-base md:text-lg xl:text-xl helvetica-bold pl-4 md:pl-5 py-2 gap-1 items-center cursor-pointer hover:text-[#E8492A] transition-colors duration-200 group">
         Contact us
         <ArrowRight 
           size={20} 
