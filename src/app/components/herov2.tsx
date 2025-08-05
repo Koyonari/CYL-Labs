@@ -99,7 +99,7 @@ export default function Hero() {
 
         {/* Image */}
         <motion.div
-          className="w-full lg:w-1/2 flex justify-center"
+          className="w-full lg:w-1/2 flex justify-center lg:pl-12"
           variants={imageVariants}
           whileHover={{
             scale: 1.02,
@@ -109,7 +109,7 @@ export default function Hero() {
           <img
             src="/hero.png"
             alt="Hero"
-            className="w-full max-w-sm sm:max-w-md md:max-w-lg xl:max-w-2xl rounded-xl object-cover shadow-2xl lg:[height:calc(100vh-13rem)]"
+            className="w-full max-w-sm sm:max-w-md md:max-w-md xl:max-w-xl rounded-xl object-cover shadow-2xl lg:[height:calc(100vh-13rem)]"
           />
         </motion.div>
       </div>

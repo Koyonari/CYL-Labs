@@ -140,7 +140,7 @@ export default function Evaluator() {
     >
       <div className="evaluator-content flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16 xl:gap-20 2xl:gap-24 items-start max-w-7xl mx-auto w-full">
         <motion.div
-          className="evaluator-left text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-8xl w-full lg:w-3xl helvetica-bold tracking-tight"
+          className="evaluator-left text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl w-full lg:w-3xl helvetica-bold tracking-tight"
           variants={fadeInLeft}
         >
           How much money is your website not making you?
@@ -174,7 +174,7 @@ export default function Evaluator() {
           </motion.p>
 
           <motion.div
-            className="text-[#FC350B] text-3xl sm:text-4xl md:text-5xl  2xl:text-6xl flex flex-row items-center helvetica-bold tracking-tight justify-start lg:justify-end"
+            className="text-[#FC350B] text-3xl 2xl:text-[55px] flex flex-row items-center helvetica-bold tracking-tight justify-start lg:justify-end"
             variants={fadeInUp}
           >
             <motion.div variants={arrowAnimation}>
