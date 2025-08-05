@@ -174,7 +174,7 @@ export default function Contact({ onMessageSent }: ContactProps) {
     <motion.section
       id="contact"
       ref={sectionRef}
-      className="contact-section pb-12 px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 2xl:px-32 primary-text flex min-h-screen items-center"
+      className="contact-section pb-12 px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 2xl:px-32 primary-text flex min-h-screen items-center overflow-x-hidden"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -290,7 +290,11 @@ export default function Contact({ onMessageSent }: ContactProps) {
                 Online Socials
               </h3>
               <div className="space flex flex-row items-center text-center gap-1">
-                <Instagram size={20} strokeWidth={2} className="md:w-6 md:h-6" />
+                <Instagram
+                  size={20}
+                  strokeWidth={2}
+                  className="md:w-6 md:h-6"
+                />
                 <a
                   href="https://github.com/Koyonari"
                   className="text-sm md:text-base lg:text-lg helvetica-light link-hover text-center py-0.5 px-1"
@@ -309,11 +313,15 @@ export default function Contact({ onMessageSent }: ContactProps) {
               <h3 className="text-xl sm:text-2xl md:text-3xl helvetica-bold mb-2 md:mb-3">
                 Location
               </h3>
-              <p className="text-sm md:text-base lg:text-lg helvetica-light">Singapore</p>
+              <p className="text-sm md:text-base lg:text-lg helvetica-light">
+                Singapore
+              </p>
               {singaporeTime && (
                 <p className="text-sm md:text-base lg:text-lg helvetica-light">
                   Local time:
-                  <span className="ml-2 font-mono text-xs md:text-sm lg:text-base">{singaporeTime}</span>
+                  <span className="ml-2 font-mono text-xs md:text-sm lg:text-base">
+                    {singaporeTime}
+                  </span>
                 </p>
               )}
             </motion.div>
