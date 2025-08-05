@@ -1,12 +1,19 @@
 "use client";
 
-import { Instagram } from "lucide-react";
+import { Instagram, ChevronDown } from "lucide-react";
 import { motion, useInView, Variants } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function Footer() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [openAccordions, setOpenAccordions] = useState<string[]>([]);
 
   // Animation variants
   const containerVariants: Variants = {
@@ -124,38 +131,56 @@ export default function Footer() {
     },
   };
 
+  const footerSections = [
+    {
+      title: "Home",
+      items: ["Services", "Why Us?", "Exposure", "Contact Us", "Highlights"]
+    },
+    {
+      title: "Pricing",
+      items: ["Plans", "Add-ons", "Breakdown"]
+    },
+    {
+      title: "Contact",
+      items: ["Contact Us"]
+    }
+  ];
+
   return (
     <>
       <motion.section
         ref={ref}
-        className="secondary-text h-screen flex flex-col justify-between py-[100px] px-[80px] pb-[60px]"
+        className="secondary-text xl:min-h-screen flex flex-col justify-between py-6 sm:py-12 md:py-20 lg:py-[100px] px-4 sm:px-6 md:px-12 lg:px-[80px] pb-4 sm:pb-8 md:pb-[60px]"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
         {/* Footer section */}
         <motion.div
-          className="pb-0 flex flex-row justify-between"
+          className="pb-0 flex flex-col lg:flex-row justify-between gap-6 lg:gap-0"
           variants={fadeInUp}
         >
+          {/* Left section - Newsletter signup */}
           <motion.div
-            className="footer-left flex flex-col"
+            className="footer-left flex flex-col max-w-full lg:max-w-md"
             variants={fadeInLeft}
           >
             <motion.h4
-              className="inter-bold text-[36px] pb-3"
+              className="inter-bold text-xl sm:text-2xl lg:text-[36px] pb-3"
               variants={fadeInUp}
             >
               Stay in the Loop
             </motion.h4>
+            
+            {/* Email signup */}
             <motion.div
-              className="text-[13px] inter-semibold flex flex-row items-center gap-[40px]"
+              className="text-[13px] inter-semibold flex flex-col sm:flex-row items-stretch sm:items-center gap-7 lg:gap-[40px]"
               variants={fadeInUp}
             >
               <motion.input
                 type="email"
                 placeholder="YOUR EMAIL"
-                className="w-full bg-[#474747] placeholder-gray-400 px-6 py-4 rounded-lg text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#E8492A] min-w-sm"
+                className="w-full bg-[#474747] placeholder-gray-400 px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#E8492A] min-w-0 sm:min-w-[250px]"
                 variants={fadeInUp}
                 whileFocus={{
                   scale: 1.02,
@@ -163,7 +188,7 @@ export default function Footer() {
                 }}
               />
               <motion.button
-                className="min-w-[160px] font-semibold py-4 px-8 rounded-lg transition-colors duration-200 shadow-[0_-20px_40px_-12px_rgba(232,73,42,0.5),20px_0_40px_-12px_rgba(232,73,42,0.5),-20px_0_40px_-12px_rgba(232,73,42,0.5),0_20px_40px_-12px_rgba(232,73,42,0.5)] text-sm border hover:cursor-pointer border-[#E8492A]"
+                className="w-full sm:w-auto sm:min-w-[160px] font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-colors duration-200 shadow-[0_-20px_40px_-12px_rgba(232,73,42,0.5),20px_0_40px_-12px_rgba(232,73,42,0.5),-20px_0_40px_-12px_rgba(232,73,42,0.5),0_20px_40px_-12px_rgba(232,73,42,0.5)] text-sm border hover:cursor-pointer border-[#E8492A]"
                 variants={buttonHover}
                 whileHover="hover"
                 whileTap="tap"
@@ -171,11 +196,12 @@ export default function Footer() {
                 SUBSCRIBE
               </motion.button>
             </motion.div>
+            
             <motion.div
-              className="flex flex-row gap-2 pt-2"
+              className="flex flex-row gap-2 pt-5 lg:pt-2"
               variants={fadeInUp}
             >
-              <motion.div className="flex items-center" variants={fadeInUp}>
+              <motion.div className="flex items-start mt-0.5" variants={fadeInUp}>
                 <motion.input
                   type="checkbox"
                   id="email-agreement"
@@ -186,7 +212,7 @@ export default function Footer() {
               </motion.div>
               <motion.label
                 htmlFor="email-agreement"
-                className="text-sm cursor-pointer"
+                className="text-sm cursor-pointer leading-relaxed"
                 variants={fadeInUp}
                 whileHover={{ opacity: 0.8 }}
               >
@@ -195,111 +221,96 @@ export default function Footer() {
             </motion.div>
           </motion.div>
 
+          {/* Right section - Navigation and socials */}
           <motion.div
-            className="footer-right flex flex-row gap-26"
+            className="footer-right flex flex-col lg:flex-row gap-6 lg:gap-26"
             variants={fadeInRight}
           >
+            {/* Desktop navigation - hidden on mobile */}
             <motion.div
-              className="footer-pages flex flex-row gap-16"
+              className="footer-pages hidden lg:flex flex-row gap-16"
               variants={staggerChildren}
             >
-              <motion.div
-                className="footer-page flex flex-col gap-4"
-                variants={fadeInUp}
-              >
-                <motion.h4
-                  className="inter-semibold text-lg"
-                  variants={footerItemVariants}
-                >
-                  Home
-                </motion.h4>
+              {footerSections.map((section, sectionIndex) => (
                 <motion.div
-                  className="footer-items inter-semibold text-xs flex flex-col gap-4"
-                  variants={staggerChildren}
+                  key={sectionIndex}
+                  className="footer-page flex flex-col gap-4"
+                  variants={fadeInUp}
                 >
-                  {[
-                    "Services",
-                    "Why Us?",
-                    "Exposure",
-                    "Contact Us",
-                    "Highlights",
-                  ].map((item, index) => (
-                    <motion.p
-                      key={index}
-                      variants={footerItemVariants}
-                      whileHover={{
-                        x: 5,
-                        color: "#E8492A",
-                        transition: { duration: 0.2 },
-                      }}
-                      className="cursor-pointer"
-                    >
-                      {item}
-                    </motion.p>
-                  ))}
-                </motion.div>
-              </motion.div>
-
-              <motion.div
-                className="footer-page flex flex-col gap-4"
-                variants={fadeInUp}
-              >
-                <motion.h4
-                  className="inter-semibold text-lg"
-                  variants={footerItemVariants}
-                >
-                  Pricing
-                </motion.h4>
-                <motion.div
-                  className="footer-items inter-semibold text-xs flex flex-col gap-4"
-                  variants={staggerChildren}
-                >
-                  {["Plans", "Add-ons", "Breakdown"].map((item, index) => (
-                    <motion.p
-                      key={index}
-                      variants={footerItemVariants}
-                      whileHover={{
-                        x: 5,
-                        color: "#E8492A",
-                        transition: { duration: 0.2 },
-                      }}
-                      className="cursor-pointer"
-                    >
-                      {item}
-                    </motion.p>
-                  ))}
-                </motion.div>
-              </motion.div>
-
-              <motion.div
-                className="footer-page flex flex-col gap-4"
-                variants={fadeInUp}
-              >
-                <motion.h4
-                  className="inter-semibold text-lg"
-                  variants={footerItemVariants}
-                >
-                  Contact
-                </motion.h4>
-                <motion.div
-                  className="footer-items inter-semibold text-xs flex flex-col gap-4"
-                  variants={staggerChildren}
-                >
-                  <motion.p
+                  <motion.h4
+                    className="inter-semibold text-lg"
                     variants={footerItemVariants}
-                    whileHover={{
-                      x: 5,
-                      color: "#E8492A",
-                      transition: { duration: 0.2 },
-                    }}
-                    className="cursor-pointer"
                   >
-                    Contact Us
-                  </motion.p>
+                    {section.title}
+                  </motion.h4>
+                  <motion.div
+                    className="footer-items inter-semibold text-xs flex flex-col gap-4"
+                    variants={staggerChildren}
+                  >
+                    {section.items.map((item, index) => (
+                      <motion.p
+                        key={index}
+                        variants={footerItemVariants}
+                        whileHover={{
+                          x: 5,
+                          color: "#E8492A",
+                          transition: { duration: 0.2 },
+                        }}
+                        className="cursor-pointer"
+                      >
+                        {item}
+                      </motion.p>
+                    ))}
+                  </motion.div>
                 </motion.div>
-              </motion.div>
+              ))}
             </motion.div>
 
+            {/* Mobile accordion - shown only on mobile */}
+            <motion.div
+              className="lg:hidden w-full"
+              variants={fadeInUp}
+            >
+              <Accordion type="multiple" className="w-full">
+                {footerSections.map((section, sectionIndex) => (
+                  <AccordionItem 
+                    key={sectionIndex} 
+                    value={`item-${sectionIndex}`}
+                    className="border-b border-gray-600"
+                  >
+                    <AccordionTrigger className="text-left inter-semibold text-base hover:text-[#E8492A] transition-colors duration-200 py-3">
+                      {section.title}
+                    </AccordionTrigger>
+                    <AccordionContent className="data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+                      <motion.div
+                        className="flex flex-col gap-2 pb-2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                      >
+                        {section.items.map((item, index) => (
+                          <motion.p
+                            key={index}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ 
+                              duration: 0.15, 
+                              delay: index * 0.05,
+                              ease: "easeOut"
+                            }}
+                            className="cursor-pointer inter-semibold text-sm hover:text-[#E8492A] transition-colors duration-150 py-1"
+                          >
+                            {item}
+                          </motion.p>
+                        ))}
+                      </motion.div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </motion.div>
+
+            {/* Socials section */}
             <motion.div
               className="footer-socials flex flex-col gap-4"
               variants={fadeInUp}
@@ -334,17 +345,19 @@ export default function Footer() {
         </motion.div>
 
         {/* Big animated name */}
-        <div className="relative overflow-hidden py-54 text-[320px] text-center inter-semibold flex justify-center">
+        <div className="relative py-16 md:py-32 lg:py-36 xl:py-42 2xl:py-54 text-[60px] sm:text-[80px] md:text-[120px] lg:text-[240px] xl:text-[340px] 2xl:text-[380px] text-center inter-semibold flex justify-center">
           <motion.h1
             className="text-white top-[50%] absolute transform translate-y-[-55%]"
             variants={logoTextVariants}
           >
             cyllabs.
           </motion.h1>
+
           <motion.h1
-            className="accent-text animate-[animate_7s_ease-in-out_infinite] absolute transform translate-y-[-55%]"
+            className="accent-text animate-[animate_7s_ease-in-out_infinite] absolute transform translate-y-[-55%] "
             variants={logoTextVariants}
           >
+
             cyllabs.
           </motion.h1>
         </div>

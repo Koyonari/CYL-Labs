@@ -1,5 +1,6 @@
 "use client";
 import Hero from "./components/herov2";
+import Laptop from "./components/laptop";
 import ScrollCarousel from "./components/scrollcarousel";
 import Footer from "./components/footer";
 import Contact from "./components/contact";
@@ -10,7 +11,7 @@ export default function Home() {
   const handleMessageSent = () => {};
   
   return (
-    <main className="relative">
+    <main className="relative bg-white">
       {/* Radial Gradient Glow Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 bg-black" style={{ height: "225vh" }}>
         {/* Orange Gradient Glow */}
@@ -68,6 +69,7 @@ export default function Home() {
         <section>
           {/* Main content */}
           <div className="flex-1">
+            <Laptop />
             <ScrollCarousel />
             <Evaluator />
             <Highlights />
