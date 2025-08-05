@@ -79,7 +79,7 @@ export default function Home() {
       </div>
       
       {/* Footer */}
-      <div className="relative z-30 secondary-bg">
+      <div className="relative z-30 secondary-bg overflow-x-hidden">
         <Footer />
       </div>
     </main>

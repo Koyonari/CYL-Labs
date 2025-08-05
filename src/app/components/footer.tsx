@@ -150,7 +150,7 @@ export default function Footer() {
     <>
       <motion.section
         ref={ref}
-        className="secondary-text xl:min-h-screen flex flex-col justify-between py-6 sm:py-12 md:py-20 lg:py-[100px] px-4 sm:px-6 md:px-12 lg:px-[80px] pb-4 sm:pb-8 md:pb-[60px]"
+        className="secondary-text xl:min-h-screen overflow-x-hidden flex flex-col justify-between py-6 sm:py-12 md:py-20 lg:py-[100px] px-4 sm:px-6 md:px-12 lg:px-[60px] pb-4 sm:pb-8 md:pb-[60px]"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -160,7 +160,7 @@ export default function Footer() {
           className="pb-0 flex flex-col lg:flex-row justify-between gap-6 lg:gap-0"
           variants={fadeInUp}
         >
-          {/* Left section - Newsletter signup */}
+          {/* Left section */}
           <motion.div
             className="footer-left flex flex-col max-w-full lg:max-w-md"
             variants={fadeInLeft}
@@ -221,12 +221,12 @@ export default function Footer() {
             </motion.div>
           </motion.div>
 
-          {/* Right section - Navigation and socials */}
+          {/* Right section */}
           <motion.div
-            className="footer-right flex flex-col lg:flex-row gap-6 lg:gap-26"
+            className="footer-right flex flex-col lg:flex-row gap-6 lg:gap-16 xl:gap-26"
             variants={fadeInRight}
           >
-            {/* Desktop navigation - hidden on mobile */}
+            {/* Desktop navigation */}
             <motion.div
               className="footer-pages hidden lg:flex flex-row gap-16"
               variants={staggerChildren}
@@ -266,7 +266,7 @@ export default function Footer() {
               ))}
             </motion.div>
 
-            {/* Mobile accordion - shown only on mobile */}
+            {/* Mobile accordion */}
             <motion.div
               className="lg:hidden w-full"
               variants={fadeInUp}
@@ -345,7 +345,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Big animated name */}
-        <div className="relative py-16 md:py-32 lg:py-36 xl:py-42 2xl:py-54 text-[60px] sm:text-[80px] md:text-[120px] lg:text-[240px] xl:text-[340px] 2xl:text-[380px] text-center inter-semibold flex justify-center">
+        <div className="relative py-16 md:py-32 lg:py-36 xl:py-42 2xl:py-54 text-[60px] sm:text-[80px] md:text-[120px] lg:text-[240px] xl:text-[340px] 2xl:text-[380px] 3xl:text-[460px] text-center inter-semibold flex justify-center">
           <motion.h1
             className="text-white top-[50%] absolute transform translate-y-[-55%]"
             variants={logoTextVariants}
