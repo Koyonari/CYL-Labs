@@ -154,15 +154,12 @@ export default function ScrollCarousel() {
           const rect = container.getBoundingClientRect();
           const containerHeight = container.offsetHeight;
           const windowHeight = window.innerHeight;
-          
-          // Much more aggressive detection - start when container is 50% visible
-          const isInZone = rect.top <= windowHeight * 0.5 && rect.bottom >= windowHeight * 0.5;
+
+          // start when container is 50% visible
+          const isInZone =
+            rect.top <= windowHeight * 0.5 && rect.bottom >= windowHeight * 0.5;
 
           if (isInZone) {
-            // Calculate how much of the container has been scrolled through
-            const scrollStart = rect.top;
-            const totalDistance = containerHeight;
-            
             // Simple linear progress from when container starts entering viewport
             let progress = 0;
             if (rect.top <= 0) {
@@ -172,7 +169,7 @@ export default function ScrollCarousel() {
               // Container is entering from bottom - should be 0
               progress = 0;
             }
-            
+
             // Clamp between 0 and 1
             progress = Math.max(0, Math.min(1, progress));
 
@@ -181,35 +178,39 @@ export default function ScrollCarousel() {
             const scrollDistance = scrollWidth - scrollContainerWidth;
 
             // Start overlay much earlier and make it slower
-            const overlayStart = 0.1; // Start at 10% instead of 25%
-            const overlayEnd = 0.95;   // End at 95% instead of 90%
+            const overlayStart = 0.1;
+            const overlayEnd = 0.95;
 
             // Overlay calculation
             let overlayProgress = 0;
             if (progress >= overlayStart) {
-              overlayProgress = (progress - overlayStart) / (overlayEnd - overlayStart);
+              overlayProgress =
+                (progress - overlayStart) / (overlayEnd - overlayStart);
             }
 
-            const overlayProgressClamped = Math.max(0, Math.min(1, overlayProgress));
+            const overlayProgressClamped = Math.max(
+              0,
+              Math.min(1, overlayProgress)
+            );
             setOverlayProgress(overlayProgressClamped);
-            
+
             // Make the translation much slower by using square root
             const easedProgress = Math.sqrt(overlayProgressClamped);
             const translateX = -easedProgress * scrollDistance;
-            
+
             // Apply transforms
             scrollElement.style.transform = `translate3d(${translateX}px, 0px, 0px)`;
-            scrollElement.style.willChange = 'transform';
-            
+            scrollElement.style.willChange = "transform";
+
             const orangeImagesContainer = overlayElement?.querySelector(
               ".flex.items-center"
             ) as HTMLElement;
             if (orangeImagesContainer) {
               orangeImagesContainer.style.transform = `translate3d(${translateX}px, 0px, 0px)`;
-              orangeImagesContainer.style.willChange = 'transform';
+              orangeImagesContainer.style.willChange = "transform";
             }
           }
-          
+
           ticking = false;
         });
         ticking = true;
@@ -220,7 +221,7 @@ export default function ScrollCarousel() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("touchmove", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
-    
+
     // Force initial calculation
     handleScroll();
     // And again after a brief delay for mobile
@@ -238,15 +239,18 @@ export default function ScrollCarousel() {
     <section
       ref={containerRef}
       className="scroll-carousel relative touch-auto"
-      style={{ 
+      style={{
         height: "400vh",
-        WebkitOverflowScrolling: "touch" // iOS smooth scrolling
+        WebkitOverflowScrolling: "touch",
       }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 3xl:px-24" style={{ 
-        WebkitTransform: "translateZ(0)", // Force hardware acceleration
-        transform: "translateZ(0)"
-      }}>
+      <div
+        className="sticky top-0 h-screen overflow-hidden px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 3xl:px-24"
+        style={{
+          WebkitTransform: "translateZ(0)",
+          transform: "translateZ(0)",
+        }}
+      >
         {/* content container */}
         <div className="flex flex-col justify-center h-full">
           {/* Title */}
@@ -278,10 +282,10 @@ export default function ScrollCarousel() {
           <motion.div
             ref={scrollRef}
             className="flex items-center transition-transform duration-300 ease-out will-change-transform"
-            style={{ 
+            style={{
               width: "max-content",
-              WebkitTransform: "translateZ(0)", // Force hardware acceleration
-              transform: "translateZ(0)"
+              WebkitTransform: "translateZ(0)",
+              transform: "translateZ(0)",
             }}
             variants={imageStagger}
             initial="hidden"
@@ -314,18 +318,26 @@ export default function ScrollCarousel() {
           </motion.div>
         </div>
 
-        {/* Orange overlay - ONLY CHROME FIX APPLIED HERE */}
+        {/* Orange overlay */}
         <div
           ref={overlayRef}
           className="absolute bg-[#FD5001] overflow-hidden"
           style={{
             // CHROME FIX: Use mask instead of clip-path
-            WebkitMask: overlayProgress >= 1
-              ? "none"  
-              : `linear-gradient(90deg, transparent ${Math.max(0, 100 - overlayProgress * 100)}%, black ${Math.max(0, 100 - overlayProgress * 100)}%)`,
-            mask: overlayProgress >= 1
-              ? "none"
-              : `linear-gradient(90deg, transparent ${Math.max(0, 100 - overlayProgress * 100)}%, black ${Math.max(0, 100 - overlayProgress * 100)}%)`,
+            WebkitMask:
+              overlayProgress >= 1
+                ? "none"
+                : `linear-gradient(90deg, transparent ${Math.max(
+                    0,
+                    100 - overlayProgress * 100
+                  )}%, black ${Math.max(0, 100 - overlayProgress * 100)}%)`,
+            mask:
+              overlayProgress >= 1
+                ? "none"
+                : `linear-gradient(90deg, transparent ${Math.max(
+                    0,
+                    100 - overlayProgress * 100
+                  )}%, black ${Math.max(0, 100 - overlayProgress * 100)}%)`,
             backgroundImage: `
               radial-gradient(circle, white 2px, transparent 2px),
               radial-gradient(circle, white 2.5px, transparent 2.5px),
@@ -376,8 +388,8 @@ export default function ScrollCarousel() {
               >
                 Your site won&apos;t just look good
                 <br className="hidden xs:block" />
-                <span className="xs:hidden"> </span>
-                — it&apos;ll finally work as hard as you do.
+                <span className="xs:hidden"> </span>— it&apos;ll finally work as
+                hard as you do.
               </motion.p>
             </motion.div>
 
@@ -426,8 +438,8 @@ export default function ScrollCarousel() {
             initial="hidden"
             animate={isCtaInView ? "visible" : "hidden"}
           >
-            <motion.p 
-              className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl 3xl:text-7xl mt-1 xs:mt-2 sm:mt-3 md:mt-4 lg:mt-6 xl:mt-8" 
+            <motion.p
+              className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl 3xl:text-7xl mt-1 xs:mt-2 sm:mt-3 md:mt-4 lg:mt-6 xl:mt-8"
               variants={fadeInLeft}
             >
               Read more about{" "}
@@ -440,10 +452,10 @@ export default function ScrollCarousel() {
               </span>
             </motion.p>
             <motion.div variants={arrowAnimation}>
-              <ArrowUpRight 
+              <ArrowUpRight
                 size={20}
-                strokeWidth={2.5} 
-                className="pt-0.5 xs:pt-1 sm:pt-1 md:pt-1 w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 3xl:w-16 3xl:h-16 mt-1 xs:mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10" 
+                strokeWidth={2.5}
+                className="pt-0.5 xs:pt-1 sm:pt-1 md:pt-1 w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 3xl:w-16 3xl:h-16 mt-1 xs:mt-2 sm:mt-4 md:mt-6 lg:mt-8 xl:mt-10"
               />
             </motion.div>
           </motion.div>
