@@ -72,7 +72,9 @@ export default function Home() {
             <Laptop />
             <ScrollCarousel />
             <Evaluator />
+            <div className = "bg-black">
             <Highlights />
+            </div>
             <Contact onMessageSent={handleMessageSent} />
           </div>
         </section>
