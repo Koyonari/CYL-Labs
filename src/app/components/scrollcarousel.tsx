@@ -238,7 +238,7 @@ export default function ScrollCarousel() {
   return (
     <section
       ref={containerRef}
-      className="scroll-carousel relative touch-auto"
+      className="scroll-carousel relative touch-auto bg-white"
       style={{
         height: "400vh",
         WebkitOverflowScrolling: "touch",

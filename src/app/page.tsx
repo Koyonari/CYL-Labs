@@ -9,11 +9,14 @@ import Evaluator from "./components/evaluator";
 
 export default function Home() {
   const handleMessageSent = () => {};
-  
+
   return (
     <main className="relative bg-white">
       {/* Radial Gradient Glow Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 bg-black" style={{ height: "225vh" }}>
+      <div
+        className="absolute inset-0 overflow-hidden pointer-events-none z-0 bg-black"
+        style={{ height: "225vh" }}
+      >
         {/* Orange Gradient Glow */}
         <div
           className="absolute bottom-[-20vh] right-[-40vw] w-[200vw] h-[160vh] md:bottom-[-100px] md:right-[-180px] md:w-[1700px] md:h-[1500px] 2xl:w-[3360px] rounded-full blur-[100px] md:blur-[120px] z-0"
@@ -72,14 +75,14 @@ export default function Home() {
             <Laptop />
             <ScrollCarousel />
             <Evaluator />
-            <div className = "bg-black">
-            <Highlights />
+            <div className="bg-black">
+              <Highlights />
             </div>
             <Contact onMessageSent={handleMessageSent} />
           </div>
         </section>
       </div>
-      
+
       {/* Footer */}
       <div className="relative z-30 secondary-bg overflow-x-hidden">
         <Footer />

@@ -133,7 +133,7 @@ export default function Evaluator() {
   return (
     <motion.section
       ref={sectionRef}
-      className="evaluator overflow-x-hidden flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 min-h-screen gap-8 md:gap-12 lg:gap-16 xl:gap-20 2xl:gap-24 justify-center items-center py-8 lg:py-0"
+      className="evaluator bg-white overflow-x-hidden flex flex-col lg:flex-row px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 min-h-screen gap-8 md:gap-12 lg:gap-16 xl:gap-20 2xl:gap-24 justify-center items-center py-8 lg:py-0"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}

@@ -160,7 +160,7 @@ export default function Highlights() {
                 }`}>
                   {/* Subtitle */}
                   <div className="relative">
-                    <span className="text-sm font-medium tracking-[0.2em] uppercase text-gray-200 block mb-2">
+                    <span className="text-sm jetbrains-medium tracking-[0.3em] uppercase text-gray-200 block mb-2">
                       {card.subtitle}
                     </span>
                     <div className={`w-12 h-px bg-white ${
@@ -169,12 +169,12 @@ export default function Highlights() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-5xl font-light text-white leading-tight tracking-tight">
+                  <h3 className="text-5xl helvetica-bold text-white leading-tight ">
                     {card.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-lg text-gray-300 leading-relaxed font-light tracking-wide">
+                  <p className="text-lg text-gray-300 leading-relaxed helvetica-light tracking-wide">
                     {card.description}
                   </p>
 
@@ -183,7 +183,7 @@ export default function Highlights() {
                     <button className={`group inline-flex items-center gap-3 text-md font-medium tracking-wide text-white hover:text-gray-300 transition-colors duration-300 ${
                       card.layout === 'image-right' ? '' : 'flex-row-reverse'
                     }`}>
-                      <span className = "cursor-pointer">Explore Site</span>
+                      <span className = "cursor-pointer helvetica-semibold">Explore Site</span>
                       <div className={`w-6 h-px bg-white group-hover:w-8 transition-all duration-300 ${
                         card.layout === 'image-right' ? '' : 'order-first'
                       }`}></div>
@@ -208,29 +208,29 @@ export default function Highlights() {
             </div>
 
             {/* Text Content */}
-            <div className="space-y-6 flex-grow flex flex-col justify-center">
+            <div className="space-y-3 flex-grow flex flex-col justify-center">
               {/* Subtitle */}
               <div className="relative">
-                <span className="text-md lg:text-xs font-medium tracking-[0.2em] uppercase text-gray-200 block mb-2">
+                <span className="text-md lg:text-xs jetbrains-medium tracking-[0.3em] uppercase text-gray-200 block mb-2">
                   {card.subtitle}
                 </span>
                 <div className="w-12 h-px bg-white"></div>
               </div>
 
               {/* Title */}
-              <h3 className="text-3xl lg:text-2xl font-light text-white leading-tight tracking-tight">
+              <h3 className="text-3xl lg:text-2xl helvetica-bold text-white leading-tight">
                 {card.title}
               </h3>
 
               {/* Description */}
-              <p className="text-md lg:text-sm text-gray-300 leading-relaxed font-light tracking-wide">
+              <p className="text-md lg:text-sm text-gray-300 leading-relaxed helvetica-light tracking-wide">
                 {card.description}
               </p>
 
               {/* CTA */}
               <div className="pt-4">
                 <button className="group inline-flex items-center gap-3 text-md lg:text-sm font-medium tracking-wide text-white hover:text-gray-300 transition-colors duration-300">
-                  <span className = "cursor-pointer">Explore Site</span>
+                  <span className = "cursor-pointer helvetica-semibold">Explore Site</span>
                   <div className="w-6 h-px bg-white group-hover:w-8 transition-all duration-300"></div>
                 </button>
               </div>

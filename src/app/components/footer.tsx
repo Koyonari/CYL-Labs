@@ -1,8 +1,8 @@
 "use client";
 
-import { Instagram, ChevronDown } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { motion, useInView, Variants } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -13,7 +13,6 @@ import {
 export default function Footer() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const [openAccordions, setOpenAccordions] = useState<string[]>([]);
 
   // Animation variants
   const containerVariants: Variants = {
@@ -134,23 +133,23 @@ export default function Footer() {
   const footerSections = [
     {
       title: "Home",
-      items: ["Services", "Why Us?", "Exposure", "Contact Us", "Highlights"]
+      items: ["Services", "Why Us?", "Exposure", "Contact Us", "Highlights"],
     },
     {
       title: "Pricing",
-      items: ["Plans", "Add-ons", "Breakdown"]
+      items: ["Plans", "Add-ons", "Breakdown"],
     },
     {
       title: "Contact",
-      items: ["Contact Us"]
-    }
+      items: ["Contact Us"],
+    },
   ];
 
   return (
     <>
       <motion.section
         ref={ref}
-        className="secondary-text xl:min-h-screen overflow-x-hidden flex flex-col justify-between py-6 sm:py-12 md:py-20 lg:py-[100px] px-4 sm:px-6 md:px-12 lg:px-[60px] pb-4 sm:pb-8 md:pb-[60px]"
+        className="secondary-text secondary-bg xl:min-h-screen overflow-x-hidden flex flex-col justify-between py-6 sm:py-12 md:py-20 lg:py-[100px] px-4 sm:px-6 md:px-12 lg:px-[60px] pb-4 sm:pb-8 md:pb-[60px]"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -171,7 +170,7 @@ export default function Footer() {
             >
               Stay in the Loop
             </motion.h4>
-            
+
             {/* Email signup */}
             <motion.div
               className="text-[13px] inter-semibold flex flex-col sm:flex-row items-stretch sm:items-center gap-7 lg:gap-[40px]"
@@ -196,12 +195,15 @@ export default function Footer() {
                 SUBSCRIBE
               </motion.button>
             </motion.div>
-            
+
             <motion.div
               className="flex flex-row gap-2 pt-5 lg:pt-2"
               variants={fadeInUp}
             >
-              <motion.div className="flex items-start mt-0.5" variants={fadeInUp}>
+              <motion.div
+                className="flex items-start mt-0.5"
+                variants={fadeInUp}
+              >
                 <motion.input
                   type="checkbox"
                   id="email-agreement"
@@ -267,14 +269,11 @@ export default function Footer() {
             </motion.div>
 
             {/* Mobile accordion */}
-            <motion.div
-              className="lg:hidden w-full"
-              variants={fadeInUp}
-            >
+            <motion.div className="lg:hidden w-full" variants={fadeInUp}>
               <Accordion type="multiple" className="w-full">
                 {footerSections.map((section, sectionIndex) => (
-                  <AccordionItem 
-                    key={sectionIndex} 
+                  <AccordionItem
+                    key={sectionIndex}
                     value={`item-${sectionIndex}`}
                     className="border-b border-gray-600"
                   >
@@ -293,10 +292,10 @@ export default function Footer() {
                             key={index}
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ 
-                              duration: 0.15, 
+                            transition={{
+                              duration: 0.15,
                               delay: index * 0.05,
-                              ease: "easeOut"
+                              ease: "easeOut",
                             }}
                             className="cursor-pointer inter-semibold text-sm hover:text-[#E8492A] transition-colors duration-150 py-1"
                           >
@@ -357,7 +356,6 @@ export default function Footer() {
             className="accent-text animate-[animate_7s_ease-in-out_infinite] absolute transform translate-y-[-55%] "
             variants={logoTextVariants}
           >
-
             cyllabs.
           </motion.h1>
         </div>
