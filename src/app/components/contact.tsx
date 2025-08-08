@@ -174,7 +174,7 @@ export default function Contact({ onMessageSent }: ContactProps) {
     <motion.section
       id="contact"
       ref={sectionRef}
-      className="contact-section pb-12 px-4 sm:px-8 md:px-16 lg:px-20 xl:px-28 2xl:px-32 primary-text flex min-h-screen items-center overflow-x-hidden"
+      className="contact-section pb-12 p-8 sm:p-12 md:p-16 lg:p-20 xl:p-28 2xl:p-32 primary-text flex min-h-screen items-center overflow-x-hidden"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -269,7 +269,7 @@ export default function Contact({ onMessageSent }: ContactProps) {
         >
           <motion.div className="contact-info" variants={rightSideStagger}>
             <motion.div variants={rightSideItem}>
-              <h3 className="text-xl sm:text-2xl md:text-3xl helvetica-bold mb-2 md:mb-3 mt-8 lg:mt-12">
+              <h3 className="text-xl sm:text-2xl md:text-3xl helvetica-bold mb-2 md:mb-3 lg:mt-12">
                 Contact Details
               </h3>
               <p className="text-sm md:text-base lg:text-lg helvetica-light tracking-wide">

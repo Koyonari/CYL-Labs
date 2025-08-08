@@ -12,7 +12,7 @@ import {
 
 export default function Footer() {
   const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   // Animation variants
   const containerVariants: Variants = {
@@ -149,10 +149,15 @@ export default function Footer() {
     <>
       <motion.section
         ref={ref}
-        className="secondary-text secondary-bg xl:min-h-screen overflow-x-hidden flex flex-col justify-between py-6 sm:py-12 md:py-20 lg:py-[100px] px-4 sm:px-6 md:px-12 lg:px-[60px] pb-4 sm:pb-8 md:pb-[60px]"
+        className="secondary-text secondary-bg min-h-screen min-h[calc(screen-2px)] overflow-x-hidden flex flex-col justify-between py-6 sm:py-12 md:py-20 lg:py-[100px] px-4 sm:px-6 md:px-12 lg:px-[60px] pb-4 sm:pb-8"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
+        style={{
+          // Ensure the footer has a solid background for the parallax effect
+          position: "relative",
+          zIndex: 40,
+        }}
       >
         {/* Footer section */}
         <motion.div
@@ -161,7 +166,7 @@ export default function Footer() {
         >
           {/* Left section */}
           <motion.div
-            className="footer-left flex flex-col max-w-full lg:max-w-md"
+            className="footer-left flex flex-col max-w-full lg:max-w-md xl:min-w-2xl"
             variants={fadeInLeft}
           >
             <motion.h4
@@ -197,7 +202,7 @@ export default function Footer() {
             </motion.div>
 
             <motion.div
-              className="flex flex-row gap-2 pt-5 lg:pt-2"
+              className="flex flex-row gap-2 pt-5 lg:pt-2 xl:pt-3"
               variants={fadeInUp}
             >
               <motion.div
@@ -225,7 +230,7 @@ export default function Footer() {
 
           {/* Right section */}
           <motion.div
-            className="footer-right flex flex-col lg:flex-row gap-6 lg:gap-16 xl:gap-26"
+            className="footer-right flex flex-col lg:flex-row gap-6 lg:gap-16 xl:gap-30"
             variants={fadeInRight}
           >
             {/* Desktop navigation */}
@@ -344,7 +349,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Big animated name */}
-        <div className="relative py-16 md:py-32 lg:py-36 xl:py-42 2xl:py-54 text-[60px] sm:text-[80px] md:text-[120px] lg:text-[240px] xl:text-[340px] 2xl:text-[380px] 3xl:text-[460px] text-center inter-semibold flex justify-center">
+        <div className="relative py-32 lg:py-36 xl:py-42 2xl:py-54 text-[60px] sm:text-[80px] md:text-[120px] lg:text-[240px] xl:text-[340px] 2xl:text-[380px] 3xl:text-[460px] leading-[1.19] text-center inter-semibold flex justify-center">
           <motion.h1
             className="text-white top-[50%] absolute transform translate-y-[-55%]"
             variants={logoTextVariants}
