@@ -1,20 +1,30 @@
 "use client";
-import { useEffect, useRef } from "react";
-import Hero from "./components/herov2";
-import Laptop from "./components/laptop";
-import ScrollCarousel from "./components/scrollcarousel";
-import Footer from "./components/footer";
-import Contact from "./components/contact";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import Hero from "./components/Hero";
+import Reality from "./components/Reality";
+import UVPs from "./components/UVPs";
+import Quiz from "./components/Quiz";
 import Highlights from "./components/highlights";
-import Evaluator from "./components/evaluator";
+import Mamiko from "./components/Mamiko";
+import FamilyMookata from "./components/FamilyMookata";
+import Contact from "./components/contact";
+import Footer from "./components/footer";
 
 export default function Home() {
-  const handleMessageSent = () => {};
   const mainContentRef = useRef<HTMLDivElement>(null);
   const footerRevealRef = useRef<HTMLDivElement>(null);
-
   const contactRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const realityRef = useRef<HTMLDivElement>(null);
+  const [pageHeight, setPageHeight] = useState(0);
+  const { scrollYProgress } = useScroll();
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,94 +87,112 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const calculateHeight = () => {
+      if (containerRef.current) {
+        setPageHeight(containerRef.current.scrollHeight);
+      }
+    };
+
+    calculateHeight();
+    window.addEventListener("resize", calculateHeight);
+    const observer = new ResizeObserver(calculateHeight);
+    if (containerRef.current) observer.observe(containerRef.current);
+
+    return () => {
+      window.removeEventListener("resize", calculateHeight);
+      observer.disconnect();
+    };
+  }, []);
+
+  const top = useTransform(
+    smoothProgress,
+    [0, 1],
+    [0, -(pageHeight - window.innerHeight)]
+  );
+
+  const { scrollYProgress: realityProgress } = useScroll({
+    target: realityRef,
+    offset: ["start start", "end start"],
+  });
+
+  const { scrollY } = useScroll();
+  const realityY = useSpring(useTransform(scrollY, [0, 1000], [0, -200]), {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const uvpY = useSpring(
+    useTransform(realityProgress, [0.2, 1], [0, -window.innerHeight]),
+    {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }
+  );
+
+  useEffect(() => {
+    document.body.style.height = `${pageHeight}px`;
+    return () => {
+      document.body.style.height = "";
+    };
+  }, [pageHeight]);
+
+  const handleMessageSent = () => {};
+
   return (
-    <main className="relative secondary-bg">
-      {/* Footer */}
-      <div
-        ref={footerRef}
-        className="fixed inset-0 z-10 secondary-bg overflow-x-hidden will-change-transform h-screen"
-        style={{ pointerEvents: "none" }}
-      >
-        <Footer />
-      </div>
-
-      {/* Main Content */}
-      <div ref={mainContentRef} className="relative z-30 bg-white">
-        {/* Radial Gradient Glow Background */}
-        <div
-          className="absolute inset-0 overflow-hidden pointer-events-none z-0 bg-black"
-          style={{ height: "225vh" }}
-        >
-          {/* Orange Gradient Glow */}
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        overflow: "hidden",
+      }}
+    >
+      <motion.div style={{ top }} className="absolute w-full">
+        <main ref={containerRef} className="relative">
           <div
-            className="absolute bottom-[-20vh] right-[-40vw] w-[200vw] h-[160vh] md:bottom-[-100px] md:right-[-180px] md:w-[1700px] md:h-[1500px] 2xl:w-[3360px] rounded-full blur-[100px] md:blur-[120px] z-0"
-            style={{
-              background: `radial-gradient(circle,
-                #ff3c00 90%,
-                #fc5a2f 40%,
-                #fd7f53 65%,
-                #fff7e3 95%,
-                #ffffff 100%)`,
-            }}
-          />
-          {/* White solid fade gradient */}
-          <div
-            className="absolute bottom-0 right-[-100vw] w-[300vw] h-[60vh] md:right-[-400px] md:w-[2340px] md:h-[800px] 2xl:w-[3360px] rounded-full z-10 pointer-events-none"
-            style={{
-              background: `linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0.2) 15%,
-                rgba(255, 255, 255, 0.5) 35%,
-                rgba(255, 255, 255, 0.85) 65%,
-                rgba(255, 255, 255, 1) 100%
-              )`,
-            }}
-          />
-          {/* White radial glow fading upward */}
-          <div
-            className="absolute bottom-[-100vh] right-[-100vw] w-[300vw] h-[200vh] md:bottom-[-1000px] md:right-[-560px] md:w-[2340px] md:h-[2080px] 2xl:w-[3360px] rounded-full z-20 pointer-events-none"
-            style={{
-              background: `radial-gradient(
-                ellipse at bottom,
-                rgba(255, 255, 255, 1) 0%,
-                rgba(255, 255, 255, 1) 35%,
-                rgba(255, 255, 255, 0.7) 55%,
-                rgba(255, 255, 255, 0.3) 75%,
-                rgba(255, 255, 255, 0) 100%
-              )`,
-              filter: "blur(160px)",
-              mixBlendMode: "screen",
-            }}
-          />
-        </div>
+            ref={footerRef}
+            className="fixed inset-0 z-10 secondary-bg overflow-x-hidden will-change-transform h-screen"
+            style={{ pointerEvents: "none" }}
+          >
+            <Footer />
+          </div>
+          <div ref={mainContentRef} className="relative z-30">
+            <Hero />
+            <motion.div
+              className="relative z-10"
+              style={{ top: realityY }}
+              ref={realityRef}
+            >
+              <Reality />
+              <motion.div
+                className="relative bg-white z-10"
+                style={{ top: uvpY }}
+              >
+                <UVPs />
+                <Quiz />
+                <motion.div className="relative z-10">
+                  <Mamiko />
+                  <FamilyMookata />
+                </motion.div>
+                <div ref={contactRef} className="will-change-transform">
+                  <Contact onMessageSent={handleMessageSent} />
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
 
-        {/* Content */}
-        <div className="relative z-30">
-          <Hero />
-          <section>
-            <div className="flex-1">
-              <Laptop />
-              <ScrollCarousel />
-              <Evaluator />
-              <div className="bg-black">
-                <Highlights />
-              </div>
-              <div ref={contactRef} className="will-change-transform">
-                <Contact onMessageSent={handleMessageSent} />
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-
-      {/* Footer Reveal Scroll Space */}
-      <div
-        ref={footerRevealRef}
-        className="relative z-20 h-screen"
-        style={{ pointerEvents: "none" }}
-      />
-      {/* Note to self: fucking pointer events was the solution the whole time */}
-    </main>
+          <div
+            ref={footerRevealRef}
+            className="relative z-20 h-screen"
+            style={{ pointerEvents: "none" }}
+          />
+        </main>
+      </motion.div>
+    </div>
   );
 }
