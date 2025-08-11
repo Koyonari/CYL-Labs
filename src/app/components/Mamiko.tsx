@@ -10,16 +10,14 @@ export default function Mamiko() {
 
   useEffect(() => {
     if (containerRef.current) {
-      setContainerStart(
-        containerRef.current.getBoundingClientRect().top - window.innerHeight
-      );
+      setContainerStart(containerRef.current.getBoundingClientRect().top);
     }
   }, [containerRef.current]);
 
   const scale = useSpring(
     useTransform(
       scrollY,
-      [containerStart, containerStart + window.innerHeight],
+      [containerStart - window.innerHeight, containerStart],
       [1, 0]
     ),
     {
@@ -32,7 +30,7 @@ export default function Mamiko() {
   const opacity = useSpring(
     useTransform(
       scrollY,
-      [containerStart, containerStart + window.innerHeight],
+      [containerStart - window.innerHeight, containerStart],
       [1, 0]
     ),
     {
@@ -49,7 +47,7 @@ export default function Mamiko() {
           className="w-full h-full flex justify-between gap-10 max-[1200px]:flex-col max-[1200px]:justify-normal"
           style={{ scale, opacity }}
         >
-          <div className="w-2/3 h-full relative max-[1200px]:w-full max-[1200px]:h-1/2">
+          <div className="w-3/4 h-full relative max-[1200px]:w-full max-[1200px]:h-1/2">
             <Image className="object-cover" src="/mamiko.png" alt="" fill />
           </div>
           <div className="w-1/4 flex flex-col justify-center gap-5 text-white text-right max-[1200px]:w-full max-[1200px]:text-left">

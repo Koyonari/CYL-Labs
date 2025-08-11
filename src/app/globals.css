@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  @apply appearance-none m-0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 /* Fonts */
 @font-face {
   font-family: "Helvetica Thin";
@@ -109,6 +118,7 @@ body {
 }
 
 @supports (-webkit-overflow-scrolling: touch) {
+
   html,
   body {
     -webkit-overflow-scrolling: touch;
@@ -125,18 +135,23 @@ body {
 .primary-text {
   color: #000000;
 }
+
 .secondary-text {
   color: #eee5da;
 }
+
 .accent-text {
   color: #FD5001;
 }
+
 .primary-bg {
   background-color: #262424;
 }
+
 .secondary-bg {
   background-color: #2a2a2a;
 }
+
 .accent-bg {
   background-color: #FD5001;
 }

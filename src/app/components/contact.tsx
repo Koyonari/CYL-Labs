@@ -174,19 +174,19 @@ export default function Contact({ onMessageSent }: ContactProps) {
     <motion.section
       id="contact"
       ref={sectionRef}
-      className="contact-section pb-12 p-8 sm:p-12 md:p-16 lg:p-20 xl:p-28 2xl:p-32 primary-text flex min-h-screen items-center overflow-x-hidden"
+      className="h-screen max-h-screen box-border contact-section p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 2xl:p-20 primary-text flex items-center overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-      <div className="flex flex-col lg:flex-row w-full gap-8 md:gap-16 lg:gap-24 xl:gap-32 2xl:gap-48 items-start lg:items-center max-w-7xl mx-auto">
+      <div className="flex flex-col lg:flex-row w-full gap-6 md:gap-8 lg:gap-12 xl:gap-16 2xl:gap-20 items-start lg:items-center max-w-7xl mx-auto h-full">
         <motion.div
-          className="info-left w-full lg:w-auto lg:min-w-0 xl:min-w-[600px] 2xl:min-w-[700px] items-center"
+          className="info-left w-full lg:w-auto lg:min-w-0 xl:min-w-[500px] 2xl:min-w-[600px] flex flex-col justify-center h-full"
           variants={fadeInLeft}
         >
           <div className="contact-form-container">
             <motion.h1
-              className="contact-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl  helvetica-bold mb-6 md:mb-8 lg:mb-12 leading-tight"
+              className="contact-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl helvetica-bold mb-4 md:mb-6 lg:mb-8 leading-tight"
               variants={fadeInUp}
             >
               Want to stand out?
@@ -194,9 +194,9 @@ export default function Contact({ onMessageSent }: ContactProps) {
               Let&apos;s make your dream a reality.
             </motion.h1>
 
-            <motion.form ref={form} onSubmit={sendEmail} variants={formStagger}>
+            <motion.form ref={form} onSubmit={sendEmail} variants={formStagger} className="space-y-3 md:space-y-4">
               <motion.div
-                className="form-control mb-4"
+                className="form-control"
                 variants={formFieldVariant}
               >
                 <input
@@ -204,13 +204,13 @@ export default function Contact({ onMessageSent }: ContactProps) {
                   id="name"
                   name="user_name"
                   placeholder="Your Name"
-                  className="input-field w-full py-2 md:py-3 border-b-2 border-opacity-50 outline-none text-sm md:text-base"
+                  className="input-field w-full py-2 md:py-2.5 border-b-2 border-opacity-50 outline-none text-sm md:text-base"
                   required
                 />
               </motion.div>
 
               <motion.div
-                className="form-control mb-4"
+                className="form-control"
                 variants={formFieldVariant}
               >
                 <input
@@ -218,22 +218,22 @@ export default function Contact({ onMessageSent }: ContactProps) {
                   id="email"
                   name="user_email"
                   placeholder="Your Email/Number"
-                  className="input-field w-full py-2 md:py-3 border-b-2 border-opacity-50 outline-none text-sm md:text-base"
+                  className="input-field w-full py-2 md:py-2.5 border-b-2 border-opacity-50 outline-none text-sm md:text-base"
                   required
                 />
               </motion.div>
 
               <motion.div
-                className="form-control mb-6 md:mb-8"
+                className="form-control"
                 variants={formFieldVariant}
               >
                 <textarea
                   id="message"
                   cols={30}
-                  rows={4}
+                  rows={3}
                   placeholder="Your Message"
                   name="message"
-                  className="input-field w-full py-2 md:py-3 border-b-2 border-opacity-50 outline-none text-sm md:text-base resize-none"
+                  className="input-field w-full py-2 md:py-2.5 border-b-2 border-opacity-50 outline-none text-sm md:text-base resize-none"
                   required
                 ></textarea>
               </motion.div>
@@ -242,7 +242,7 @@ export default function Contact({ onMessageSent }: ContactProps) {
                 type="submit"
                 name="submit"
                 value="Send"
-                className="submit-btn group flex items-center justify-center px-4 md:px-6 py-2 md:py-3 bg-white text-black border-[#E8492A] border-2 font-semibold rounded-lg cursor-pointer hover:bg-[#E8492A] hover:text-white transition-all duration-300 mx-auto lg:mx-0 text-sm md:text-base"
+                className="submit-btn group flex items-center justify-center px-4 md:px-5 py-2 md:py-2.5 bg-white text-black border-[#E8492A] border-2 font-semibold rounded-lg cursor-pointer hover:bg-[#E8492A] hover:text-white transition-all duration-300 mx-auto lg:mx-0 text-sm md:text-base mt-4 md:mt-6"
                 variants={formFieldVariant}
               >
                 <div className="relative w-4 h-4 md:w-5 md:h-5 mr-2">
@@ -264,62 +264,52 @@ export default function Contact({ onMessageSent }: ContactProps) {
         </motion.div>
 
         <motion.div
-          className="info-right leading-6 md:leading-8 flex flex-col w-full lg:w-auto px-0 lg:px-8"
+          className="info-right leading-5 md:leading-6 lg:leading-7 flex flex-col justify-center w-full lg:w-auto px-0 lg:px-4 h-full"
           variants={fadeInRight}
         >
-          <motion.div className="contact-info" variants={rightSideStagger}>
+          <motion.div className="contact-info space-y-4 md:space-y-6 lg:space-y-8" variants={rightSideStagger}>
             <motion.div variants={rightSideItem}>
-              <h3 className="text-xl sm:text-2xl md:text-3xl helvetica-bold mb-2 md:mb-3 lg:mt-12">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl helvetica-bold mb-1 md:mb-2">
                 Contact Details
               </h3>
-              <p className="text-sm md:text-base lg:text-lg helvetica-light tracking-wide">
+              <p className="text-sm md:text-base helvetica-light tracking-wide">
                 cyllabsdigital@gmail.com
               </p>
-              <p className="text-sm md:text-base lg:text-lg helvetica-light">
+              <p className="text-sm md:text-base helvetica-light">
                 +65 9711 2702
               </p>
             </motion.div>
-          </motion.div>
 
-          <motion.div
-            className="digital-space mt-6 lg:mt-12"
-            variants={rightSideStagger}
-          >
             <motion.div variants={rightSideItem}>
-              <h3 className="text-xl sm:text-2xl md:text-3xl helvetica-bold mb-2 md:mb-3">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl helvetica-bold mb-1 md:mb-2">
                 Online Socials
               </h3>
               <div className="space flex flex-row items-center text-center gap-1">
                 <Instagram
-                  size={20}
+                  size={18}
                   strokeWidth={2}
-                  className="md:w-6 md:h-6"
+                  className="md:w-5 md:h-5"
                 />
                 <a
                   href="https://github.com/Koyonari"
-                  className="text-sm md:text-base lg:text-lg helvetica-light link-hover text-center py-0.5 px-1"
+                  className="text-sm md:text-base helvetica-light link-hover text-center py-0.5 px-1"
                 >
                   cyl.labs
                 </a>
               </div>
             </motion.div>
-          </motion.div>
 
-          <motion.div
-            className="location mt-6 lg:mt-12"
-            variants={rightSideStagger}
-          >
             <motion.div variants={rightSideItem}>
-              <h3 className="text-xl sm:text-2xl md:text-3xl helvetica-bold mb-2 md:mb-3">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl helvetica-bold mb-1 md:mb-2">
                 Location
               </h3>
-              <p className="text-sm md:text-base lg:text-lg helvetica-light">
+              <p className="text-sm md:text-base helvetica-light">
                 Singapore
               </p>
               {singaporeTime && (
-                <p className="text-sm md:text-base lg:text-lg helvetica-light">
+                <p className="text-sm md:text-base helvetica-light">
                   Local time:
-                  <span className="ml-2 font-mono text-xs md:text-sm lg:text-base">
+                  <span className="ml-2 font-mono text-xs md:text-sm">
                     {singaporeTime}
                   </span>
                 </p>

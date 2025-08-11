@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Hero from "./components/Hero";
@@ -10,6 +11,7 @@ import Mamiko from "./components/Mamiko";
 import FamilyMookata from "./components/FamilyMookata";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
+import Wrapper from "./components/Wrapper";
 
 export default function Home() {
   const mainContentRef = useRef<HTMLDivElement>(null);
@@ -19,6 +21,7 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const realityRef = useRef<HTMLDivElement>(null);
   const [pageHeight, setPageHeight] = useState(0);
+  const [maxScrollDistance, setMaxScrollDistance] = useState(0);
   const { scrollYProgress } = useScroll();
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -27,70 +30,15 @@ export default function Home() {
   });
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!contactRef.current || !footerRevealRef.current || !footerRef.current)
-        return;
-
-      const contact = contactRef.current;
-      const footer = footerRef.current;
-
-      const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY;
-
-      // Distance from top of document
-      const contactTop = contact.offsetTop;
-      const contactHeight = contact.offsetHeight;
-
-      // The scroll position where we start revealing the footer
-      const footerStartReveal = contactTop + contactHeight - windowHeight;
-
-      // We'll give it a reveal distance of 1 screen height
-      const revealDistance = windowHeight;
-
-      if (scrollY < footerStartReveal) {
-        // Before reveal starts - show only bottom quarter of footer
-        footer.style.transform = `translateY(${windowHeight * 0.25}px)`;
-        // Footer is not interactive
-        footer.style.pointerEvents = "none";
-      } else if (
-        scrollY >= footerStartReveal &&
-        scrollY <= footerStartReveal + revealDistance
-      ) {
-        // Progress from bottom 1/4 visible -> fully visible
-        const revealProgress = (scrollY - footerStartReveal) / revealDistance;
-        const footerTranslateY = windowHeight * 0.25 * (1 - revealProgress);
-        footer.style.transform = `translateY(${footerTranslateY}px)`;
-
-        // Enable footer interaction
-        if (revealProgress > 0.3) {
-          footer.style.pointerEvents = "auto";
-        } else {
-          footer.style.pointerEvents = "none";
-        }
-      } else {
-        // Fully revealed
-        footer.style.transform = `translateY(0px)`;
-        footer.style.pointerEvents = "auto";
-      }
-    };
-
-    // Initial call
-    handleScroll();
-
-    // Add listeners
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
     const calculateHeight = () => {
       if (containerRef.current) {
-        setPageHeight(containerRef.current.scrollHeight);
+        const totalHeight = containerRef.current.scrollHeight;
+        setPageHeight(totalHeight);
+
+        const viewportHeight = window.innerHeight;
+        const footerSectionHeight = viewportHeight * 2;
+        const maxScroll = totalHeight - footerSectionHeight - 200;
+        setMaxScrollDistance(maxScroll);
       }
     };
 
@@ -108,7 +56,7 @@ export default function Home() {
   const top = useTransform(
     smoothProgress,
     [0, 1],
-    [0, -(pageHeight - window.innerHeight)]
+    [0, -Math.min(maxScrollDistance, pageHeight - window.innerHeight)]
   );
 
   const { scrollYProgress: realityProgress } = useScroll({
@@ -133,34 +81,19 @@ export default function Home() {
   );
 
   useEffect(() => {
-    document.body.style.height = `${pageHeight}px`;
+    const limitedHeight = Math.max(pageHeight, window.innerHeight);
+    document.body.style.height = `${limitedHeight}px`;
     return () => {
       document.body.style.height = "";
     };
-  }, [pageHeight]);
+  }, [pageHeight, maxScrollDistance]);
 
   const handleMessageSent = () => {};
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        overflow: "hidden",
-      }}
-    >
+    <div className="fixed top-0 left-0 w-full h-full overflow-hidden">
       <motion.div style={{ top }} className="absolute w-full">
-        <main ref={containerRef} className="relative">
-          <div
-            ref={footerRef}
-            className="fixed inset-0 z-10 secondary-bg overflow-x-hidden will-change-transform h-screen"
-            style={{ pointerEvents: "none" }}
-          >
-            <Footer />
-          </div>
+        <main className="relative" ref={containerRef}>
           <div ref={mainContentRef} className="relative z-30">
             <Hero />
             <motion.div
@@ -179,18 +112,17 @@ export default function Home() {
                   <Mamiko />
                   <FamilyMookata />
                 </motion.div>
-                <div ref={contactRef} className="will-change-transform">
-                  <Contact onMessageSent={handleMessageSent} />
+                <div className="min-h-[200vh] relative">
+                  <div className="min-h-screen sticky top-0">
+                    <Footer />
+                  </div>
+                  <Wrapper className="w-full min-h-screen bg-white absolute top-0 z-10 !py-0">
+                    <Contact onMessageSent={handleMessageSent} />
+                  </Wrapper>
                 </div>
               </motion.div>
             </motion.div>
           </div>
-
-          <div
-            ref={footerRevealRef}
-            className="relative z-20 h-screen"
-            style={{ pointerEvents: "none" }}
-          />
         </main>
       </motion.div>
     </div>

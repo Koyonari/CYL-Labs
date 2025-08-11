@@ -6,7 +6,7 @@ export default function FamilyMookata() {
     <div className="w-full bg-[#020202] sticky top-0">
       <Wrapper className="w-full h-screen !py-16">
         <div className="w-full h-full flex justify-between gap-10 max-[1200px]:flex-col max-[1200px]:justify-normal">
-          <div className="w-2/3 h-full relative max-[1200px]:w-full max-[1200px]:h-1/2">
+          <div className="w-3/4 h-full relative max-[1200px]:w-full max-[1200px]:h-1/2">
             <Image className="object-cover" src="/abstract-desk.png" alt="" fill />
           </div>
           <div className="w-1/4 flex flex-col justify-center gap-5 text-white text-right max-[1200px]:w-full max-[1200px]:text-left">
