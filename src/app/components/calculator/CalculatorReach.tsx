@@ -25,8 +25,8 @@ export default function CalculatorReach({
           How Many People See You Each Month?
         </h1>
         <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-          Give us your best guess. We&apos;ll turn it into the number of leads and
-          sales you could be getting.
+          Just an estimate is fine — we&apos;ll calculate what that could mean in
+          real leads.
         </p>
       </div>
       <div className="flex flex-col gap-4">
