@@ -67,16 +67,14 @@ export default function Page() {
               <Navbar />
               <div className="flex flex-col items-end gap-8 text-white text-right">
                 <h1 className="w-2/3 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-                  Still don&apos;t have a website? This might change your mind.
+                Still Don&apos;t Have a Website?
                 </h1>
                 <div className="w-full flex flex-col items-end gap-8 text-right max-[1200px]:w-4/5 max-md:w-full">
                   <p className="w-1/3 opacity-70 text-[20px] leading-[1.2] tracking-normal max-[1200px]:w-full">
-                    Think your business is doing fine without a website? This
-                    free guide will show you what it’s really costing you — and
-                    how to fix it before it hurts more.
+                  Find out how much that decision is costing you and the simple fix to start winning more customers.
                   </p>
                   <Button className="w-fit h-fit bg-[#FD5001] rounded-full !px-8 !py-4 text-[20px] text-white font-semibold">
-                    Read it for yourself
+                    Get the free guide
                     <svg
                       className="min-w-6 min-h-6"
                       xmlns="http://www.w3.org/2000/svg"
@@ -107,101 +105,58 @@ export default function Page() {
               <div className="flex justify-between gap-16 max-[1200px]:flex-col">
                 <div className="w-1/4 flex flex-col gap-8 max-[1200px]:w-1/2 max-md:w-full">
                   <h2 className="text-[64px] font-semibold max-[1200px]:text-[48px] max-sm:text-[40px]">
-                    Highlights
+                  What&apos;s Inside the Free Guide
                   </h2>
                   <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-                    Where insight meets execution, and strategy drives results.
-                    This is how we differ from other teams.
+                  Get the numbers, mistakes, and fixes that can put thousands back in your business.
                   </p>
                 </div>
                 <div className="w-3/5 flex flex-col gap-8 max-[1200px]:w-full">
                   <div className="flex flex-col pb-8 gap-4 border-b-2 border-b-[#EEEEEE]">
                     <h3 className="text-[24px] font-semibold">
-                      Why “doing fine” without a website is short term thinking
+                    Spot the silent sales leaks draining your business every month
                     </h3>
-                    <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-                      Recognized for outstanding innovation in digital strategy
-                      and creative marketing campaigns.
-                    </p>
                   </div>
                   <div className="flex flex-col pb-8 gap-4 border-b-2 border-b-[#EEEEEE]">
                     <h3 className="text-[24px] font-semibold">
-                      Real reasons customers bounce without saying a word
+                    See the exact $ amount you&apos;re losing without a website
                     </h3>
-                    <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-                      Recognized for outstanding innovation in digital strategy
-                      and creative marketing campaigns.
-                    </p>
                   </div>
-                  <div className="flex flex-col pb-8 gap-4">
+                  <div className="flex flex-col pb-8 gap-4 border-b-2 border-b-[#EEEEEE]">
                     <h3 className="text-[24px] font-semibold">
-                      Why “doing fine” without a website is short term thinking
+                    Why cheap or DIY sites make customers click away instantly
                     </h3>
-                    <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-                      Recognized for outstanding innovation in digital strategy
-                      and creative marketing campaigns.
-                    </p>
+                  </div>
+                  <div className="flex flex-col pb-8 gap-4 border-b-2 border-b-[#EEEEEE]">
+                    <h3 className="text-[24px] font-semibold">
+                    The fastest way to get a trust-building site live without wasting time or money
+                    </h3>
                   </div>
                 </div>
               </div>
               <div className="flex flex-col gap-16">
                 <div className="flex justify-between gap-8 max-[1200px]:flex-col">
                   <h1 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-                    Built with experience.{" "}
-                    <span className="text-[#999999]">
-                      Based on real conversations, real clients, and real{" "}
-                      <span className="text-[#FD5001]">SME problems</span>.
-                    </span>
+                  No website? You’re sending customers to your competitors.
+                 
                   </h1>
                   <p className="w-1/5 text-[20px] text-[#999999] text-right leading-[1.2] tracking-normal max-[1200px]:w-4/5 max-[1200px]:items-start max-[1200px]:text-left max-md:w-full">
-                    Most websites look fine but lose trust and sales. This quick
-                    ROI check shows what you&apos;re missing — and how to fix
-                    it.
+                  We launched Family Mookata’s site — 600+ clicks in month one, worth $12k in sales kept from competitors.
                   </p>
                 </div>
-                {/* <div className="flex gap-4 text-[32px] text-[#020202] font-semibold">
-                  <svg
-                    className="w-8 h-8"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="33"
-                    height="31"
-                    viewBox="0 0 33 31"
-                    fill="none"
-                  >
-                    <path
-                      d="M0.0010089 30.7729L0.0478135 18.1635C0.0795737 9.60716 2.50532 3.16127 12.7246 0.0468046L12.7007 6.50161C7.89096 8.13502 6.37926 10.9816 6.50263 18.1875L12.6572 18.2103L12.6104 30.8197L0.0010089 30.7729ZM26.4675 18.2616L32.7722 18.285L32.7254 30.8944L20.116 30.8476L20.1628 18.2382C20.1946 9.68183 22.4702 3.23538 32.6895 0.120912L32.6656 6.57572C27.8558 8.20913 26.4943 11.0562 26.4675 18.2616Z"
-                      fill="#020202"
-                    />
-                  </svg>
-                  <div className="flex flex-col mt-2 gap-8">
-                    <div className="flex flex-col gap-2">
-                      <div className="flex gap-2">
-                        <div className="flex items-end gap-[5px]">
-                          <h1>cyllabs</h1>
-                          <div className="w-2 h-2 bg-[#FD5001] rounded-full mb-[5px]"></div>
-                        </div>
-                        <p>gave us everything we needed,</p>
-                      </div>
-                      <p>clean design without the scary agency quote.</p>
-                    </div>
-                    <p className="text-[20px] font-normal max-md:text-[16px]">
-                      — Fiona, owner of Family Mookata{" "}
-                    </p>
-                  </div>
-                </div> */}
+
               </div>
               <div className="flex justify-between">
                 <div className="flex flex-col gap-8">
                   <h1 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-                    Get the free guide now,{" "}
+                  Stop guessing. {" "}
                     <span className="text-[#999999]">
-                      and avoid the mistakes that{" "}
-                      <span className="text-[#FD5001]">most SMEs</span> are
-                      making.
+                    {" "}
+                    Start winning customers.
                     </span>
                   </h1>
                   <Button className="w-fit h-fit bg-[#FD5001] rounded-full !px-8 !py-4 text-[20px] text-white font-semibold">
-                    Read it for yourself
+                    Get the Free Guide
                     <svg
                       className="min-w-6 min-h-6"
                       xmlns="http://www.w3.org/2000/svg"
