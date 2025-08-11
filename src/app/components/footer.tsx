@@ -139,17 +139,13 @@ export default function Footer() {
       title: "Pricing",
       items: ["Plans", "Add-ons", "Breakdown"],
     },
-    {
-      title: "Contact",
-      items: ["Contact Us"],
-    },
   ];
 
   return (
     <>
       <motion.section
         ref={ref}
-        className="secondary-text secondary-bg min-h-screen min-h[calc(screen-2px)] overflow-x-hidden flex flex-col justify-between py-6 sm:py-12 md:py-20 lg:py-[100px] px-4 sm:px-6 md:px-12 lg:px-[60px] pb-4 sm:pb-8"
+        className="secondary-text secondary-bg min-h-screen min-h-screen tracking-normal overflow-x-hidden flex flex-col justify-between py-6 sm:py-12 md:py-20 lg:py-[100px] px-4 sm:px-6 md:px-12 lg:px-[60px] pb-4 sm:pb-8"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -161,7 +157,7 @@ export default function Footer() {
       >
         {/* Footer section */}
         <motion.div
-          className="pb-0 flex flex-col lg:flex-row justify-between gap-6 lg:gap-0"
+          className="pb-0 flex flex-col lg:flex-row mx-auto gap-6 lg:gap-24 xl:gap-40"
           variants={fadeInUp}
         >
           {/* Left section */}
