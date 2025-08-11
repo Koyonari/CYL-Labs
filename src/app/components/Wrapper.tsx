@@ -3,7 +3,7 @@ export default function Wrapper({
   children,
 }: {
   className?: string;
-  children?: any;
+  children?: React.ReactNode;
 }) {
   return (
     <div className="min-h-screen flex justify-center items-center">

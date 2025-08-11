@@ -30,24 +30,24 @@ export default function Report({
     <div className="relative w-full min-h-screen bg-black">
       {/* Glow Layer */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-   {/* Orange Gradient Glow (underneath) */}
-<div
-  className="absolute bottom-[-20vh] right-[-40vw] w-[200vw] h-[160vh] md:bottom-[-100px] md:right-[-180px] md:w-[1700px] md:h-[1500px] 2xl:w-[3360px] rounded-full blur-[100px] md:blur-[120px] z-0"
-  style={{
-    background: `radial-gradient(circle,
+        {/* Orange Gradient Glow (underneath) */}
+        <div
+          className="absolute bottom-[-20vh] right-[-40vw] w-[200vw] h-[160vh] md:bottom-[-100px] md:right-[-180px] md:w-[1700px] md:h-[1500px] 2xl:w-[3360px] rounded-full blur-[100px] md:blur-[120px] z-0"
+          style={{
+            background: `radial-gradient(circle,
       #ff3c00 90%,
       #fc5a2f 40%,
       #fd7f53 65%,
       #fff7e3 95%,
       #ffffff 100%)`,
-  }}
-/>
+          }}
+        />
 
-{/* White solid fade gradient */}
-<div
-  className="absolute bottom-0 right-[-100vw] w-[300vw] h-[60vh] md:right-[-400px] md:w-[2340px] md:h-[800px] 2xl:w-[3360px] rounded-full z-10 pointer-events-none"
-  style={{
-    background: `linear-gradient(
+        {/* White solid fade gradient */}
+        <div
+          className="absolute bottom-0 right-[-100vw] w-[300vw] h-[60vh] md:right-[-400px] md:w-[2340px] md:h-[800px] 2xl:w-[3360px] rounded-full z-10 pointer-events-none"
+          style={{
+            background: `linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0) 0%,
       rgba(255, 255, 255, 0.2) 15%,
@@ -55,14 +55,14 @@ export default function Report({
       rgba(255, 255, 255, 0.85) 65%,
       rgba(255, 255, 255, 1) 100%
     )`,
-  }}
-/>
+          }}
+        />
 
-{/* White radial glow fading upward */}
-<div
-  className="absolute bottom-[-100vh] right-[-100vw] w-[300vw] h-[200vh] md:bottom-[-900px] md:right-[-560px] md:w-[2340px] md:h-[2080px] 2xl:w-[3360px] rounded-full z-20 pointer-events-none"
-  style={{
-    background: `radial-gradient(
+        {/* White radial glow fading upward */}
+        <div
+          className="absolute bottom-[-100vh] right-[-100vw] w-[300vw] h-[200vh] md:bottom-[-900px] md:right-[-560px] md:w-[2340px] md:h-[2080px] 2xl:w-[3360px] rounded-full z-20 pointer-events-none"
+          style={{
+            background: `radial-gradient(
       ellipse at bottom,
       rgba(255, 255, 255, 1) 0%,
       rgba(255, 255, 255, 1) 35%,
@@ -70,11 +70,10 @@ export default function Report({
       rgba(255, 255, 255, 0.3) 75%,
       rgba(255, 255, 255, 0) 100%
     )`,
-    filter: "blur(160px)",
-    mixBlendMode: "screen",
-  }}
-/>
-
+            filter: "blur(160px)",
+            mixBlendMode: "screen",
+          }}
+        />
       </div>
 
       {/* Content Container */}
@@ -157,22 +156,22 @@ export default function Report({
             </div>
 
             <p className="mt-12 text-2xl sm:text-3xl xl:text-4xl font-bold tracking-tight">
-  That’s{" "}
-  <span className="text-orange-600">
-    ${moneyLeft.toLocaleString()} dollars
-  </span>{" "}
-  left on the table.
-  <span className="inline-flex items-baseline ml-4 text-sm text-orange-600">
-    <span className="mr-1">How we calculated it</span>
-    <span className="relative group">
-      <Info size={18} className="cursor-pointer" />
-      <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-64 p-2 bg-black text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-center">
-        Based on industry average conversion rates and your estimated reach, messages, and ticket size.
-      </span>
-    </span>
-  </span>
-</p>
-
+              That’s{" "}
+              <span className="text-orange-600">
+                ${moneyLeft.toLocaleString()} dollars
+              </span>{" "}
+              left on the table.
+              <span className="inline-flex items-baseline ml-4 text-sm text-orange-600">
+                <span className="mr-1">How we calculated it</span>
+                <span className="relative group">
+                  <Info size={18} className="cursor-pointer" />
+                  <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-64 p-2 bg-black text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-center">
+                    Based on industry average conversion rates and your
+                    estimated reach, messages, and ticket size.
+                  </span>
+                </span>
+              </span>
+            </p>
 
             <div className="mt-20 sm:mt-28">
               <h2 className="text-3xl sm:text-4xl xl:text-5xl font-bold tracking-tighter">
@@ -187,28 +186,26 @@ export default function Report({
             </div>
 
             <div className="mt-12 flex items-center gap-6">
-  <a
-    href="#"
-    className="inline-block text-orange-600 text-2xl sm:text-3xl font-bold tracking-tight group"
-  >
-    Book a consult
-    <span className="inline-block transition-transform group-hover:translate-x-2">
-      {" "}
-      &rarr;
-    </span>
-  </a>
-  <Button
-    onClick={() => setStep(0)}
-    className="text-xl px-60 py-3 text-gray-500 font-bold bg-transparent border-none shadow-none hover:bg-gray-100"
-  >
-    Restart ↻
-  </Button>
-</div>
-
+              <a
+                href="#"
+                className="inline-block text-orange-600 text-2xl sm:text-3xl font-bold tracking-tight group"
+              >
+                Book a consult
+                <span className="inline-block transition-transform group-hover:translate-x-2">
+                  {" "}
+                  &rarr;
+                </span>
+              </a>
+              <Button
+                onClick={() => setStep(0)}
+                className="text-xl px-60 py-3 text-gray-500 font-bold bg-transparent border-none shadow-none hover:bg-gray-100"
+              >
+                Restart ↻
+              </Button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
-

@@ -1,7 +1,6 @@
 "use client";
 import { DM_Sans } from "next/font/google";
-import { useState, useEffect } from "react";
-import Preloader from "./components/preloader";
+// import { useState, useEffect } from "react";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -10,7 +9,7 @@ const dmSans = DM_Sans({
 });
 
 // Keep track of prev sess
-let hasShownPreloader = false;
+// let hasShownPreloader = false;
 
 export default function RootLayout({
   children,
@@ -18,27 +17,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isLoading, setIsLoading] = useState(true);
-  const [showPreloader, setShowPreloader] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [showPreloader, setShowPreloader] = useState(true);
 
-  useEffect(() => {
-    // Check if we've already shown the preloader in this session
-    if (hasShownPreloader) {
-      // Skip preloader for subsequent page navigations
-      setIsLoading(false);
-      setShowPreloader(false);
-    } else {
-      // Show preloader for the first load (page reload or fresh visit)
-      setIsLoading(true);
-      setShowPreloader(true);
-      hasShownPreloader = true;
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Check if we've already shown the preloader in this session
+  //   if (hasShownPreloader) {
+  //     // Skip preloader for subsequent page navigations
+  //     setIsLoading(false);
+  //     setShowPreloader(false);
+  //   } else {
+  //     // Show preloader for the first load (page reload or fresh visit)
+  //     setIsLoading(true);
+  //     setShowPreloader(true);
+  //     hasShownPreloader = true;
+  //   }
+  // }, []);
 
-  const handlePreloaderComplete = () => {
-    setIsLoading(false);
-    setShowPreloader(false);
-  };
+  // const handlePreloaderComplete = () => {
+  //   setIsLoading(false);
+  //   setShowPreloader(false);
+  // };
 
   return (
     <html lang="en">

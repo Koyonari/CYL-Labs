@@ -13,14 +13,14 @@ export default function CalculatorReach({
     <div className="h-full max-h-[500px] h-full max-h-[500px] flex flex-col flex-grow justify-between py-8 overflow-hidden">
       <div className="flex flex-col gap-8">
         <div className="text-[64px] text-white font-semibold">
-          <h1>Let's see what you're working with.</h1>
+          <h1>Let&apos;s see what you&apos;re working with.</h1>
           <h1 className="text-[#999999]">
-            Tell us how many people you're reaching.
+            Tell us how many people you&apos;re reaching.
           </h1>
         </div>
         <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-          Just an estimate is fine — we’ll calculate what that could mean in
-          real leads.
+          Just an estimate is fine — we&apos;ll calculate what that could mean
+          in real leads.
         </p>
       </div>
       <div className="flex flex-col gap-4">
