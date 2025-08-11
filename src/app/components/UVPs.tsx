@@ -6,11 +6,11 @@ export default function UVPs() {
     <Wrapper>
       <div className="flex flex-col gap-16">
         <div className="flex flex-col gap-8 max-sm:gap-5">
-          <h1 className="w-1/2 text-[64px] text-[#020202] font-bold max-[1200px]:w-4/5 max-sm:w-full max-sm:text-[40px]">
+          <h1 className="w-1/2 text-[64px] text-[#020202] font-semibold max-[1200px]:w-4/5 max-sm:w-full max-sm:text-[40px]">
             Who we work with.{" "}
             <span className="text-[#999999] font-semibold">
               Our clients share one thing:{" "}
-              <span className="text-[#FD5001] font-extrabold">
+              <span className="text-[#FD5001] font-semibold">
                 high standards
               </span>
             </span>
@@ -33,7 +33,7 @@ export default function UVPs() {
                       "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%)",
                   }}
                 ></div>
-                <h2 className="text-[32px] font-bold relative z-10">
+                <h2 className="text-[32px] font-semibold relative z-10">
                   Customisable websites
                 </h2>
                 <p className="text-[20px] leading-[1.2] tracking-normal relative z-10">
@@ -76,7 +76,7 @@ export default function UVPs() {
                 }}
               ></div>
               <div className="flex flex-col gap-4 text-white relative z-10">
-                <h2 className="text-[32px] font-bold">
+                <h2 className="text-[32px] font-semibold">
                   One up your competitors
                 </h2>
                 <p className="text-[20px] leading-[1.2] tracking-normal">
@@ -92,7 +92,7 @@ export default function UVPs() {
               }}
             >
               <div className="w-full flex flex-col gap-2 text-white">
-                <h2 className="text-[64px] font-bold">24/7</h2>
+                <h2 className="text-[64px] font-semibold">24/7</h2>
                 <p className="text-[20px] leading-[1.2] tracking-normal">
                   Priority support
                 </p>
@@ -101,14 +101,14 @@ export default function UVPs() {
                 <div className="w-full flex items-center bg-white rounded-[12px] shadow-2xl p-4 gap-3 z-10">
                   <div className="w-10 h-10 bg-[#FD5001] rounded-full"></div>
                   <div className="flex flex-col gap-2">
-                    <p className="text-[20px] font-bold">cyllabs</p>
+                    <p className="text-[20px] font-semibold">cyllabs</p>
                     <p className="tracking-normal">Support Ticket</p>
                   </div>
                 </div>
                 <div className="w-[90%] flex items-center bg-white rounded-[12px] absolute p-4 mt-5 gap-4">
                   <div className="w-10 h-10 bg-[#FD5001] rounded-full"></div>
                   <div className="flex flex-col gap-2">
-                    <p className="text-[20px] font-bold">Avexa</p>
+                    <p className="text-[20px] font-semibold">Avexa</p>
                     <p className="">S</p>
                   </div>
                 </div>

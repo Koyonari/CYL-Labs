@@ -162,9 +162,17 @@ export default function Page() {
                   </p>
                 </div>
               </div>
-              {conversionRate >= 3 && <BadImpressions currentRevenue={currentRevenue} possibleRevenue={possibleRevenue} />}
-              {conversionRate >= 3 && <GoodConversions possibleRevenue={possibleRevenue} />}
-              {conversionRate < 3 && (
+              {data.reach <= 400 ? (
+                <BadImpressions
+                  reach={data.reach}
+                  messages={data.messages}
+                  price={data.price}
+                  currentRevenue={currentRevenue}
+                  possibleRevenue={possibleRevenue}
+                />
+              ) : conversionRate >= 3 ? (
+                <GoodConversions possibleRevenue={possibleRevenue} />
+              ) : (
                 <BadConversions
                   currentRevenue={currentRevenue}
                   possibleRevenue={possibleRevenue}

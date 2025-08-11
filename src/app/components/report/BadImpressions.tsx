@@ -1,7 +1,13 @@
 export default function BadImpressions({
+  reach,
+  messages,
+  price,
   currentRevenue,
   possibleRevenue,
 }: {
+  reach: number;
+  messages: number;
+  price: number;
   currentRevenue: number;
   possibleRevenue: number;
 }) {
@@ -9,9 +15,9 @@ export default function BadImpressions({
     <div className="flex flex-col gap-16">
       <div className="flex justify-between gap-8 max-[1200px]:flex-col">
         <h2 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-          Not enough people are seeing you.
+          Not enough people are seeing you.{" "}
           <span className="text-[#999999]">
-            You need a platform to increase your
+            You need a platform to increase your{" "}
             <span className="text-[#FD5001]">digital presence</span>.
           </span>
         </h2>
@@ -21,26 +27,15 @@ export default function BadImpressions({
         </p>
       </div>
       <p className="w-1/2 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
+        We can 5x your impressions.
+      </p>
+      <p className="w-1/2 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
         With an average conversion rate of 3%.
       </p>
-      <div className="w-1/2 flex flex-col gap-8 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
-        <p>
-          Current revenue: ${Number(currentRevenue.toFixed(0)).toLocaleString()}
-        </p>
-        <p className="text-[#FD5001]">
-          Possible revenue: $
-          {Number(possibleRevenue.toFixed(0)).toLocaleString()}
-        </p>
-      </div>
-      <p className="w-1/2 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
-        That's{" "}
-        <span className="text-[#FD5001]">
-          $
-          {Number(
-            (possibleRevenue - currentRevenue).toFixed(0)
-          ).toLocaleString()}
-        </span>{" "}
-        dollars left on the table every month.
+      <p className="w-1/2 text-[48px] text-[#FD5001] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
+        That&apos;s a{" "}
+        {Number(((reach * 5 * 0.03 * price) / (messages * price) * 100).toFixed(0)).toLocaleString()}%
+        increase in revenue.
       </p>
     </div>
   );
