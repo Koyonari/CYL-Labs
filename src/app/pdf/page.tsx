@@ -67,7 +67,7 @@ export default function Page() {
               <Navbar />
               <div className="flex flex-col items-end gap-8 text-white text-right">
                 <h1 className="w-2/3 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-                  Still don't have a website? This might change your mind.
+                  Still don&apos;t have a website? This might change your mind.
                 </h1>
                 <div className="w-full flex flex-col items-end gap-8 text-right max-[1200px]:w-4/5 max-md:w-full">
                   <p className="w-1/3 opacity-70 text-[20px] leading-[1.2] tracking-normal max-[1200px]:w-full">
@@ -155,7 +155,8 @@ export default function Page() {
                   </h1>
                   <p className="w-1/5 text-[20px] text-[#999999] text-right leading-[1.2] tracking-normal max-[1200px]:w-4/5 max-[1200px]:items-start max-[1200px]:text-left max-md:w-full">
                     Most websites look fine but lose trust and sales. This quick
-                    ROI check shows what you're missing — and how to fix it.
+                    ROI check shows what you&apos;re missing — and how to fix
+                    it.
                   </p>
                 </div>
                 {/* <div className="flex gap-4 text-[32px] text-[#020202] font-semibold">

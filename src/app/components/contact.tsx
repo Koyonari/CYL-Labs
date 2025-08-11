@@ -174,19 +174,19 @@ export default function Contact({ onMessageSent }: ContactProps) {
     <motion.section
       id="contact"
       ref={sectionRef}
-      className="h-screen max-h-screen box-border contact-section p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 2xl:p-20 primary-text flex items-center overflow-hidden"
+      className="h-screen max-h-screen box-border contact-section py-4 sm:py-6 md:py-8 lg:py-12 xl:py-16 2xl:py-20 primary-text flex items-center overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-      <div className="flex flex-col lg:flex-row w-full gap-6 md:gap-8 lg:gap-12 xl:gap-16 2xl:gap-20 items-start lg:items-center max-w-7xl mx-auto h-full">
+      <div className="flex flex-col lg:flex-row w-full lg:gap-44  items-start lg:items-center max-w-7xl mx-auto h-full justify-center">
         <motion.div
-          className="info-left w-full lg:w-auto lg:min-w-0 xl:min-w-[500px] 2xl:min-w-[600px] flex flex-col justify-center h-full"
+          className="info-left w-full lg:w-auto lg:min-w-0 xl:min-w-[500px] 2xl:min-w-[600px] flex flex-col justify-center h-full py-0"
           variants={fadeInLeft}
         >
           <div className="contact-form-container">
             <motion.h1
-              className="contact-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl helvetica-bold mb-4 md:mb-6 lg:mb-8 leading-tight"
+              className="contact-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 lg:mb-8 leading-tight tracking-tight"
               variants={fadeInUp}
             >
               Want to stand out?
@@ -194,11 +194,13 @@ export default function Contact({ onMessageSent }: ContactProps) {
               Let&apos;s make your dream a reality.
             </motion.h1>
 
-            <motion.form ref={form} onSubmit={sendEmail} variants={formStagger} className="space-y-3 md:space-y-4">
-              <motion.div
-                className="form-control"
-                variants={formFieldVariant}
-              >
+            <motion.form
+              ref={form}
+              onSubmit={sendEmail}
+              variants={formStagger}
+              className="space-y-3 md:space-y-4 tracking-normal"
+            >
+              <motion.div className="form-control" variants={formFieldVariant}>
                 <input
                   type="text"
                   id="name"
@@ -209,10 +211,7 @@ export default function Contact({ onMessageSent }: ContactProps) {
                 />
               </motion.div>
 
-              <motion.div
-                className="form-control"
-                variants={formFieldVariant}
-              >
+              <motion.div className="form-control" variants={formFieldVariant}>
                 <input
                   type="email"
                   id="email"
@@ -223,10 +222,7 @@ export default function Contact({ onMessageSent }: ContactProps) {
                 />
               </motion.div>
 
-              <motion.div
-                className="form-control"
-                variants={formFieldVariant}
-              >
+              <motion.div className="form-control" variants={formFieldVariant}>
                 <textarea
                   id="message"
                   cols={30}
@@ -257,31 +253,34 @@ export default function Contact({ onMessageSent }: ContactProps) {
                     className="absolute inset-0 w-full h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                   />
                 </div>
-                <span className="px-1 helvetica-medium">Send Message</span>
+                <span className="px-1 font-medium">Send Message</span>
               </motion.button>
             </motion.form>
           </div>
         </motion.div>
 
         <motion.div
-          className="info-right leading-5 md:leading-6 lg:leading-7 flex flex-col justify-center w-full lg:w-auto px-0 lg:px-4 h-full"
+          className="info-right leading-5 md:leading-6 lg:leading-7 flex flex-col justify-center w-full lg:w-auto px-0 lg:px-4 h-full text-[#383838] tracking-normal font-medium"
           variants={fadeInRight}
         >
-          <motion.div className="contact-info space-y-4 md:space-y-6 lg:space-y-8" variants={rightSideStagger}>
+          <motion.div
+            className="contact-info space-y-4 md:space-y-6 lg:space-y-8"
+            variants={rightSideStagger}
+          >
             <motion.div variants={rightSideItem}>
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl helvetica-bold mb-1 md:mb-2">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold tracking-tight mb-1 md:mb-2">
                 Contact Details
               </h3>
-              <p className="text-sm md:text-base helvetica-light tracking-wide">
+              <p className="text-sm md:text-base cursor-pointer">
                 cyllabsdigital@gmail.com
               </p>
-              <p className="text-sm md:text-base helvetica-light">
+              <p className="text-sm md:text-base cursor-pointer">
                 +65 9711 2702
               </p>
             </motion.div>
 
             <motion.div variants={rightSideItem}>
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl helvetica-bold mb-1 md:mb-2">
+              <h3 className="text-lg sm:text-xl md:text-2xl cursor-pointer lg:text-3xl font-extrabold tracking-tight mb-1 md:mb-2">
                 Online Socials
               </h3>
               <div className="space flex flex-row items-center text-center gap-1">
@@ -300,12 +299,10 @@ export default function Contact({ onMessageSent }: ContactProps) {
             </motion.div>
 
             <motion.div variants={rightSideItem}>
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl helvetica-bold mb-1 md:mb-2">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold tracking-tight mb-1 md:mb-2">
                 Location
               </h3>
-              <p className="text-sm md:text-base helvetica-light">
-                Singapore
-              </p>
+              <p className="text-sm md:text-base helvetica-light">Singapore</p>
               {singaporeTime && (
                 <p className="text-sm md:text-base helvetica-light">
                   Local time:

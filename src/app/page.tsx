@@ -2,11 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import Hero from "./components/Hero";
+import Hero from "./components/hero";
 import Reality from "./components/Reality";
 import UVPs from "./components/UVPs";
 import Quiz from "./components/Quiz";
-import Highlights from "./components/highlights";
 import Mamiko from "./components/Mamiko";
 import FamilyMookata from "./components/FamilyMookata";
 import Contact from "./components/contact";
@@ -15,9 +14,6 @@ import Wrapper from "./components/Wrapper";
 
 export default function Home() {
   const mainContentRef = useRef<HTMLDivElement>(null);
-  const footerRevealRef = useRef<HTMLDivElement>(null);
-  const contactRef = useRef<HTMLDivElement>(null);
-  const footerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const realityRef = useRef<HTMLDivElement>(null);
   const [pageHeight, setPageHeight] = useState(0);

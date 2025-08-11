@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 export default function Quiz() {
   return (
     <Wrapper className="flex justify-between gap-8 max-[1200px]:flex-col">
-      <h1 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
+      <h1 className="w-1/2 text-[64px] font-extrabold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
         How much money is your website not making you?
-        <span className="text-[#999999]">
+        <span className="text-[#999999] font-bold">
           {" "}
           Find out in under a minute — for{" "}
           <span className="text-[#FD5001]">Singaporean</span> businesses that
@@ -17,7 +17,7 @@ export default function Quiz() {
       <div className="w-1/5 flex flex-col items-end gap-8 text-right max-[1200px]:w-4/5 max-[1200px]:items-start max-[1200px]:text-left max-md:w-full">
         <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
           Most websites look fine but lose trust and sales. This quick ROI check
-          shows what you're missing — and how to fix it.
+          shows what you&apos;re missing — and how to fix it.
         </p>
         <Button
           asChild

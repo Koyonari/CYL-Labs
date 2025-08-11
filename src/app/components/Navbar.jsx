@@ -13,7 +13,7 @@ export default function Navbar() {
         <Link href="/">About</Link>
       </div>
       <div>
-        <p>Contact Us</p>
+        <p className="cursor-pointer font-semibold">Contact Us</p>
       </div>
     </div>
   );

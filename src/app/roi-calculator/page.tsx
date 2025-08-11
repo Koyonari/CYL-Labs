@@ -2,17 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { Info } from "lucide-react";
 import Navbar from "../components/navbarv2";
 import Report from "./report";
 
@@ -135,8 +126,8 @@ export default function FunnelSimulatorStep() {
               Every click that bounces is lost revenue.
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 mt-6 max-w-2xl mx-auto md:mx-0">
-              See how many leads and sales you're missing — and what it's
-              costing you.
+              See how many leads and sales you&apos;re missing — and what
+              it&apos;s costing you.
             </p>
             <div className="mt-12">
               <Button
@@ -155,11 +146,11 @@ export default function FunnelSimulatorStep() {
               Let’s see what you’re working with.
             </h1>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-400 mt-2">
-              Tell us how many people you're reaching
+              Tell us how many people you&apos;re reaching
             </h2>
             <p className="text-base sm:text-lg text-gray-300 mt-6 max-w-xl">
-              Just an estimate is fine — we'll calculate what that could mean
-              in real leads.
+              Just an estimate is fine — we&apos;ll calculate what that could
+              mean in real leads.
             </p>
             <Label className="text-xl sm:text-2xl text-gray-300 mt-12 block">
               Monthly reach / profile views
@@ -191,7 +182,7 @@ export default function FunnelSimulatorStep() {
               How many people reach out to you?
             </h2>
             <p className="text-base sm:text-lg text-gray-300 mt-6 max-w-xl">
-              We'll use this to estimate how well your current reach is
+              We&apos;ll use this to estimate how well your current reach is
               converting
             </p>
             <Label className="text-xl sm:text-2xl text-gray-300 mt-12 block">
@@ -223,11 +214,11 @@ export default function FunnelSimulatorStep() {
                   What industry are you in?
                 </h1>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-400 mt-2">
-                  We'll tailor the results to your field.
+                  We&apos;ll tailor the results to your field.
                 </h2>
                 <p className="text-base sm:text-lg text-gray-300 mt-6 max-w-xl">
-                  Pick the industry that best fits your business. Don't worry
-                  if it's not 100% accurate.
+                  Pick the industry that best fits your business. Don&apos;t
+                  worry if it&apos;s not 100% accurate.
                 </p>
                 <h2 className="text-xl sm:text-2xl font-bold leading-tight text-gray-300 mt-12">
                   Your industry
@@ -287,8 +278,7 @@ export default function FunnelSimulatorStep() {
                     <p className="text-base sm:text-lg text-gray-300 transition-opacity duration-300 min-h-[6rem]">
                       {OFFER_OPTIONS.find(
                         (o) => o.value === offer || o.value === hoveredOffer
-                      )?.description ||
-                        "Hover over an industry to learn more."}
+                      )?.description || "Hover over an industry to learn more."}
                     </p>
                   )}
 
@@ -343,8 +333,8 @@ export default function FunnelSimulatorStep() {
               What is each customer worth?
             </h2>
             <p className="text-base sm:text-lg text-gray-300 mt-6 max-w-xl">
-              We'll use this to estimate how much potential revenue your leads
-              could bring in
+              We&apos;ll use this to estimate how much potential revenue your
+              leads could bring in
             </p>
 
             <Label className="block mt-10 mb-4 text-xl sm:text-2xl text-gray-300">

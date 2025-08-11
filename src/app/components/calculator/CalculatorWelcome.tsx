@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
 
-export default function CalculatorWelcome({ setSection }: { setSection: any }) {
+export default function CalculatorWelcome({
+  setSection,
+}: {
+  setSection: (section: string) => void;
+}) {
   return (
     <div className="h-full max-h-[500px] flex flex-col flex-grow justify-between py-8 overflow-hidden">
       <div className="flex flex-col gap-8">
@@ -8,8 +12,8 @@ export default function CalculatorWelcome({ setSection }: { setSection: any }) {
           No Website? Customers Are Choosing Someone Else
         </h1>
         <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-          See how many leads and sales you're missing — and what it's costing
-          you.
+          See how many leads and sales you&apos;re missing — and what it&apos;s
+          costing you.
         </p>
       </div>
       <div className="flex justify-end">

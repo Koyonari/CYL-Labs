@@ -102,10 +102,10 @@ export default function Page() {
               <Navbar />
               <div className="flex flex-col items-end gap-8 text-white text-right">
                 <h1 className="w-2/3 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-                  Your funnel report. Here's the breakdown.
+                  Your funnel report. Here&apos;s the breakdown.
                 </h1>
                 <p className="w-1/3 opacity-70 text-[20px] text-right leading-[1.2] tracking-normal max-[1200px]:w-4/5 max-md:w-full">
-                  Find out why you're leaving money behind.
+                  Find out why you&apos;re leaving money behind.
                 </p>
               </div>
             </Wrapper>
@@ -176,7 +176,7 @@ export default function Page() {
                     Want to find out how to{" "}
                     <span className="text-[#FD5001]">fix</span> the leak?{" "}
                     <span className="text-[#999999]">
-                      Before it's too late.
+                      Before it&apos;s too late.
                     </span>
                   </h2>
                   <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">

@@ -6,14 +6,16 @@ export default function UVPs() {
     <Wrapper>
       <div className="flex flex-col gap-16">
         <div className="flex flex-col gap-8 max-sm:gap-5">
-          <h1 className="w-1/2 text-[64px] text-[#020202] font-semibold max-[1200px]:w-4/5 max-sm:w-full max-sm:text-[40px]">
+          <h1 className="w-1/2 text-[64px] text-[#020202] font-bold max-[1200px]:w-4/5 max-sm:w-full max-sm:text-[40px]">
             Who we work with.{" "}
-            <span className="text-[#999999]">
+            <span className="text-[#999999] font-semibold">
               Our clients share one thing:{" "}
-              <span className="text-[#FD5001]">high standards</span>
+              <span className="text-[#FD5001] font-extrabold">
+                high standards
+              </span>
             </span>
           </h1>
-          <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal max-sm:text-[20px]">
+          <p className="text-[20px] text-[#999999] opacity-90 leading-[1.2] tracking-normal max-sm:text-[20px]">
             Here are just a few of the businesses we’re proud to work with.
           </p>
         </div>
@@ -78,8 +80,8 @@ export default function UVPs() {
                   One up your competitors
                 </h2>
                 <p className="text-[20px] leading-[1.2] tracking-normal">
-                  Send us your competitors' sites, we'll make you one better
-                  than theirs
+                  Send us your competitors&apos; sites, we&apos;ll make you one
+                  better than theirs
                 </p>
               </div>
             </div>
@@ -100,7 +102,7 @@ export default function UVPs() {
                   <div className="w-10 h-10 bg-[#FD5001] rounded-full"></div>
                   <div className="flex flex-col gap-2">
                     <p className="text-[20px] font-bold">cyllabs</p>
-                    <p className="">Support Ticket</p>
+                    <p className="tracking-normal">Support Ticket</p>
                   </div>
                 </div>
                 <div className="w-[90%] flex items-center bg-white rounded-[12px] absolute p-4 mt-5 gap-4">

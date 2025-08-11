@@ -4,9 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export default function CalculatorIndustry({
-  industry,
   setSection,
-  setIndustry,
 }: {
   industry: string;
   setSection: (section: string) => void;

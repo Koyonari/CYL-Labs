@@ -10,57 +10,6 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-/* Fonts */
-@font-face {
-  font-family: "Helvetica Thin";
-  src: url("../app/fonts/HelveticaNeueThin.otf");
-  ascent-override: 100%;
-}
-
-.helvetica-thin {
-  font-family: "Helvetica Thin";
-}
-
-@font-face {
-  font-family: "Helvetica Light";
-  src: url("../app/fonts/HelveticaNeueLight.otf");
-  ascent-override: 100%;
-}
-
-.helvetica-light {
-  font-family: "Helvetica Light";
-}
-
-@font-face {
-  font-family: "Helvetica Ultra Light";
-  src: url("../app/fonts/HelveticaNeueUltraLight.otf");
-  ascent-override: 100%;
-}
-
-.helvetica-ultralight {
-  font-family: "Helvetica Ultra Light";
-}
-
-@font-face {
-  font-family: "Helvetica Medium";
-  src: url("../app/fonts/HelveticaNeueMedium.otf");
-  ascent-override: 100%;
-}
-
-.helvetica-medium {
-  font-family: "Helvetica Medium";
-}
-
-@font-face {
-  font-family: "Helvetica Bold";
-  src: url("../app/fonts/HelveticaNeueBold.otf");
-  ascent-override: 100%;
-}
-
-.helvetica-bold {
-  font-family: "Helvetica Bold";
-}
-
 @font-face {
   font-family: "JetBrains Mono Medium";
   src: url("../app/fonts/JetBrainsMono-Medium.ttf");
@@ -118,7 +67,6 @@ body {
 }
 
 @supports (-webkit-overflow-scrolling: touch) {
-
   html,
   body {
     -webkit-overflow-scrolling: touch;
@@ -141,7 +89,7 @@ body {
 }
 
 .accent-text {
-  color: #FD5001;
+  color: #fd5001;
 }
 
 .primary-bg {
@@ -153,5 +101,5 @@ body {
 }
 
 .accent-bg {
-  background-color: #FD5001;
+  background-color: #fd5001;
 }
