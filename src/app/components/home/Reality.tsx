@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Wrapper from "./Wrapper";
+import Wrapper from "../Wrapper";
 import { Button } from "@/components/ui/button";
 
 export default function Reality() {
@@ -19,36 +19,48 @@ export default function Reality() {
     <div className="min-h-screen bg-[#020202] relative">
       <div className="w-[200%] h-[20%] bg-black absolute blur-2xl left-[-50%] top-[-10%]"></div>
       <Wrapper className="relative flex flex-col justify-between py-32 gap-32 overflow-hidden max-sm:py-16 max-sm:gap-8">
-        <motion.div
-          className="flex gap-4"
-          animate={{ x: "-80%" }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        >
-          {images.map((image, i) => (
+        <div className="relative overflow-hidden">
+          <motion.div
+            className="flex gap-4"
+            animate={{ x: "-80%" }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {images.map((image, i) => (
+              <div
+                key={i}
+                className="h-[40vh] bg-cover aspect-3/4"
+                style={{
+                  backgroundImage: `url('/${image.src}')`,
+                  marginTop: image.offset,
+                }}
+              />
+            ))}
+            {images.map((image, i) => (
+              <div
+                key={i}
+                className="h-[40vh] bg-cover aspect-3/4"
+                style={{
+                  backgroundImage: `url('/${image.src}')`,
+                  marginTop: image.offset,
+                }}
+              />
+            ))}
+          </motion.div>
+          <div className="w-1/2 h-full absolute top-0 left-0">
             <div
-              key={i}
-              className="h-[40vh] bg-cover aspect-3/4"
+              className="h-full w-full"
               style={{
-                backgroundImage: `url('/${image.src}')`,
-                marginTop: image.offset,
+                background:
+                  "linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)",
+                mixBlendMode: "saturation",
               }}
             />
-          ))}
-          {images.map((image, i) => (
-            <div
-              key={i}
-              className="h-[40vh] bg-cover aspect-3/4"
-              style={{
-                backgroundImage: `url('/${image.src}')`,
-                marginTop: image.offset,
-              }}
-            />
-          ))}
-        </motion.div>
+          </div>
+        </div>
         <div className="flex flex-col items-center px-6 gap-8 text-white text-center">
           <h1 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
             What you expect vs what you get

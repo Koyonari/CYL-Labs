@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -25,17 +26,49 @@ export default function CalculatorPrice({
   }
 
   return (
-    <div className="h-full max-h-[500px] flex flex-col flex-grow justify-between py-8 overflow-hidden">
+    <div className="h-full max-h-[500px] flex flex-col flex-grow justify-between py-8">
       <div className="flex flex-col gap-8">
-        <h1 className="text-[64px] text-white font-semibold">
+        <motion.h1
+          className="text-[64px] text-white font-semibold"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 30,
+            restDelta: 0.001,
+          }}
+        >
           How Much Is Each Customer Worth?
-        </h1>
-        <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
+        </motion.h1>
+        <motion.p
+          className="text-[20px] text-[#999999] leading-[1.2] tracking-normal"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 30,
+            restDelta: 0.001,
+            delay: 0.2,
+          }}
+        >
           We’ll use this to estimate the revenue your missed leads could be
           bringing in.
-        </p>
+        </motion.p>
       </div>
-      <div className="flex flex-col gap-4">
+      <motion.div
+        className="flex flex-col gap-4"
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 30,
+          restDelta: 0.001,
+          delay: 0.4,
+        }}
+      >
         <h2 className="text-[32px] text-[#FEF1E1] font-semibold">
           Average sale value
         </h2>
@@ -52,8 +85,19 @@ export default function CalculatorPrice({
             }
           }}
         />
-      </div>
-      <div className="flex justify-end">
+      </motion.div>
+      <motion.div
+        className="flex justify-end"
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          damping: 30,
+          restDelta: 0.001,
+          delay: 0.6,
+        }}
+      >
         <Button
           className="w-fit h-fit bg-white rounded-full !px-8 !py-4 text-[20px] font-semibold cursor-pointer"
           onClick={handleSubmit}
@@ -76,7 +120,7 @@ export default function CalculatorPrice({
             />
           </svg>
         </Button>
-      </div>
+      </motion.div>
     </div>
   );
 }

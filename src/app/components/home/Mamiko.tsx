@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import Wrapper from "./Wrapper";
+import Wrapper from "../Wrapper";
 
 export default function Mamiko() {
   const [containerStart, setContainerStart] = useState(0);
@@ -10,7 +10,11 @@ export default function Mamiko() {
 
   useEffect(() => {
     if (containerRef.current) {
-      setContainerStart(containerRef.current.getBoundingClientRect().top + window.innerHeight - 200);
+      setContainerStart(
+        containerRef.current.getBoundingClientRect().top +
+          window.innerHeight -
+          200
+      );
     }
   }, [containerRef.current]);
 

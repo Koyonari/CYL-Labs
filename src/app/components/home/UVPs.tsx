@@ -1,10 +1,54 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Wrapper from "./Wrapper";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import Wrapper from "../Wrapper";
 
 export default function UVPs() {
+  const [containerStart, setContainerStart] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    if (containerRef.current) {
+      setContainerStart(
+        containerRef.current.getBoundingClientRect().top +
+          window.innerHeight -
+          200
+      );
+    }
+  }, [containerRef.current]);
+
+  const brushY = useSpring(
+    useTransform(
+      scrollY,
+      [containerStart - window.innerHeight, containerStart],
+      [100, 0]
+    ),
+    {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }
+  );
+
+  const messageY = useSpring(
+    useTransform(
+      scrollY,
+      [containerStart - window.innerHeight, containerStart],
+      [100, 0]
+    ),
+    {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }
+  );
+
   return (
     <Wrapper>
-      <div className="flex flex-col gap-16">
+      <div className="flex flex-col gap-16" ref={containerRef}>
         <div className="flex flex-col gap-8 max-sm:gap-5">
           <h1 className="w-1/2 text-[64px] text-[#020202] font-semibold max-[1200px]:w-4/5 max-sm:w-full max-sm:text-[40px]">
             Who we work with.{" "}
@@ -59,9 +103,12 @@ export default function UVPs() {
                   outcomes.
                 </p>
               </div>
-              <div className="h-[150%] absolute bottom-[-280px] aspect-1/5 z-10 max-md:bottom-[-260px]">
+              <motion.div
+                className="h-[150%] absolute bottom-[-280px] aspect-1/5 z-10 max-md:bottom-[-260px]"
+                style={{ y: brushY }}
+              >
                 <Image src="/brush.png" alt="" fill />
-              </div>
+              </motion.div>
               <div className="w-3/5 bg-white absolute blur-3xl aspect-square left-[-5%] bottom-[-15vh] max-[1200px]:bottom-[-10vh] max-md:left-[-15%] max-md:bottom-[-20vh]"></div>
             </div>
             <div
@@ -105,13 +152,18 @@ export default function UVPs() {
                     <p className="tracking-normal">Support Ticket</p>
                   </div>
                 </div>
-                <div className="w-[90%] flex items-center bg-white rounded-[12px] absolute p-4 mt-5 gap-4">
+                <motion.div
+                  className="w-full flex items-center bg-white rounded-[12px] shadow-2xl absolute mt-5 p-4 gap-3"
+                  initial={{ y: 100, opacity: 0, scale: 0.9 }}
+                  whileInView={{ y: 0, opacity: 1, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <div className="w-10 h-10 bg-[#FD5001] rounded-full"></div>
                   <div className="flex flex-col gap-2">
-                    <p className="text-[20px] font-semibold">Avexa</p>
-                    <p className="">S</p>
+                    <p className="text-[20px] font-semibold">cyllabs</p>
+                    <p className="tracking-normal">Support Ticket</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>

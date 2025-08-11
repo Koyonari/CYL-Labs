@@ -10,6 +10,8 @@ export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null);
   const highlightsRef = useRef<HTMLDivElement>(null);
   const [pageHeight, setPageHeight] = useState(0);
+  const [maxScrollDistance, setMaxScrollDistance] = useState(0);
+  const [vh, setVh] = useState(0);
   const { scrollYProgress } = useScroll();
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -18,19 +20,27 @@ export default function Page() {
   });
 
   useEffect(() => {
+    const initialVh = window.visualViewport
+      ? window.visualViewport.height
+      : window.innerHeight;
+    setVh(initialVh);
+
     const calculateHeight = () => {
       if (containerRef.current) {
-        setPageHeight(containerRef.current.scrollHeight);
+        const totalHeight = containerRef.current.scrollHeight;
+        setPageHeight(totalHeight);
+
+        const highlightsOffset = 200;
+        const maxScroll = totalHeight - initialVh - highlightsOffset;
+        setMaxScrollDistance(Math.max(0, maxScroll));
       }
     };
 
     calculateHeight();
-    window.addEventListener("resize", calculateHeight);
     const observer = new ResizeObserver(calculateHeight);
     if (containerRef.current) observer.observe(containerRef.current);
 
     return () => {
-      window.removeEventListener("resize", calculateHeight);
       observer.disconnect();
     };
   }, []);
@@ -38,7 +48,7 @@ export default function Page() {
   const top = useTransform(
     smoothProgress,
     [0, 1],
-    [0, -(pageHeight - window.innerHeight)]
+    [0, -Math.min(maxScrollDistance, pageHeight - vh)]
   );
 
   const { scrollY } = useScroll();
@@ -49,11 +59,12 @@ export default function Page() {
   });
 
   useEffect(() => {
-    document.body.style.height = `${pageHeight}px`;
+    const limitedHeight = maxScrollDistance + vh;
+    document.body.style.height = `${limitedHeight}px`;
     return () => {
       document.body.style.height = "";
     };
-  }, [pageHeight]);
+  }, [pageHeight, maxScrollDistance, vh]);
 
   return (
     <div className="fixed top-0 left-0 w-full h-full overflow-hidden">
