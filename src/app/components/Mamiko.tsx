@@ -10,7 +10,7 @@ export default function Mamiko() {
 
   useEffect(() => {
     if (containerRef.current) {
-      setContainerStart(containerRef.current.getBoundingClientRect().top);
+      setContainerStart(containerRef.current.getBoundingClientRect().top + window.innerHeight - 200);
     }
   }, [containerRef.current]);
 

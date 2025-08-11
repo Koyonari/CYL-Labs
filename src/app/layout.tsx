@@ -2,6 +2,7 @@
 import { DM_Sans } from "next/font/google";
 import { useState, useEffect } from "react";
 import Preloader from "./components/preloader";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -47,7 +48,7 @@ export default function RootLayout({
       >
         {/* Page content - always rendered */}
         <div className="relative z-10">{children}</div>
-
+        <Toaster />
         {/* Preloader overlay - slides up when complete
         {showPreloader && <Preloader onComplete={handlePreloaderComplete} />} */}
       </body>

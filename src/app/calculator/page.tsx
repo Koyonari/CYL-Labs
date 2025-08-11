@@ -28,7 +28,7 @@ export default function Page() {
           )}
           {section === "reach" && <CalculatorReach reach={reach} setSection={setSection} setReach={setReach} />}
           {section === "messages" && (
-            <CalculatorMessages messages={messages} setSection={setSection} setMessages={setMessages} />
+            <CalculatorMessages reach={reach} messages={messages} setSection={setSection} setMessages={setMessages} />
           )}
           {section === "industry" && (
             <CalculatorIndustry industry={industry} setSection={setSection} setIndustry={setIndustry} />

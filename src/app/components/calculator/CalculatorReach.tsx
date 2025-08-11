@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function CalculatorReach({
   reach,
@@ -9,18 +10,23 @@ export default function CalculatorReach({
   setSection: (section: string) => void;
   setReach: (reach: string | number) => void;
 }) {
+  function handleSubmit() {
+    if (String(reach) !== "" && Number(reach) >= 0) {
+      setSection("messages");
+    } else {
+      toast.error("Please enter a number into the field.");
+    }
+  }
+
   return (
     <div className="h-full max-h-[500px] h-full max-h-[500px] flex flex-col flex-grow justify-between py-8 overflow-hidden">
       <div className="flex flex-col gap-8">
-        <div className="text-[64px] text-white font-semibold">
-          <h1>Let's see what you're working with.</h1>
-          <h1 className="text-[#999999]">
-            Tell us how many people you're reaching.
-          </h1>
-        </div>
+        <h1 className="text-[64px] text-white font-semibold">
+          How Many People See You Each Month?
+        </h1>
         <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-          Just an estimate is fine — we’ll calculate what that could mean in
-          real leads.
+          Give us your best guess. We’ll turn it into the number of leads and
+          sales you could be getting.
         </p>
       </div>
       <div className="flex flex-col gap-4">
@@ -34,14 +40,16 @@ export default function CalculatorReach({
           placeholder="Enter your reach e.g. 8,000"
           onChange={(e) => {
             const value = e.target.value;
-            setReach(value === "" ? "" : Number(value));
+            if (value === "" || Number(value) >= 0) {
+              setReach(value);
+            }
           }}
         />
       </div>
       <div className="flex justify-end">
         <Button
           className="w-fit h-fit bg-white rounded-full !px-8 !py-4 text-[20px] font-semibold"
-          onClick={() => setSection("messages")}
+          onClick={handleSubmit}
         >
           Read it for yourself
           <svg

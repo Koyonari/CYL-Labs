@@ -22,6 +22,7 @@ export default function Home() {
   const realityRef = useRef<HTMLDivElement>(null);
   const [pageHeight, setPageHeight] = useState(0);
   const [maxScrollDistance, setMaxScrollDistance] = useState(0);
+  const [vh, setVh] = useState(0);
   const { scrollYProgress } = useScroll();
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -30,25 +31,26 @@ export default function Home() {
   });
 
   useEffect(() => {
+    const initialVh = window.visualViewport.height;
+    setVh(initialVh);
+
     const calculateHeight = () => {
       if (containerRef.current) {
         const totalHeight = containerRef.current.scrollHeight;
         setPageHeight(totalHeight);
 
-        const viewportHeight = window.innerHeight;
-        const footerSectionHeight = viewportHeight * 2;
+        console.log(initialVh);
+        const footerSectionHeight = initialVh * 2;
         const maxScroll = totalHeight - footerSectionHeight - 200;
         setMaxScrollDistance(maxScroll);
       }
     };
 
     calculateHeight();
-    window.addEventListener("resize", calculateHeight);
     const observer = new ResizeObserver(calculateHeight);
     if (containerRef.current) observer.observe(containerRef.current);
 
     return () => {
-      window.removeEventListener("resize", calculateHeight);
       observer.disconnect();
     };
   }, []);
@@ -56,7 +58,7 @@ export default function Home() {
   const top = useTransform(
     smoothProgress,
     [0, 1],
-    [0, -Math.min(maxScrollDistance, pageHeight - window.innerHeight)]
+    [0, -Math.min(maxScrollDistance, pageHeight - vh)]
   );
 
   const { scrollYProgress: realityProgress } = useScroll({
@@ -71,22 +73,19 @@ export default function Home() {
     restDelta: 0.001,
   });
 
-  const uvpY = useSpring(
-    useTransform(realityProgress, [0.2, 1], [0, -window.innerHeight]),
-    {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001,
-    }
-  );
+  const uvpY = useSpring(useTransform(realityProgress, [0.2, 1], [0, -vh]), {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
-    const limitedHeight = Math.max(pageHeight, window.innerHeight);
+    const limitedHeight = Math.max(pageHeight, vh);
     document.body.style.height = `${limitedHeight}px`;
     return () => {
       document.body.style.height = "";
     };
-  }, [pageHeight, maxScrollDistance]);
+  }, [pageHeight, maxScrollDistance, vh]);
 
   const handleMessageSent = () => {};
 

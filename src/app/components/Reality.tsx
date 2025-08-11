@@ -50,10 +50,10 @@ export default function Reality() {
           ))}
         </motion.div>
         <div className="flex flex-col items-center px-6 gap-8 text-white text-center">
-          <h1 className="text-[64px] font-semibold max-sm:text-[40px]">
+          <h1 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
             What you expect vs what you get
           </h1>
-          <p className="text-[20px] leading-[1.2] tracking-normal opacity-70 max-sm:text-[20px]">
+          <p className="w-1/2 text-[20px] leading-[1.2] tracking-normal opacity-70 max-[1200px]:w-4/5 max-md:w-full max-sm:text-[20px]">
             Founded in 2018, we’ve helped over 120 clients transform their
             homes, gardens, and interiors through thoughtful, lasting design.
           </p>

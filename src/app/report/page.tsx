@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import Wrapper from "../components/Wrapper";
 import GoodConversions from "../components/report/GoodConversions";
 import BadConversions from "../components/report/BadConversions";
+import BadImpressions from "../components/report/BadImpressions";
 import { Button } from "@/components/ui/button";
 
 export default function Page() {
@@ -33,14 +34,17 @@ export default function Page() {
 
     if (storedData) {
       const parsedData = JSON.parse(storedData);
+
       setData({
         reach: parsedData.reach || 0,
         messages: parsedData.messages || 0,
         price: parsedData.price || 0,
       });
 
-      if (parsedData.messages !== 0) {
+      if (parsedData.reach > 0 && parsedData.messages >= 0) {
         setConversionRate((parsedData.messages / parsedData.reach) * 100);
+      } else {
+        setConversionRate(0);
       }
 
       setCurrentRevenue(parsedData.price * parsedData.messages);
@@ -126,7 +130,7 @@ export default function Page() {
                   <div className="flex justify-between flex-wrap gap-16">
                     <div className="flex flex-col gap-4">
                       <p className="text-[80px] font-semibold">
-                        {Number(data.reach.toFixed(0)).toLocaleString()}
+                        {Number(data.reach).toFixed(0).toLocaleString()}
                       </p>
                       <h3 className="text-[20x] text-[#999999] leading-[1.2] tracking-normal">
                         Impressions
@@ -134,7 +138,7 @@ export default function Page() {
                     </div>
                     <div className="flex flex-col gap-4">
                       <p className="text-[80px] font-semibold">
-                        {Number(data.messages.toFixed(0)).toLocaleString()}
+                        {Number(data.messages).toFixed(0).toLocaleString()}
                       </p>
                       <h3 className="text-[20x] text-[#999999] leading-[1.2] tracking-normal">
                         Weekly messages
@@ -142,7 +146,7 @@ export default function Page() {
                     </div>
                     <div className="flex flex-col gap-4">
                       <p className="text-[80px] font-semibold">
-                        ${Number(data.price.toFixed(0)).toLocaleString()}
+                        ${Number(data.price).toFixed(0).toLocaleString()}
                       </p>
                       <h3 className="text-[20x] text-[#999999] leading-[1.2] tracking-normal">
                         Average cost
@@ -158,7 +162,8 @@ export default function Page() {
                   </p>
                 </div>
               </div>
-              {conversionRate >= 3 && <GoodConversions />}
+              {conversionRate >= 3 && <BadImpressions currentRevenue={currentRevenue} possibleRevenue={possibleRevenue} />}
+              {conversionRate >= 3 && <GoodConversions possibleRevenue={possibleRevenue} />}
               {conversionRate < 3 && (
                 <BadConversions
                   currentRevenue={currentRevenue}

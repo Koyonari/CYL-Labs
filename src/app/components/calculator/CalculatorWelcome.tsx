@@ -4,12 +4,9 @@ export default function CalculatorWelcome({ setSection }: { setSection: any }) {
   return (
     <div className="h-full max-h-[500px] flex flex-col flex-grow justify-between py-8 overflow-hidden">
       <div className="flex flex-col gap-8">
-        <div className="text-[64px] text-white font-semibold">
-          <h1>You're leaving money on the table.</h1>
-          <h1 className="text-[#999999]">
-            Every click that bounces is lost revenue.
-          </h1>
-        </div>
+        <h1 className="text-[64px] text-white font-semibold">
+          No Website? Customers Are Choosing Someone Else
+        </h1>
         <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
           See how many leads and sales you're missing — and what it's costing
           you.

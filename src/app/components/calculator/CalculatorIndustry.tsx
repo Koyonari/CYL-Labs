@@ -18,15 +18,11 @@ export default function CalculatorIndustry({
     return (
       <div className="h-full max-h-[500px] flex flex-col flex-grow justify-between py-8 overflow-hidden">
         <div className="flex flex-col gap-6">
-          <div className="text-[64px] text-white font-semibold">
-            <h1>What industry are you in?</h1>
-            <h1 className="text-[#999999]">
-              We’ll tailor the results to your field.
-            </h1>
-          </div>
+          <h1 className="text-[64px] text-white font-semibold">
+            What Industry Are You In?
+          </h1>
           <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-            Pick the industry that best fits your business — we’ll use it to
-            give more accurate.
+            Choose the closest match so your report is accurate.
           </p>
         </div>
         <div className="flex flex-col gap-4">

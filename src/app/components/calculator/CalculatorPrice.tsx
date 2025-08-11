@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function CalculatorPrice({
   reach,
@@ -16,20 +16,23 @@ export default function CalculatorPrice({
   const router = useRouter();
 
   function handleSubmit() {
-    localStorage.setItem("data", JSON.stringify({ reach, messages, price }));
-    router.push("/report");
+    if (String(price) !== "" && Number(price) >= 0) {
+      localStorage.setItem("data", JSON.stringify({ reach, messages, price }));
+      router.push("/report");
+    } else {
+      toast.error("Please enter a number into the field.");
+    }
   }
 
   return (
     <div className="h-full max-h-[500px] flex flex-col flex-grow justify-between py-8 overflow-hidden">
       <div className="flex flex-col gap-8">
-        <div className="text-[64px] text-white font-semibold">
-          <h1>How much do you charge?</h1>
-          <h1 className="text-[#999999]">What is each customer is worth?</h1>
-        </div>
+        <h1 className="text-[64px] text-white font-semibold">
+          How Much Is Each Customer Worth?
+        </h1>
         <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-          We’ll use this to estimate how much potential revenue your leads could
-          bring in.
+          We’ll use this to estimate the revenue your missed leads could be
+          bringing in.
         </p>
       </div>
       <div className="flex flex-col gap-4">
@@ -39,11 +42,14 @@ export default function CalculatorPrice({
         <input
           className="text-[64px] text-[#FEF1E1] font-semibold placeholder-[#999999] focus:outline-none"
           type="number"
+          min="0"
           value={price}
           placeholder="Enter your average sale value e.g. 250"
           onChange={(e) => {
             const value = e.target.value;
-            setPrice(value === "" ? "" : Number(value));
+            if (value === "" || Number(value) >= 0) {
+              setPrice(value);
+            }
           }}
         />
       </div>

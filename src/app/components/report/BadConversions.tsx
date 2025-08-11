@@ -12,7 +12,7 @@ export default function BadConversions({
           What if we introduced a website?{" "}
           <span className="text-[#999999]">
             Another platform to{" "}
-            <span className="text-[#FD5001]">increase conversions.</span>
+            <span className="text-[#FD5001]">increase conversions</span>.
           </span>
         </h2>
         <p className="w-1/5 text-[20px] text-[#999999] text-right leading-[1.2] tracking-normal max-[1200px]:w-4/5 max-[1200px]:items-start max-[1200px]:text-left max-md:w-full">
@@ -20,10 +20,10 @@ export default function BadConversions({
           shows what you're missing — and how to fix it.
         </p>
       </div>
-      <p className="text-[48px] font-semibold max-sm:text-[40px]">
+      <p className="w-1/2 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
         With an average conversion rate of 3%.
       </p>
-      <div className="flex flex-col gap-8 text-[48px] font-semibold max-sm:text-[40px]">
+      <div className="w-1/2 flex flex-col gap-8 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
         <p>
           Current revenue: ${Number(currentRevenue.toFixed(0)).toLocaleString()}
         </p>
@@ -32,7 +32,7 @@ export default function BadConversions({
           {Number(possibleRevenue.toFixed(0)).toLocaleString()}
         </p>
       </div>
-      <p className="text-[48px] font-semibold max-sm:text-[40px]">
+      <p className="w-1/2 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
         That's{" "}
         <span className="text-[#FD5001]">
           $
@@ -40,7 +40,7 @@ export default function BadConversions({
             (possibleRevenue - currentRevenue).toFixed(0)
           ).toLocaleString()}
         </span>{" "}
-        dollars left on the table.
+        dollars left on the table every month.
       </p>
     </div>
   );
