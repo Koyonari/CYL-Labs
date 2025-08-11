@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import Hero from "./components/hero";
-import Reality from "./components/Reality";
-import UVPs from "./components/UVPs";
-import Quiz from "./components/Quiz";
-import Mamiko from "./components/Mamiko";
-import FamilyMookata from "./components/FamilyMookata";
-import Contact from "./components/contact";
+import Hero from "./components/home/Hero";
+import Reality from "./components/home/Reality";
+import UVPs from "./components/home/UVPs";
+import Quiz from "./components/home/Quiz";
+import Mamiko from "./components/home/Mamiko";
+import FamilyMookata from "./components/home/FamilyMookata";
+import Contact from "./components/home/contact";
 import Footer from "./components/footer";
 import Wrapper from "./components/Wrapper";
 
@@ -37,7 +37,6 @@ export default function Home() {
         const totalHeight = containerRef.current.scrollHeight;
         setPageHeight(totalHeight);
 
-        console.log(initialVh);
         const footerSectionHeight = initialVh * 2;
         const maxScroll = totalHeight - footerSectionHeight - 200;
         setMaxScrollDistance(maxScroll);

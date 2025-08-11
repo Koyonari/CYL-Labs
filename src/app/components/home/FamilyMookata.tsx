@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Wrapper from "./Wrapper";
+import Wrapper from "../Wrapper";
 
 export default function FamilyMookata() {
   return (
@@ -7,7 +7,12 @@ export default function FamilyMookata() {
       <Wrapper className="w-full h-screen !py-16">
         <div className="w-full h-full flex justify-between gap-10 max-[1200px]:flex-col max-[1200px]:justify-normal">
           <div className="w-3/4 h-full relative max-[1200px]:w-full max-[1200px]:h-1/2">
-            <Image className="object-cover" src="/abstract-desk.png" alt="" fill />
+            <Image
+              className="object-cover"
+              src="/abstract-desk.png"
+              alt=""
+              fill
+            />
           </div>
           <div className="w-1/4 flex flex-col justify-center gap-5 text-white text-right max-[1200px]:w-full max-[1200px]:text-left">
             <h1 className="text-[64px] font-semibold max-sm:text-[40px]">
