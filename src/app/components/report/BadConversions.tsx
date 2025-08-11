@@ -9,15 +9,14 @@ export default function BadConversions({
     <div className="flex flex-col gap-16">
       <div className="flex justify-between gap-8 max-[1200px]:flex-col">
         <h2 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-          What if we introduced a website?{" "}
+        People are visiting. They are not buying.{" "}
           <span className="text-[#999999]">
-            Another platform to{" "}
-            <span className="text-[#FD5001]">increase conversions</span>.
+          A trust-first website {" "}
+            <span className="text-[#FD5001]">gives them a clear next step.</span>
           </span>
         </h2>
         <p className="w-1/5 text-[20px] text-[#999999] text-right leading-[1.2] tracking-normal max-[1200px]:w-4/5 max-[1200px]:items-start max-[1200px]:text-left max-md:w-full">
-          Most websites look fine but lose trust and sales. This quick ROI check
-          shows what you&apos;re missing — and how to fix it.
+        You have the audience. Now it&apos;s time to turn them into paying customers.
         </p>
       </div>
       <p className="w-1/2 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">

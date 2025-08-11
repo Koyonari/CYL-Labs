@@ -130,11 +130,10 @@ export default function Page() {
               <div className="flex justify-between gap-16 max-[1200px]:flex-col">
                 <div className="w-1/4 flex flex-col gap-8 max-[1200px]:w-1/2 max-md:w-full">
                   <h2 className="text-[64px] font-semibold max-[1200px]:text-[48px] max-sm:text-[40px]">
-                    Highlights
+                    How You’re Performing
                   </h2>
                   <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-                    Where insight meets execution, and strategy drives results.
-                    This is how we differ from other teams.
+                    Your key website metrics, updated from real data.
                   </p>
                 </div>
                 <div className="w-3/5 flex flex-col gap-16 max-[1200px]:w-3/4">
@@ -192,20 +191,24 @@ export default function Page() {
               <div className="flex justify-between">
                 <div className="flex flex-col gap-8">
                   <h2 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-                    Want to find out how to{" "}
-                    <span className="text-[#FD5001]">fix</span> the leak?{" "}
-                    <span className="text-[#999999]">
-                      Before it&apos;s too late.
-                    </span>
+                    Plug the leak now. Keep the revenue.
                   </h2>
+
                   <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-                    Anyone can build a website, but can they build you a
-                    solution?
+                    You are leaving{" "}
+                    <span className="text-[#FD5001]">
+                      $
+                      {Number(
+                        (possibleRevenue - currentRevenue).toFixed(0)
+                      ).toLocaleString()}
+                    </span>{" "}
+                    every month. We will show you how to keep it.
                   </p>
+
                   <Button className="w-fit h-fit bg-[#FD5001] rounded-full !px-8 !py-4 text-[20px] text-white font-semibold">
-                    Book a consult
+                    Get My Revenue Plan
                     <svg
-                      className="min-w-6 min-h-6"
+                      className="min-w-6 min-h-6 ml-2"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
