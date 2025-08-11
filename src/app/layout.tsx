@@ -1,7 +1,6 @@
 "use client";
 import { DM_Sans } from "next/font/google";
-import { useState, useEffect } from "react";
-import Preloader from "./components/preloader";
+// import Preloader from "./components/preloader";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 

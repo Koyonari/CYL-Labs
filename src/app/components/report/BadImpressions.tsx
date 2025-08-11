@@ -23,7 +23,7 @@ export default function BadImpressions({
         </h2>
         <p className="w-1/5 text-[20px] text-[#999999] text-right leading-[1.2] tracking-normal max-[1200px]:w-4/5 max-[1200px]:items-start max-[1200px]:text-left max-md:w-full">
           Most websites look fine but lose trust and sales. This quick ROI check
-          shows what you're missing — and how to fix it.
+          shows what you&apos;re missing — and how to fix it.
         </p>
       </div>
       <p className="w-1/2 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
@@ -34,8 +34,10 @@ export default function BadImpressions({
       </p>
       <p className="w-1/2 text-[48px] text-[#FD5001] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
         That&apos;s a{" "}
-        {Number(((reach * 5 * 0.03 * price) / (messages * price) * 100).toFixed(0)).toLocaleString()}%
-        increase in revenue.
+        {Number(
+          (((reach * 5 * 0.03 * price) / (messages * price)) * 100).toFixed(0)
+        ).toLocaleString()}
+        % increase in revenue.
       </p>
     </div>
   );

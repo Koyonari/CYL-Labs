@@ -13,8 +13,8 @@ import CalculatorPrice from "../components/calculator/CalculatorPrice";
 export default function Page() {
   const [section, setSection] = useState("welcome");
   const [reach, setReach] = useState("");
-  const [messages, setMessages] = useState("")
-  const [industry, setIndustry] = useState("")
+  const [messages, setMessages] = useState("");
+  const [industry, setIndustry] = useState("");
   const [price, setPrice] = useState("");
 
   return (
@@ -26,14 +26,36 @@ export default function Page() {
           {section === "welcome" && (
             <CalculatorWelcome setSection={setSection} />
           )}
-          {section === "reach" && <CalculatorReach reach={reach} setSection={setSection} setReach={setReach} />}
+          {section === "reach" && (
+            <CalculatorReach
+              reach={reach}
+              setSection={setSection}
+              setReach={(value) => setReach(String(value))}
+            />
+          )}
           {section === "messages" && (
-            <CalculatorMessages reach={reach} messages={messages} setSection={setSection} setMessages={setMessages} />
+            <CalculatorMessages
+              reach={reach}
+              messages={messages}
+              setSection={setSection}
+              setMessages={(value) => setMessages(String(value))}
+            />
           )}
           {section === "industry" && (
-            <CalculatorIndustry industry={industry} setSection={setSection} setIndustry={setIndustry} />
+            <CalculatorIndustry
+              industry={industry}
+              setSection={setSection}
+              setIndustry={setIndustry}
+            />
           )}
-          {section === "price" && <CalculatorPrice reach={reach} messages={messages} price={price} setPrice={setPrice} />}
+          {section === "price" && (
+            <CalculatorPrice
+              reach={reach}
+              messages={messages}
+              price={price}
+              setPrice={(value: string | number) => setPrice(String(value))}
+            />
+          )}
         </div>
       </Wrapper>
     </div>
