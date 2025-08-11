@@ -27,7 +27,9 @@ export default function Home() {
   });
 
   useEffect(() => {
-    const initialVh = window.visualViewport.height;
+    const initialVh = window.visualViewport
+      ? window.visualViewport.height
+      : window.innerHeight;
     setVh(initialVh);
 
     const calculateHeight = () => {
