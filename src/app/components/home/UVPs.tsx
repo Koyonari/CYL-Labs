@@ -51,16 +51,10 @@ export default function UVPs() {
       <div className="flex flex-col gap-16" ref={containerRef}>
         <div className="flex flex-col gap-8 max-sm:gap-5">
           <h1 className="w-1/2 text-[64px] text-[#020202] font-semibold max-[1200px]:w-4/5 max-sm:w-full max-sm:text-[40px]">
-            Who we work with.{" "}
-            <span className="text-[#999999] font-semibold">
-              Our clients share one thing:{" "}
-              <span className="text-[#FD5001] font-semibold">
-                high standards
-              </span>
-            </span>
+          Why we beat your other options
           </h1>
           <p className="text-[20px] text-[#999999] opacity-90 leading-[1.2] tracking-normal max-sm:text-[20px]">
-            Here are just a few of the businesses we’re proud to work with.
+          Built to win against DIY, freelancers, and template shops.
           </p>
         </div>
         <div className="h-full flex flex-col gap-2">
@@ -78,10 +72,10 @@ export default function UVPs() {
                   }}
                 ></div>
                 <h2 className="text-[32px] font-semibold relative z-10">
-                  Customisable websites
+                Update it yourself in minutes
                 </h2>
                 <p className="text-[20px] leading-[1.2] tracking-normal relative z-10">
-                  Fully customisable, DIY content.
+                Simple CMS. Change pages, prices, and photos without calling a developer.
                 </p>
               </div>
             </div>
@@ -94,13 +88,10 @@ export default function UVPs() {
             >
               <div className="h-full flex flex-col justify-between text-white leading-[1.1]">
                 <h2 className="text-[32px] font-semibold z-10">
-                  Quality over <br />
-                  quantity, always
+                No juniors. No handoffs.
                 </h2>
                 <p className="text-[20px] text-right leading-[1.2] tracking-normal z-20">
-                  We focus on fewer <br />
-                  projects to deliver better <br />
-                  outcomes.
+                No relays, no interns. <br /> One expert team  owns <br /> the whole build.
                 </p>
               </div>
               <motion.div
@@ -124,11 +115,10 @@ export default function UVPs() {
               ></div>
               <div className="flex flex-col gap-4 text-white relative z-10">
                 <h2 className="text-[32px] font-semibold">
-                  One up your competitors
+                Beat your competitors
                 </h2>
                 <p className="text-[20px] leading-[1.2] tracking-normal">
-                  Send us your competitors&apos; sites, we&apos;ll make you one
-                  better than theirs
+                Send us their sites. We design yours to win head to head.
                 </p>
               </div>
             </div>

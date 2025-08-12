@@ -59,8 +59,7 @@ export default function Mamiko() {
               Mamiko
             </h1>
             <p className="text-[20px] leading-[1.2] tracking-normal opacity-70 max-sm:text-[20px]">
-              Naming, strategy, and identity for a boutique architecture firm
-              emphasizing simplicity, landscape, and form.
+            Ecommerce launch with 150+ products, Stripe checkout live, and mobile-first performance. Clean product database and tracking installed.
             </p>
           </div>
         </motion.div>
