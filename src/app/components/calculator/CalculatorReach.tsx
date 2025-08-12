@@ -71,7 +71,7 @@ export default function CalculatorReach({
         }}
       >
         <Button
-          className="w-fit h-fit bg-white rounded-full !px-8 !py-4 text-[20px] font-semibold"
+          className="w-fit cursor-pointer h-fit bg-white rounded-full !px-8 !py-4 text-[20px] font-semibold"
           onClick={handleSubmit}
         >
           Read it for yourself
