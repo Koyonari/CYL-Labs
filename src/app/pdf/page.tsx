@@ -13,7 +13,9 @@ export default function Page() {
   const [pageHeight, setPageHeight] = useState(0);
   const [maxScrollDistance, setMaxScrollDistance] = useState(0);
   const [vh, setVh] = useState(0);
+  const { scrollY } = useScroll();
   const { scrollYProgress } = useScroll();
+
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -52,7 +54,6 @@ export default function Page() {
     [0, -Math.min(maxScrollDistance, pageHeight - vh)]
   );
 
-  const { scrollY } = useScroll();
   const highlightsTop = useSpring(useTransform(scrollY, [0, 1000], [0, -200]), {
     stiffness: 100,
     damping: 30,
@@ -66,6 +67,130 @@ export default function Page() {
       document.body.style.height = "";
     };
   }, [pageHeight, maxScrollDistance, vh]);
+
+  const [mobileContainerStart, setMobileContainerStart] = useState(0);
+  const [vw, setVw] = useState(0);
+  const mobileContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setVw(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    if (mobileContainerRef.current) {
+      setMobileContainerStart(
+        mobileContainerRef.current.getBoundingClientRect().top +
+          window.innerHeight -
+          200
+      );
+    }
+  }, [mobileContainerRef.current]);
+
+  const card1X = useSpring(
+    useTransform(
+      scrollY,
+      [mobileContainerStart - window.innerHeight * 0.5, mobileContainerStart],
+      [0, vw]
+    ),
+    {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }
+  );
+
+  const card2Rotate = useSpring(
+    useTransform(
+      scrollY,
+      [mobileContainerStart, mobileContainerStart + window.innerHeight * 0.5],
+      [10, 0]
+    ),
+    {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }
+  );
+
+  const card2X = useSpring(
+    useTransform(
+      scrollY,
+      [
+        mobileContainerStart + window.innerHeight * 0.5,
+        mobileContainerStart + window.innerHeight,
+      ],
+      [0, vw]
+    ),
+    {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }
+  );
+
+  const card3Rotate = useSpring(
+    useTransform(
+      scrollY,
+      [
+        mobileContainerStart + window.innerHeight,
+        mobileContainerStart + window.innerHeight * 1.5,
+      ],
+      [-10, 0]
+    ),
+    {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }
+  );
+
+  const card3X = useSpring(
+    useTransform(
+      scrollY,
+      [
+        mobileContainerStart + window.innerHeight * 1.5,
+        mobileContainerStart + window.innerHeight * 2,
+      ],
+      [0, vw]
+    ),
+    {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }
+  );
+
+  const card4Rotate = useSpring(
+    useTransform(
+      scrollY,
+      [
+        mobileContainerStart + window.innerHeight * 2,
+        mobileContainerStart + window.innerHeight * 2.5,
+      ],
+      [15, 0]
+    ),
+    {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }
+  );
+
+  const card4X = useSpring(
+    useTransform(
+      scrollY,
+      [
+        mobileContainerStart + window.innerHeight * 2.5,
+        mobileContainerStart + window.innerHeight * 3,
+      ],
+      [0, vw]
+    ),
+    {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }
+  );
 
   return (
     <div className="fixed top-0 left-0 w-full h-full overflow-hidden">
@@ -114,8 +239,8 @@ export default function Page() {
             style={{ top: highlightsTop }}
             ref={highlightsRef}
           >
-            <Wrapper className="flex flex-col !gap-48">
-              <div className="flex flex-col justify-between gap-16 max-[1200px]:flex-col">
+            <Wrapper className="flex flex-col !gap-48 max-sm:!gap-32">
+              <div className="flex flex-col justify-between gap-16 max-[1200px]:flex-col max-sm:gap-0">
                 <div className="flex flex-col gap-8 max-[1200px]:w-1/2 max-md:w-full">
                   <h2 className="text-[64px] font-semibold max-[1200px]:text-[48px] max-sm:text-[40px]">
                     What&apos;s Inside the Free Guide
@@ -125,7 +250,7 @@ export default function Page() {
                     back in your business.
                   </p>
                 </div>
-                <div className="grid grid-cols-3 gap-2 max-[1200px]:grid-cols-2 max-md:grid-cols-1">
+                <div className="grid grid-cols-3 gap-2 max-[1200px]:grid-cols-2 max-md:grid-cols-1 max-sm:hidden">
                   <div
                     className="flex flex-col justify-start bg-cover bg-center aspect-square p-10 max-[1200px]:p-8 max-md:p-6 max-md:h-[340px] max-md:bg-[position:0%_70%] max-md:aspect-auto"
                     style={{ backgroundImage: "url('/money.png')" }}
@@ -144,15 +269,6 @@ export default function Page() {
                     </h3>
                   </div>
                   <div
-                    className="flex flex-col justify-start bg-cover bg-top aspect-square p-10 max-[1200px]:p-8 max-md:p-6 max-md:h-[340px] max-md:bg-[position:0%_20%] max-md:aspect-auto"
-                    style={{ backgroundImage: "url('/clock.png')" }}
-                  >
-                    <h3 className="text-[24px] font-semibold">
-                      The fastest way to get a trust-building site live without
-                      wasting time or money
-                    </h3>
-                  </div>
-                  <div
                     className="flex flex-col justify-start bg-cover bg-top blur-lg aspect-square p-10 max-[1200px]:p-8 max-md:p-6 max-md:h-[340px] max-md:aspect-auto"
                     style={{ backgroundImage: "url('/clock.png')" }}
                   >
@@ -161,12 +277,82 @@ export default function Page() {
                       wasting time or money
                     </h3>
                   </div>
-                  <div className="col-span-2 p-10 max-[1200px]:col-span-full max-[1200px]:px-0">
+                  <div className="col-span-2 pt-16 max-[1200px]:col-span-full max-[1200px]:px-0">
                     <p className="w-3/4 text-[48px] font-semibold max-md:w-full max-sm:text-[40px]">
                       Unlock this and{" "}
                       <span className="text-[#FD5001]">8 other causes</span> in
                       the guide
                     </p>
+                  </div>
+                </div>
+                <div className="min-h-[300vh] relative">
+                  <div
+                    className="h-fit flex flex-col sticky pt-24 gap-24 top-0 sm:hidden"
+                    ref={mobileContainerRef}
+                  >
+                    <div className="flex justify-center">
+                      <div className="w-[90%] relative aspect-square">
+                        <motion.div
+                          className="w-full h-full absolute z-40"
+                          style={{
+                            x: card1X,
+                          }}
+                        >
+                          <div
+                            className="flex flex-col justify-start bg-cover bg-center aspect-square p-10 max-[1200px]:p-8 max-md:p-6 max-md:h-[340px] max-md:bg-[position:0%_70%] max-md:aspect-auto"
+                            style={{ backgroundImage: "url('/money.png')" }}
+                          >
+                            <h3 className="text-[24px] font-semibold">
+                              Spot the silent sales leaks draining your business
+                              every month
+                            </h3>
+                          </div>
+                        </motion.div>
+                        <motion.div
+                          className="w-full h-full absolute z-30"
+                          style={{
+                            x: card2X,
+                            rotate: card2Rotate,
+                          }}
+                        >
+                          <div
+                            className="flex flex-col justify-start bg-cover bg-top aspect-square p-10 max-[1200px]:p-8 max-md:p-6 max-md:h-[340px] max-md:bg-center max-md:aspect-auto"
+                            style={{
+                              backgroundImage: "url('/competitors.png')",
+                            }}
+                          >
+                            <h3 className="text-[24px] font-semibold">
+                              Why cheap or DIY sites make customers click away
+                              instantly
+                            </h3>
+                          </div>
+                        </motion.div>
+                        <motion.div
+                          className="w-full h-full absolute z-20"
+                          style={{
+                            x: card3X,
+                            rotate: card3Rotate,
+                          }}
+                        >
+                          <div
+                            className="flex flex-col justify-start bg-cover bg-top blur-lg aspect-square p-10 max-[1200px]:p-8 max-md:p-6 max-md:h-[340px] max-md:aspect-auto"
+                            style={{ backgroundImage: "url('/clock.png')" }}
+                          >
+                            <h3 className="text-[24px] font-semibold">
+                              The fastest way to get a trust-building site live
+                              without wasting time or money
+                            </h3>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-8 max-sm:gap-5">
+                      <p className="w-full text-[48px] font-semibold max-sm:text-[40px]">
+                        Unlock this and{" "}
+                        <span className="text-[#FD5001]">8 other causes</span>{" "}
+                        in the guide
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -232,7 +418,7 @@ export default function Page() {
                     </svg>
                   </Button>
                 </div>
-                <div className="w-full relative aspect-2/1 max-sm:aspect-1/2">
+                <div className="w-full relative aspect-2/1 max-sm:aspect-square">
                   <Image
                     className="object-cover"
                     src="/phone.png"

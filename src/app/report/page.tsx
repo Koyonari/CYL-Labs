@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Wrapper from "../components/Wrapper";
@@ -107,7 +108,7 @@ export default function Page() {
         <div className="relative" ref={containerRef}>
           <div
             className="h-screen flex justify-center bg-cover bg-center relative"
-            style={{ backgroundImage: "url('/abstract-desk.png')" }}
+            style={{ backgroundImage: "url('/funnel-report.png')" }}
           >
             <Wrapper className="w-screen h-full flex flex-col justify-between relative !pt-0 z-10">
               <Navbar />
@@ -126,13 +127,16 @@ export default function Page() {
             style={{ top: highlightsTop }}
             ref={highlightsRef}
           >
-            <Wrapper className="flex flex-col !gap-64 max-[1200px]:flex-col">
+            <Wrapper
+              className="flex flex-col bg-cover !gap-48 max-[1200px]:flex-col"
+              style={{ backgroundImage: "url('/gradient-3.png')" }}
+            >
               <div className="flex justify-between gap-16 max-[1200px]:flex-col">
                 <div className="w-1/4 flex flex-col gap-8 max-[1200px]:w-1/2 max-md:w-full">
                   <h2 className="text-[64px] font-semibold max-[1200px]:text-[48px] max-sm:text-[40px]">
                     How You’re Performing
                   </h2>
-                  <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
+                  <p className="opacity-70 text-[20px] leading-[1.2] tracking-normal">
                     Your key website metrics, updated from real data.
                   </p>
                 </div>
@@ -142,7 +146,7 @@ export default function Page() {
                       <p className="text-[80px] font-semibold">
                         {Number(data.reach).toFixed(0).toLocaleString()}
                       </p>
-                      <h3 className="text-[20x] text-[#999999] leading-[1.2] tracking-normal">
+                      <h3 className="opacity-70 text-[20x] leading-[1.2] tracking-normal">
                         Impressions
                       </h3>
                     </div>
@@ -150,7 +154,7 @@ export default function Page() {
                       <p className="text-[80px] font-semibold">
                         {Number(data.messages).toFixed(0).toLocaleString()}
                       </p>
-                      <h3 className="text-[20x] text-[#999999] leading-[1.2] tracking-normal">
+                      <h3 className="opacity-70 text-[20x] leading-[1.2] tracking-normal">
                         Weekly messages
                       </h3>
                     </div>
@@ -158,7 +162,7 @@ export default function Page() {
                       <p className="text-[80px] font-semibold">
                         ${Number(data.price).toFixed(0).toLocaleString()}
                       </p>
-                      <h3 className="text-[20x] text-[#999999] leading-[1.2] tracking-normal">
+                      <h3 className="opacity-70 text-[20x] leading-[1.2] tracking-normal">
                         Average cost
                       </h3>
                     </div>
@@ -188,27 +192,20 @@ export default function Page() {
                   possibleRevenue={possibleRevenue}
                 />
               )}
-              <div className="flex justify-between">
-                <div className="flex flex-col gap-8">
-                  <h2 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
+              <div className="flex flex-col gap-16">
+                <div className="w-full flex flex-col gap-8">
+                  <h1 className="text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
                     Plug the leak now. Keep the revenue.
-                  </h2>
-
-                  <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
+                  </h1>
+                  <p className="opacity-70 text-[20px] leading-[1.2] tracking-normal">
                     You are leaving{" "}
-                    <span className="text-[#FD5001]">
-                      $
-                      {Number(
-                        (possibleRevenue - currentRevenue).toFixed(0)
-                      ).toLocaleString()}
-                    </span>{" "}
-                    every month. We will show you how to keep it.
+                    <span className="text-[#FD5001]">money</span> behind every
+                    month. We will show you how to keep it.
                   </p>
-
                   <Button className="w-fit h-fit bg-[#FD5001] rounded-full !px-8 !py-4 text-[20px] text-white font-semibold">
-                    Get My Revenue Plan
+                    Get your revenue plan
                     <svg
-                      className="min-w-6 min-h-6 ml-2"
+                      className="min-w-6 min-h-6"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
@@ -224,6 +221,14 @@ export default function Page() {
                       />
                     </svg>
                   </Button>
+                </div>
+                <div className="w-full relative aspect-2/1 max-sm:aspect-square">
+                  <Image
+                    className="object-cover"
+                    src="/money.png"
+                    alt=""
+                    fill
+                  />
                 </div>
               </div>
             </Wrapper>

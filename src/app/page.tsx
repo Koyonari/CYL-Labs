@@ -99,7 +99,7 @@ export default function Home() {
             >
               <Reality />
               <motion.div
-                className="relative bg-white z-10"
+                className="flex flex-col relative bg-white z-10"
                 style={{ top: uvpY }}
               >
                 <UVPs />

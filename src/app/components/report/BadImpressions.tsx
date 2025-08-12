@@ -18,7 +18,8 @@ export default function BadImpressions({
           We can show your business to 5x more people.
         </h2>
         <p className="w-1/5 text-[20px] text-[#999999] text-right leading-[1.2] tracking-normal max-[1200px]:w-4/5 max-[1200px]:text-left max-md:w-full">
-          Right now, most people don’t know you exist. That means fewer clicks, calls, and sales.
+          Right now, most people don’t know you exist. That means fewer clicks,
+          calls, and sales.
         </p>
       </div>
       <p className="w-1/2 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">

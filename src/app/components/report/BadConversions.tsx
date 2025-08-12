@@ -9,14 +9,12 @@ export default function BadConversions({
     <div className="flex flex-col gap-16">
       <div className="flex justify-between gap-8 max-[1200px]:flex-col">
         <h2 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-        People are visiting. They are not buying.{" "}
-          <span className="text-[#999999]">
-          A trust-first website {" "}
-            <span className="text-[#FD5001]">gives them a clear next step.</span>
-          </span>
+          People are visiting. They are not buying. A trust-first website{" "}
+          <span className="text-[#FD5001]">gives them a clear next step.</span>
         </h2>
-        <p className="w-1/5 text-[20px] text-[#999999] text-right leading-[1.2] tracking-normal max-[1200px]:w-4/5 max-[1200px]:items-start max-[1200px]:text-left max-md:w-full">
-        You have the audience. Now it&apos;s time to turn them into paying customers.
+        <p className="w-1/5 opacity-70  text-[20px] text-right leading-[1.2] tracking-normal max-[1200px]:w-4/5 max-[1200px]:items-start max-[1200px]:text-left max-md:w-full">
+          You have the audience. Now it&apos;s time to turn them into paying
+          customers.
         </p>
       </div>
       <p className="w-1/2 text-[48px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
