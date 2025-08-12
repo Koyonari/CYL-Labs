@@ -19,8 +19,7 @@ export default function FamilyMookata() {
               Family Mookata
             </h1>
             <p className="text-[20px] leading-[1.2] tracking-normal opacity-70 max-sm:text-[20px]">
-              Naming, strategy, and identity for a boutique architecture firm
-              emphasizing simplicity, landscape, and form.
+            Restaurant site that loads fast and removes friction. Menu UX simplified, hours and locations upfront, reviews visible. $12k in sales kept in the first month.
             </p>
           </div>
         </div>

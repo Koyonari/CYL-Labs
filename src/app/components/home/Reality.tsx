@@ -63,18 +63,17 @@ export default function Reality() {
         </div>
         <div className="flex flex-col items-center px-6 gap-8 text-white text-center">
           <h1 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
-            What you expect vs what you get
+          What You Expect vs What You Get
           </h1>
           <p className="w-1/2 text-[20px] leading-[1.2] tracking-normal opacity-70 max-[1200px]:w-4/5 max-md:w-full max-sm:text-[20px]">
-            Founded in 2018, we’ve helped over 120 clients transform their
-            homes, gardens, and interiors through thoughtful, lasting design.
+          Most websites quietly lose thousands every year. In this free guide, we show the biggest mistakes costing business owners sales and exactly how to fix them.
           </p>
           <Button
             asChild
             className="w-fit h-fit bg-[#FD5001] rounded-full !px-8 !py-4 text-[20px] text-white font-semibold"
           >
             <Link href="/pdf">
-              See the full story
+              Get the Free Guide
               <svg
                 className="min-w-6 min-h-6"
                 xmlns="http://www.w3.org/2000/svg"
