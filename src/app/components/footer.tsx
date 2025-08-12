@@ -1,6 +1,6 @@
 "use client";
 
-import { Instagram } from "lucide-react";
+import { Instagram, Facebook } from "lucide-react";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import {
@@ -133,11 +133,11 @@ export default function Footer() {
   const footerSections = [
     {
       title: "Home",
-      items: ["Services", "Why Us?", "Exposure", "Contact Us", "Highlights"],
+      items: ["What You Get", "Funnel Report"],
     },
     {
       title: "Pricing",
-      items: ["Plans", "Add-ons", "Breakdown"],
+      items: ["Plans", "Add-ons"],
     },
   ];
 
@@ -340,12 +340,31 @@ export default function Footer() {
                 </motion.div>
                 <p>Instagram</p>
               </motion.div>
+<motion.div
+                className="social inter-semibold text-xs flex flex-row gap-2 items-center cursor-pointer"
+                variants={footerItemVariants}
+                whileHover={{
+                  x: 5,
+                  color: "#E8492A",
+                  transition: { duration: 0.2 },
+                }}
+              >
+                <motion.div
+                  whileHover={{
+                    rotate: 15,
+                    transition: { duration: 0.2 },
+                  }}
+                >
+                  <Facebook size={16} />
+                </motion.div>
+                <p>Facebook</p>
+              </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>
 
         {/* Big animated name */}
-        <div className="relative py-32 lg:py-36 xl:py-42 2xl:py-54 text-[60px] sm:text-[80px] md:text-[120px] lg:text-[240px] xl:text-[340px] 2xl:text-[380px] 3xl:text-[460px] leading-[1.19] text-center inter-semibold flex justify-center">
+        <div className="relative py-20 lg:py-24 xl:py-42 2xl:py-54 text-[60px] sm:text-[80px] md:text-[120px] lg:text-[200px] xl:text-[280px] 2xl:text-[360px] 3xl:text-[440px] leading-[1.19] text-center inter-semibold flex justify-center">
           <motion.h1
             className="text-white top-[50%] absolute transform translate-y-[-55%]"
             variants={logoTextVariants}
