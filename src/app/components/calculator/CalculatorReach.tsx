@@ -22,34 +22,13 @@ export default function CalculatorReach({
   return (
     <div className="h-full max-h-[500px] h-full max-h-[500px] flex flex-col flex-grow justify-between py-8">
       <div className="flex flex-col gap-8">
-        <motion.h1
-          className="text-[64px] text-white font-semibold"
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 30,
-            restDelta: 0.001,
-          }}
-        >
+        <h1 className="text-[64px] text-white font-semibold">
           How Many People See You Each Month?
-        </motion.h1>
-        <motion.p
-          className="text-[20px] text-[#999999] leading-[1.2] tracking-normal"
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 30,
-            restDelta: 0.001,
-            delay: 0.2,
-          }}
-        >
-          Just an estimate is fine — we&apos;ll calculate what that could mean
-          in real leads.
-        </motion.p>
+        </h1>
+        <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
+          Give us your best guess. We’ll turn it into the number of leads and
+          sales you could be getting.
+        </p>
       </div>
       <motion.div
         className="flex flex-col gap-4"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Wrapper from "../components/Wrapper";
@@ -78,11 +79,12 @@ export default function Page() {
               <Navbar />
               <div className="flex flex-col items-end gap-8 text-white text-right">
                 <h1 className="w-2/3 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-                Still Don&apos;t Have a Website?
+                  Still Don&apos;t Have a Website?
                 </h1>
                 <div className="w-full flex flex-col items-end gap-8 text-right max-[1200px]:w-4/5 max-md:w-full">
                   <p className="w-1/3 opacity-70 text-[20px] leading-[1.2] tracking-normal max-[1200px]:w-full">
-                  Find out how much that decision is costing you and the simple fix to start winning more customers.
+                    Find out how much that decision is costing you and the
+                    simple fix to start winning more customers.
                   </p>
                   <Button className="w-fit h-fit bg-[#FD5001] rounded-full !px-8 !py-4 text-[20px] text-white font-semibold">
                     Get the free guide
@@ -112,58 +114,102 @@ export default function Page() {
             style={{ top: highlightsTop }}
             ref={highlightsRef}
           >
-            <Wrapper className="flex flex-col !gap-64">
-              <div className="flex justify-between gap-16 max-[1200px]:flex-col">
-                <div className="w-1/4 flex flex-col gap-8 max-[1200px]:w-1/2 max-md:w-full">
+            <Wrapper className="flex flex-col !gap-48">
+              <div className="flex flex-col justify-between gap-16 max-[1200px]:flex-col">
+                <div className="flex flex-col gap-8 max-[1200px]:w-1/2 max-md:w-full">
                   <h2 className="text-[64px] font-semibold max-[1200px]:text-[48px] max-sm:text-[40px]">
-                  What&apos;s Inside the Free Guide
+                    What&apos;s Inside the Free Guide
                   </h2>
                   <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-                  Get the numbers, mistakes, and fixes that can put thousands back in your business.
+                    Get the numbers, mistakes, and fixes that can put thousands
+                    back in your business.
                   </p>
                 </div>
-                <div className="w-3/5 flex flex-col gap-8 max-[1200px]:w-full">
-                  <div className="flex flex-col pb-8 gap-4 border-b-2 border-b-[#EEEEEE]">
+                <div className="grid grid-cols-3 gap-2 max-[1200px]:grid-cols-2 max-md:grid-cols-1">
+                  <div
+                    className="flex flex-col justify-start bg-cover bg-center aspect-square p-10 max-[1200px]:p-8 max-md:p-6 max-md:h-[340px] max-md:bg-[position:0%_70%] max-md:aspect-auto"
+                    style={{ backgroundImage: "url('/money.png')" }}
+                  >
                     <h3 className="text-[24px] font-semibold">
-                    Spot the silent sales leaks draining your business every month
+                      Spot the silent sales leaks draining your business every
+                      month
                     </h3>
                   </div>
-                  <div className="flex flex-col pb-8 gap-4 border-b-2 border-b-[#EEEEEE]">
+                  <div
+                    className="flex flex-col justify-start bg-cover bg-top aspect-square p-10 max-[1200px]:p-8 max-md:p-6 max-md:h-[340px] max-md:bg-center max-md:aspect-auto"
+                    style={{ backgroundImage: "url('/competitors.png')" }}
+                  >
                     <h3 className="text-[24px] font-semibold">
-                    See the exact $ amount you&apos;re losing without a website
+                      Why cheap or DIY sites make customers click away instantly
                     </h3>
                   </div>
-                  <div className="flex flex-col pb-8 gap-4 border-b-2 border-b-[#EEEEEE]">
+                  <div
+                    className="flex flex-col justify-start bg-cover bg-top aspect-square p-10 max-[1200px]:p-8 max-md:p-6 max-md:h-[340px] max-md:bg-[position:0%_20%] max-md:aspect-auto"
+                    style={{ backgroundImage: "url('/clock.png')" }}
+                  >
                     <h3 className="text-[24px] font-semibold">
-                    Why cheap or DIY sites make customers click away instantly
+                      The fastest way to get a trust-building site live without
+                      wasting time or money
                     </h3>
                   </div>
-                  <div className="flex flex-col pb-8 gap-4 border-b-2 border-b-[#EEEEEE]">
+                  <div
+                    className="flex flex-col justify-start bg-cover bg-top blur-lg aspect-square p-10 max-[1200px]:p-8 max-md:p-6 max-md:h-[340px] max-md:aspect-auto"
+                    style={{ backgroundImage: "url('/clock.png')" }}
+                  >
                     <h3 className="text-[24px] font-semibold">
-                    The fastest way to get a trust-building site live without wasting time or money
+                      The fastest way to get a trust-building site live without
+                      wasting time or money
+                    </h3>
+                  </div>
+                  <div className="col-span-2 p-10 max-[1200px]:col-span-full max-[1200px]:px-0">
+                    <p className="w-3/4 text-[48px] font-semibold max-md:w-full max-sm:text-[40px]">
+                      Unlock this and{" "}
+                      <span className="text-[#FD5001]">8 other causes</span> in
+                      the guide
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-between gap-16 max-[1200px]:flex-col">
+                <div className="w-1/2 flex flex-col gap-8 max-[1200px]:w-1/2 max-md:w-full">
+                  <h2 className="text-[64px] font-semibold max-[1200px]:text-[48px] max-sm:text-[40px]">
+                    No website? You&apos;re sending customers to your
+                    competitors.
+                  </h2>
+                  <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
+                    We launched{" "}
+                    <span className="text-[#FD5001]">
+                      Family Mookata&apos;s
+                    </span>{" "}
+                    site — <span className="text-[#FD5001]">600+ clicks</span>{" "}
+                    in <span className="text-[#FD5001]">one month</span>, worth{" "}
+                    <span className="text-[#FD5001]">$12k</span> in sales kept
+                    from competitors.
+                  </p>
+                </div>
+                <div className="w-2/5 flex flex-col items-end gap-16 max-[1200px]:w-3/4 max-[1200px]:items-start">
+                  <div className="flex flex-col items-end gap-4 max-[1200px]:items-start">
+                    <p className="text-[80px] font-semibold">$12,000+</p>
+                    <h3 className="text-[20x] text-[#999999] leading-[1.2] tracking-normal">
+                      Sales
+                    </h3>
+                  </div>
+                  <div className="flex flex-col items-end gap-4 max-[1200px]:items-start">
+                    <p className="text-[80px] font-semibold">600+</p>
+                    <h3 className="text-[20x] text-[#999999] leading-[1.2] tracking-normal">
+                      Clicks
                     </h3>
                   </div>
                 </div>
               </div>
               <div className="flex flex-col gap-16">
-                <div className="flex justify-between gap-8 max-[1200px]:flex-col">
-                  <h1 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-                  No website? You’re sending customers to your competitors.
-                 
-                  </h1>
-                  <p className="w-1/5 text-[20px] text-[#999999] text-right leading-[1.2] tracking-normal max-[1200px]:w-4/5 max-[1200px]:items-start max-[1200px]:text-left max-md:w-full">
-                  We launched Family Mookata’s site — 600+ clicks in month one, worth $12k in sales kept from competitors.
-                  </p>
-                </div>
-
-              </div>
-              <div className="flex justify-between">
-                <div className="flex flex-col gap-8">
-                  <h1 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-                  Stop guessing. {" "}
+                <div className="w-full flex flex-col gap-8">
+                  <h1 className="text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
+                    Stop guessing.{" "}
                     <span className="text-[#999999]">
-                    {" "}
-                    Start winning customers.
+                      {" "}
+                      Start <span className="text-[#FD5001]">winning</span>{" "}
+                      customers.
                     </span>
                   </h1>
                   <Button className="w-fit h-fit bg-[#FD5001] rounded-full !px-8 !py-4 text-[20px] text-white font-semibold">
@@ -185,6 +231,14 @@ export default function Page() {
                       />
                     </svg>
                   </Button>
+                </div>
+                <div className="w-full relative aspect-2/1 max-sm:aspect-1/2">
+                  <Image
+                    className="object-cover"
+                    src="/phone.png"
+                    alt=""
+                    fill
+                  />
                 </div>
               </div>
             </Wrapper>
