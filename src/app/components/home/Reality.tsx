@@ -22,7 +22,7 @@ export default function Reality() {
         <div className="relative overflow-hidden">
           <motion.div
             className="flex gap-4"
-            animate={{ x: "-80%" }}
+            animate={{ x: ["-50%", "0%"] }}
             transition={{
               duration: 20,
               repeat: Infinity,
@@ -31,7 +31,7 @@ export default function Reality() {
           >
             {images.map((image, i) => (
               <div
-                key={i}
+                key={`first-${i}`}
                 className="h-[40vh] bg-cover aspect-3/4"
                 style={{
                   backgroundImage: `url('/${image.src}')`,
@@ -41,7 +41,7 @@ export default function Reality() {
             ))}
             {images.map((image, i) => (
               <div
-                key={i}
+                key={`second-${i}`}
                 className="h-[40vh] bg-cover aspect-3/4"
                 style={{
                   backgroundImage: `url('/${image.src}')`,
@@ -63,10 +63,12 @@ export default function Reality() {
         </div>
         <div className="flex flex-col items-center px-6 gap-8 text-white text-center">
           <h1 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
-          What You Expect vs What You Get
+            What You Expect vs What You Get
           </h1>
           <p className="w-1/2 text-[20px] leading-[1.2] tracking-normal opacity-70 max-[1200px]:w-4/5 max-md:w-full max-sm:text-[20px]">
-          Most websites quietly lose thousands every year. In this free guide, we show the biggest mistakes costing business owners sales and exactly how to fix them.
+            Most websites quietly lose thousands every year. In this free guide,
+            we show the biggest mistakes costing business owners sales and
+            exactly how to fix them.
           </p>
           <Button
             asChild

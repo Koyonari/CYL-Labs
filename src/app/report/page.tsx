@@ -192,7 +192,7 @@ export default function Page() {
                   possibleRevenue={possibleRevenue}
                 />
               )}
-              <div className="flex flex-col gap-16">
+              <div className="flex gap-16">
                 <div className="w-full flex flex-col gap-8">
                   <h1 className="text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
                     Plug the leak now. Keep the revenue.
@@ -222,7 +222,7 @@ export default function Page() {
                     </svg>
                   </Button>
                 </div>
-                <div className="w-full relative aspect-2/1 max-sm:aspect-square">
+                <div className="w-full relative aspect-square">
                   <Image
                     className="object-cover"
                     src="/money.png"

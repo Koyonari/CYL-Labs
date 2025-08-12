@@ -242,12 +242,16 @@ export default function Page() {
             <Wrapper className="flex flex-col !gap-48 max-sm:!gap-32">
               <div className="flex flex-col justify-between gap-16 max-[1200px]:flex-col max-sm:gap-0">
                 <div className="flex flex-col gap-8 max-[1200px]:w-1/2 max-md:w-full">
-                <h2 className="text-[64px] font-semibold max-[1200px]:text-[48px] max-sm:text-[40px]">
-                Free Guide: How We Stopped $12K From Leaving in 30 Days
-                </h2>
-                <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-                Here&apos;s just a small part of what&apos;s inside. The full guide shows every number, mistake, and fix we used so your customers stop choosing someone else.
-                </p>
+                  <h2 className="text-[64px] font-semibold max-[1200px]:text-[48px] max-sm:text-[40px]">
+                    Free guide: how we stopped{" "}
+                    <span className="text-[#FD5001]">$12K</span> from leaving in{" "}
+                    <span className="text-[#FD5001]">30 days</span>
+                  </h2>
+                  <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
+                    Here&apos;s just a small part of what&apos;s inside. The
+                    full guide shows every number, mistake, and fix we used so
+                    your customers stop choosing someone else.
+                  </p>
                 </div>
                 <div className="grid grid-cols-3 gap-2 max-[1200px]:grid-cols-2 max-md:grid-cols-1 max-sm:hidden">
                   <div
@@ -278,14 +282,13 @@ export default function Page() {
                   </div>
                   <div className="col-span-2 pt-16 max-[1200px]:col-span-full max-[1200px]:px-0">
                     <p className="w-3/4 text-[48px] font-semibold max-md:w-full max-sm:text-[40px]">
-                    The   {" "}
-                      <span className="text-[#FD5001]">biggest</span> ones are still hidden
+                      The <span className="text-[#FD5001]">3rd</span> one will shock you, keep scrolling.
                     </p>
                   </div>
                 </div>
-                <div className="min-h-[300vh] relative">
+                <div className="min-h-[300vh] relative sm:hidden">
                   <div
-                    className="h-fit flex flex-col sticky pt-24 gap-24 top-0 sm:hidden"
+                    className="h-fit flex flex-col sticky pt-24 gap-24 top-0"
                     ref={mobileContainerRef}
                   >
                     <div className="flex justify-center">
@@ -355,44 +358,43 @@ export default function Page() {
                 </div>
               </div>
               <div className="flex justify-between gap-16 max-[1200px]:flex-col">
-              <div className="w-1/2 flex flex-col gap-4 max-[1200px]:w-1/2 max-md:w-full">
-  <h2 className="text-[64px] font-semibold max-[1200px]:text-[48px] max-sm:text-[40px]">
-    No website? You&apos;re sending customers to your competitors.
-  </h2>
-  <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-    Here’s an example from one of our clients who turned things around:
-  </p>
-</div>
+                <div className="w-1/2 flex flex-col gap-4 max-[1200px]:w-1/2 max-md:w-full">
+                  <h2 className="text-[64px] font-semibold max-[1200px]:text-[48px] max-sm:text-[40px]">
+                    No website? You&apos;re sending customers to your{" "}
+                    <span className="text-[#FD5001]">competitors</span>.
+                  </h2>
+                  <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
+                    Here&apos;s an example from one of our clients who turned things
+                    around:
+                  </p>
+                </div>
 
-<div className="w-2/5 flex flex-col items-end gap-8 max-[1200px]:w-3/4 max-[1200px]:items-start">
-  {/* Stats Row */}
-  <div className="flex flex-col items-end gap-8 max-[1200px]:items-start">
-    <div className="flex flex-col items-end gap-2 max-[1200px]:items-start">
-      <p className="text-[80px] font-semibold">$12,000+</p>
-      <h3 className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-        Sales saved from competitors
-      </h3>
-    </div>
-    <div className="flex flex-col items-end gap-2 max-[1200px]:items-start">
-      <p className="text-[80px] font-semibold">600+</p>
-      <h3 className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
-        Clicks generated
-      </h3>
-    </div>
-  </div>
-
-  {/* Anecdote */}
-  <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal mt-4">
-  One of our clients, <span className="text-[#FD5001]">Family Mookata</span>, 
-  saw <span className="text-[#FD5001]">600+ clicks</span> in 
-  <span className="text-[#FD5001]"> one month</span>, worth 
-  <span className="text-[#FD5001]"> $12k</span> in sales kept from competitors.
-</p>
-
-</div>
-
+                <div className="w-2/5 flex flex-col items-end gap-8 text-right max-[1200px]:w-3/4 max-[1200px]:items-start max-[1200px]:text-left">
+                  <div className="flex flex-col items-end gap-8 max-[1200px]:items-start">
+                    <div className="flex flex-col items-end gap-2 max-[1200px]:items-start">
+                      <p className="text-[80px] font-semibold">$12,000+</p>
+                      <h3 className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
+                        Sales saved from competitors
+                      </h3>
+                    </div>
+                    <div className="flex flex-col items-end gap-2 max-[1200px]:items-start">
+                      <p className="text-[80px] font-semibold">600+</p>
+                      <h3 className="text-[20px] text-[#999999] leading-[1.2] tracking-normal">
+                        Clicks generated
+                      </h3>
+                    </div>
+                  </div>
+                  <p className="text-[20px] text-[#999999] leading-[1.2] tracking-normal mt-4">
+                    One of our clients,{" "}
+                    <span className="text-[#FD5001]">Family Mookata</span>, saw{" "}
+                    <span className="text-[#FD5001]">600+ clicks</span> in
+                    <span className="text-[#FD5001]"> one month</span>, worth
+                    <span className="text-[#FD5001]"> $12k</span> in sales kept
+                    from competitors.
+                  </p>
+                </div>
               </div>
-              <div className="flex flex-col gap-16">
+              <div className="flex gap-16">
                 <div className="w-full flex flex-col gap-8">
                   <h1 className="text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
                     Stop guessing.{" "}
@@ -422,7 +424,7 @@ export default function Page() {
                     </svg>
                   </Button>
                 </div>
-                <div className="w-full relative aspect-2/1 max-sm:aspect-square">
+                <div className="w-full relative aspect-square">
                   <Image
                     className="object-cover"
                     src="/phone.png"
