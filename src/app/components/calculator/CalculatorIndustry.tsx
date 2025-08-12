@@ -36,7 +36,7 @@ export default function CalculatorIndustry({
         </div>
         <div className="flex justify-end">
           <Button
-            className="w-fit h-fit bg-white rounded-full !px-8 !py-4 text-[20px] font-semibold"
+            className="w-fit cursor-pointer h-fit bg-white rounded-full !px-8 !py-4 text-[20px] font-semibold"
             onClick={() => setSection("price")}
           >
             Read it for yourself

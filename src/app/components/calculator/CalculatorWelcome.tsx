@@ -51,7 +51,7 @@ export default function CalculatorWelcome({
         }}
       >
         <Button
-          className="w-fit h-fit bg-white rounded-full !px-8 !py-4 text-[20px] font-semibold"
+          className="w-fit h-fit bg-white rounded-full !px-8 !py-4 text-[20px] font-semibold cursor-pointer"
           onClick={() => setSection("reach")}
         >
           Read it for yourself

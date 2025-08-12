@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarPdf";
+import PdfHero from "../components/pdf/pdfHero";
 import Wrapper from "../components/Wrapper";
 import { Button } from "@/components/ui/button";
 
@@ -160,79 +161,17 @@ export default function Page() {
     }
   );
 
-  const card4Rotate = useSpring(
-    useTransform(
-      scrollY,
-      [
-        mobileContainerStart + window.innerHeight * 2,
-        mobileContainerStart + window.innerHeight * 2.5,
-      ],
-      [15, 0]
-    ),
-    {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001,
-    }
-  );
-
-  const card4X = useSpring(
-    useTransform(
-      scrollY,
-      [
-        mobileContainerStart + window.innerHeight * 2.5,
-        mobileContainerStart + window.innerHeight * 3,
-      ],
-      [0, vw]
-    ),
-    {
-      stiffness: 100,
-      damping: 30,
-      restDelta: 0.001,
-    }
-  );
-
   return (
     <div className="fixed top-0 left-0 w-full h-full overflow-hidden">
       <motion.div style={{ top }} className="absolute w-full">
         <div className="relative" ref={containerRef}>
-          <div
-            className="h-screen flex justify-center bg-cover bg-center relative"
-            style={{ backgroundImage: "url('/abstract-desk.png')" }}
-          >
-            <Wrapper className="w-screen h-full flex flex-col justify-between relative !pt-0 z-10">
-              <Navbar />
-              <div className="flex flex-col items-end gap-8 text-white text-right">
-                <h1 className="w-2/3 text-[64px] font-semibold max-[1200px]:w-4/5 max-[1200px]:text-[48px] max-md:w-full max-sm:text-[40px]">
-                  Still Don&apos;t Have a Website?
-                </h1>
-                <div className="w-full flex flex-col items-end gap-8 text-right max-[1200px]:w-4/5 max-md:w-full">
-                  <p className="w-1/3 opacity-70 text-[20px] leading-[1.2] tracking-normal max-[1200px]:w-full">
-                    Find out how much that decision is costing you and the
-                    simple fix to start winning more customers.
-                  </p>
-                  <Button className="w-fit h-fit bg-[#FD5001] rounded-full !px-8 !py-4 text-[20px] text-white font-semibold">
-                    Get the free guide
-                    <svg
-                      className="min-w-6 min-h-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        d="M7 7H17M17 7V17M17 7L7 17"
-                        stroke="white"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </Button>
-                </div>
+          <div className="h-screen flex justify-center bg-cover bg-center relative bg-gradient-to-b from-white to-[#999999]">
+            <div className="w-screen h-full flex flex-col justify-between relative !pt-0 z-10">
+              <div className="px-16 max-w-[1600px] max-md:px-6">
+                <Navbar />
               </div>
-            </Wrapper>
+              <PdfHero />
+            </div>
           </div>
           <motion.div
             className="bg-white relative z-10"

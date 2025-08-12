@@ -11,6 +11,16 @@ input[type="number"] {
 }
 
 @font-face {
+  font-family: "Anton";
+  src: url("../app/fonts/anton.ttf");
+  ascent-override: 100%;
+}
+
+.anton {
+  font-family: "Anton";
+}
+
+@font-face {
   font-family: "JetBrains Mono Medium";
   src: url("../app/fonts/JetBrainsMono-Medium.ttf");
   ascent-override: 100%;
