@@ -285,6 +285,42 @@ export default function Quiz(): React.ReactElement {
                   />
                 </Link>
               </Button>
+{/* Badges */}
+<motion.div
+  className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-2"
+  variants={textRevealVariants}
+>
+  {["No email required", "No sign up", "Takes under 60 seconds"].map(
+    (label, i) => (
+      <span
+        key={label}
+        className={
+          "inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/5 px-3 py-1.5 text-sm text-[#020202] whitespace-nowrap " +
+          (i === 2
+            ? "md:col-span-2 md:justify-self-center px-4 py-2" // center and add padding to the third badge
+            : "")
+        }
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M20 6L9 17l-5-5" />
+        </svg>
+        {label}
+      </span>
+    )
+  )}
+</motion.div>
+
             </motion.div>
           </div>
         </motion.div>

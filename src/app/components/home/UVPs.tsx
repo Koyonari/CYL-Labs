@@ -163,7 +163,7 @@ export default function UVPs() {
           <div className="flex flex-col gap-8 max-sm:gap-5">
             <h1 className="w-1/2 text-[64px] text-[#020202] font-semibold max-[1200px]:w-4/5 max-sm:w-full max-sm:text-[40px]">
               Why we
-              <span className="text-[#FD5001]">beat</span> your other options.
+              <span className="text-[#FD5001]">{" "}beat</span> your other options.
             </h1>
             <p className="text-[20px] text-[#999999] opacity-90 leading-[1.2] tracking-normal max-sm:text-[20px]">
               Built to win against DIY, freelancers, and template shops.
@@ -404,7 +404,7 @@ export default function UVPs() {
           </div>
           <div className="flex flex-col gap-8 max-sm:gap-5">
             <h1 className="w-1/2 text-[64px] text-[#020202] font-semibold max-[1200px]:w-4/5 max-sm:w-full max-sm:text-[40px]">
-              Why we <span className="text-[#FD5001]">beat</span> your other
+              Why we {" "} <span className="text-[#FD5001]">beat</span> your other
               options
             </h1>
             <p className="text-[20px] text-[#999999] opacity-90 leading-[1.2] tracking-normal max-sm:text-[20px]">

@@ -61,21 +61,56 @@ export default function Reality() {
             />
           </div>
         </div>
+
         <div className="flex flex-col items-center px-6 gap-8 text-white text-center">
           <h1 className="w-1/2 text-[64px] font-semibold max-[1200px]:w-4/5 max-md:w-full max-sm:text-[40px]">
-            What You Expect vs What You Get
+            FREE PDF: Stop Losing Customers Online
           </h1>
-          <p className="w-1/2 text-[20px] leading-[1.2] tracking-normal opacity-70 max-[1200px]:w-4/5 max-md:w-full max-sm:text-[20px]">
-            Most websites quietly lose thousands every year. In this free guide,
-            we show the biggest mistakes costing business owners sales and
-            exactly how to fix them.
+
+          <p className="w-1/2 text-[20px] leading-[1.2] tracking-normal opacity-90 max-[1200px]:w-4/5 max-md:w-full max-sm:text-[20px]">
+            Plain-English guide for SME owners.
           </p>
+
+          <p className="w-1/2 text-[20px] leading-[1.2] tracking-normal opacity-70 max-[1200px]:w-4/5 max-md:w-full max-sm:text-[20px]">
+            See what to show first so more visitors become customers, with a local case study and a simple options comparison. PDF. Quick read. View in browser.
+          </p>
+
+          {/* Badges */}
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {[
+              "No sign up",
+              "No download needed",
+              "No email required",
+            ].map((label) => (
+              <span
+                key={label}
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {label}
+              </span>
+            ))}
+          </div>
+
           <Button
             asChild
             className="w-fit h-fit bg-[#FD5001] rounded-full !px-8 !py-4 text-[20px] text-white font-semibold"
           >
             <Link href="/pdf">
-              Get the Free Guide
+              Open the Free Guide
               <svg
                 className="min-w-6 min-h-6"
                 xmlns="http://www.w3.org/2000/svg"
@@ -95,6 +130,7 @@ export default function Reality() {
             </Link>
           </Button>
         </div>
+
         <div className="w-[20%] h-full bg-[#020202] absolute left-[-10%] top-0 blur-2xl"></div>
         <div className="w-[20%] h-full bg-[#020202] absolute right-[-10%] top-0 blur-2xl"></div>
       </Wrapper>
